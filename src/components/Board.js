@@ -14,7 +14,7 @@ class Board extends React.Component {
 
   randomiseCards() {
     const defaultCard = { cardIsExpanded: false, contextMenuExpanded: false, color: '' };
-    return randomise([...Array(120)].map((_, i) => ({ cardId: i, ...defaultCard }))).slice(0, 20);
+    return randomise([...Array(280)].map((_, i) => ({ cardId: i, ...defaultCard }))).slice(0, 20);
   }
 
   toggleExpand(card) {

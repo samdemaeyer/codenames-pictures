@@ -49,7 +49,7 @@ class SpyMaster extends React.Component {
     return (
       <div>
         <div className="find-card-wrapper">
-          <p>Looking for a card? Click <a href="#" onClick={e => this.toggleInput(e)}>here</a> to find a specific card</p>
+          <p>Looking for a card? <a href="#" onClick={e => this.toggleInput(e)}>Click here</a> to find a specific card</p>
           {this.state.showInput ?
             <form onSubmit={e => this.findCard(e)}>
               <input className="input" value={this.state.spyCardId} onChange={e => this.changeSpyCardInput(e)} />

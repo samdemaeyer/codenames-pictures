@@ -24,8 +24,9 @@ class Card extends React.Component {
           : null}
         <img
           onClick={this.props.onClick}
-          src={`/codenames-pictures/cards/card-${cardId}.jpg`}
+          src={`/codenames-pictures/images/cards/card-${cardId}.jpg`}
           className={`card-img ${cardIsExpanded ? 'expanded' : ''}`}
+          alt={`codename card-${cardId}`}
         />
         {contextMenuExpanded ?
           <div className="context-menu">
