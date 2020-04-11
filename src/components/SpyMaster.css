@@ -16,7 +16,7 @@
 
 .container.spy-master {
   flex-direction: column;
-  height: 80vh;
+  min-height: 80vh;
 }
 
 .card-container {
@@ -40,6 +40,9 @@
 .spy-grid .card {
   border-radius: 12px;
   margin: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .spy-grid .card.red {
@@ -59,6 +62,30 @@
 .spy-grid .card.black {
   background: rgb(99,99,99);
   background: radial-gradient(circle, rgba(99,99,99,1) 0%, rgba(62,60,58,1) 100%);
+}
+
+.spy-grid .card::before {
+  font-weight: 900;
+  font-size: 3rem;
+}
+
+.spy-grid .card.black::before {
+  content: '✕';
+  text-shadow: 0 0 5px #FFF, 0 0 10px #FFF, 0 0 15px #FFF, 0 0 20px #b9b9b9, 0 0 30px #b9b9b9, 0 0 40px #b9b9b9, 0 0 55px #b9b9b9, 0 0 75px #b9b9b9;
+}
+
+.spy-grid .card.red::before {
+  content: '◇';
+  color: #f73434;
+  font-size: 5rem;
+  text-shadow: 0 0 5px #FFF, 0 0 10px #FFF, 0 0 15px #FFF, 0 0 20px #ff1818, 0 0 30px #ff1818, 0 0 40px #ff1818, 0 0 55px #ff1818, 0 0 75px #ff1818;
+}
+
+.spy-grid .card.blue::before {
+  content: '○';
+  color: #0088ff;
+  font-size: 5rem;
+  text-shadow: 0 0 5px #FFF, 0 0 10px #FFF, 0 0 15px #FFF, 0 0 20px #0088ff, 0 0 30px #0088ff, 0 0 40px #0088ff, 0 0 55px #0088ff, 0 0 75px #0088ff;
 }
 
 .starting-color {
@@ -82,4 +109,54 @@
   box-shadow: 0px 0px 21px 2px rgba(72,168,255,1);
   -moz-box-shadow: 0px 0px 21px 2px rgba(72,168,255,1);
   -webkit-box-shadow: 0px 0px 21px 2px rgba(72,168,255,1);
+}
+
+
+@media only screen and (max-width: 900px) {
+  .title {
+    font-size: 2.5rem;
+  }
+
+  .spy-grid .card::before {
+    font-size: 2rem;
+  }
+
+  .spy-grid .card.red::before, .spy-grid .card.blue::before {
+    font-size: 2.5rem;
+  }
+
+  .spy-grid {
+    grid-template-columns: 100px 100px 100px 100px 100px;
+    grid-template-rows: 75px 75px 75px 75px;
+  }
+}
+
+
+@media only screen and (max-width: 650px) {
+  .spy-grid {
+    grid-template-columns: 75px 75px 75px 75px 75px;
+    grid-template-rows: 55px 55px 55px 55px;
+  }
+  .spy-grid .card::before {
+    font-size: 0.7rem;
+  }
+  .spy-grid .card.blue::before, .spy-grid .card.red::before {
+    font-size: 1rem;
+  }
+  .starting-color {
+    height: 60px;
+    margin: 10px;
+    width: 20px;
+  }
+}
+
+
+@media only screen and (max-width: 525px) {
+  .title {
+    font-size: 2rem;
+  }
+  .spy-grid {
+    grid-template-columns: 50px 50px 50px 50px 50px;
+    grid-template-rows: 40px 40px 40px 40px;
+  }
 }

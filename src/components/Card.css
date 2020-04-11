@@ -26,6 +26,7 @@
   left: 25%;
   position: absolute;
   top: 15%;
+  z-index: 2;
 }
 
 .context-menu .menu-action {

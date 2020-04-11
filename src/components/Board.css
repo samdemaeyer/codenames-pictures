@@ -1,7 +1,7 @@
 .container {
   align-items: center;
   display: flex;
-  height: 100vh;
+  min-height: 100vh;
   justify-content: center;
   width: 100%;
 }
@@ -56,5 +56,27 @@
 
   .btn-wrapper {
     height: 850px;
+  }
+}
+
+@media only screen and (max-width: 1300px) {
+  .grid {
+    display: grid;
+    grid-template-columns: 20% 20% 20% 20% 20%;
+    grid-template-rows: 25% 25% 25% 25%;
+  }
+
+  .container {
+    flex-direction: column;
+  }
+
+  .btn-wrapper {
+    height: auto;
+    margin-bottom: 1rem;
+  }
+
+  .btn {
+    display: inline-block;
+    margin: 1rem 1rem 1rem 0;
   }
 }

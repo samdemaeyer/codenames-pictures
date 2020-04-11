@@ -23,7 +23,7 @@ class SpyMaster extends React.Component {
       card,
       cards,
       spyCardId,
-      cardNotFound: true,
+      cardNotFound: !card,
       spyCardIdToDisplay: spyCardId,
     });
   }
@@ -38,8 +38,7 @@ class SpyMaster extends React.Component {
     this.setState({ spyCardIdToDisplay: this.state.spyCardId });
     this.props.history.push(this.state.spyCardId);
     const card = this.state.cards.find(({ id }) => id === this.state.spyCardId);
-    this.setState({ card, showInput: false });
-    card && this.setState({ cardNotFound: true });
+    this.setState({ card, showInput: false, cardNotFound: !card });
   }
 
   changeSpyCardInput({ target }) {
@@ -71,9 +70,10 @@ class SpyMaster extends React.Component {
               <div className={`starting-color ${this.state.card.startingColor}`}></div>
             </div>
           </div> : null}
-        <div className="container spy-master">
-          {this.state.cardNotFound ? <h1 className="title">Spy master card &quot;{this.state.spyCardIdToDisplay}&quot; not found</h1> : null}
-        </div>
+        {this.state.cardNotFound ?
+          <div className="container spy-master">
+            <h1 className="title">Spy master card &quot;{this.state.spyCardIdToDisplay}&quot; not found</h1>
+          </div> : null}
       </div>
     );
   }
