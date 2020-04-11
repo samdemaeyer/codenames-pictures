@@ -61,10 +61,11 @@ class Board extends React.Component {
     return (
       <div className="container" onClick={e => this.resetAll(e)}>
         <div className="grid">
-          {this.state.cards.map(card => (
+          {this.state.cards.map((card, index) => (
             <Card
               key={card.cardId}
               card={card}
+              index={index+1}
               resetColor={() => this.resetColor(card)}
               onClick={() => this.toggleExpand(card)}
               onContextMenu={e => this.onContextMenu(card, e)}

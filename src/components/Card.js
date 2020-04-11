@@ -12,9 +12,10 @@ class Card extends React.Component {
   }
 
   render() {
-    const { cardId, cardIsExpanded, contextMenuExpanded } = this.props.card;
+    const { cardId, cardIsExpanded, contextMenuExpanded, index } = this.props.card;
     return (
       <div onContextMenu={this.props.onContextMenu} className="card">
+        <h5 className="card-id">{this.props.index}</h5>
         {this.props.card.color ?
           <div
             className={`overlay ${this.props.card.color}`}
