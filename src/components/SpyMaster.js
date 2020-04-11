@@ -10,7 +10,7 @@ class SpyMaster extends React.Component {
       spyCardIdToDisplay: '',
       cardNotFound: false,
       showInput: false,
-      cards: []
+      cards: [],
     }
   }
 
@@ -50,10 +50,10 @@ class SpyMaster extends React.Component {
     return (
       <div>
         <div className="find-card-wrapper">
-          <p>Looking for a card? Click <a href="#" onClick={(e) => this.toggleInput(e)}>here</a> to find a specific card</p>
+          <p>Looking for a card? Click <a href="#" onClick={e => this.toggleInput(e)}>here</a> to find a specific card</p>
           {this.state.showInput ?
-            <form onSubmit={(e) => this.findCard(e)}>
-              <input className="input" value={this.state.spyCardId} onChange={(e) => this.changeSpyCardInput(e)} />
+            <form onSubmit={e => this.findCard(e)}>
+              <input className="input" value={this.state.spyCardId} onChange={e => this.changeSpyCardInput(e)} />
               <button className="btn blue">Search</button>
             </form>
             : null}
@@ -72,7 +72,7 @@ class SpyMaster extends React.Component {
             </div>
           </div> : null}
         <div className="container spy-master">
-          {this.state.cardNotFound ? <h1 className="title">Spy card "{this.state.spyCardIdToDisplay}" not found</h1> : null}
+          {this.state.cardNotFound ? <h1 className="title">Spy card &quot;{this.state.spyCardIdToDisplay}&quot; not found</h1> : null}
         </div>
       </div>
     );
