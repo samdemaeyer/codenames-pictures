@@ -1,0 +1,94 @@
+.card {
+  border: 1px solid;
+  cursor: pointer;
+  margin: 15px;
+  position: relative;
+}
+
+.card-img {
+  width: 100%;
+}
+
+.card-img.expanded {
+  border: 2px solid;
+  left: -50%;
+  position: absolute;
+  top: -50%;
+  width: 200%;
+  z-index: 2;
+}
+
+.context-menu {
+  background-color: white;
+  border: 1px solid;
+  left: 25%;
+  position: absolute;
+  top: 15%;
+}
+
+.context-menu .menu-action {
+  border-bottom: 1px solid;
+  margin: 0;
+  padding: .7rem 1rem;
+}
+
+.context-menu:last-child {
+  border-bottom: none;
+}
+
+.context-menu .menu-action:hover {
+  background-color: red;
+  cursor: pointer;
+}
+
+.overlay {
+  border: 4px solid;
+  height: 210px;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 210px;
+}
+
+.overlay.red {
+  background-color: rgba(255, 0, 0, 0.4);
+  border-color: rgb(255, 0, 0);
+}
+
+.overlay.blue {
+  background-color: rgba(0, 149, 255, 0.4);
+  border-color: rgb(0, 149, 255);
+}
+
+.overlay.neutral {
+  background-color: rgba(255, 212, 0, 0.4);
+  border-color: rgb(255, 212, 0);
+}
+
+.overlay.black {
+  background-color: rgba(0, 0, 0, 0.7);
+  border-color: rgb(0, 0, 0);
+}
+
+.menu-action.red:hover {
+  background-color: rgba(255, 0, 0, 0.4);
+}
+
+.menu-action.blue:hover {
+  background-color: rgba(0, 149, 255, 0.4);
+}
+
+.menu-action.neutral:hover {
+  background-color: rgba(255, 212, 0, 0.4);
+}
+
+.menu-action.black:hover {
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+@media only screen and (max-height: 1000px) {
+  .overlay {
+    height: 178px;
+    width: 178px;
+  }
+}
