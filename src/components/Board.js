@@ -39,11 +39,22 @@ class Board extends React.Component {
   }
 
   resetCards(card = {}) {
-    this.state.cards.filter(c => c.cardId !== card.cardId).forEach(c => { c.cardIsExpanded = false; c.contextMenuExpanded= false });
+    this.state.cards.filter(c => c.cardId !== card.cardId).forEach(c => { c.cardIsExpanded = false; c.contextMenuExpanded = false; });
   }
 
   newGames() {
     this.state.cards = this.randomiseCards();
+  }
+
+  resetColor(card) {
+    if (document.selection && document.selection.empty) {
+      document.selection.empty();
+    } else if (window.getSelection) {
+      const sel = window.getSelection();
+      sel.removeAllRanges();
+    }
+    card.color = '';
+    this.setState({ cards: this.state.cards });
   }
 
   render() {
@@ -54,6 +65,7 @@ class Board extends React.Component {
             <Card
               key={card.cardId}
               card={card}
+              resetColor={() => this.resetColor(card)}
               onClick={() => this.toggleExpand(card)}
               onContextMenu={(e) => this.onContextMenu(card, e)}
             />

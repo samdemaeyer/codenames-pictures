@@ -6,21 +6,11 @@ class Card extends React.Component {
     this.props.card.color = color;
   }
 
-  onDoubleClick() {
-    if(document.selection && document.selection.empty) {
-      document.selection.empty();
-    } else if (window.getSelection) {
-      const sel = window.getSelection();
-      sel.removeAllRanges();
-    }
-    this.props.card.color = '';
-  }
-
   render() {
     const { cardId, cardIsExpanded, contextMenuExpanded } = this.props.card;
     return (
       <div onContextMenu={this.props.onContextMenu} className="card">
-        {this.props.card.color ? <div className={`overlay ${this.props.card.color}`} onDoubleClick={() => this.onDoubleClick()}></div> : null}
+        {this.props.card.color ? <div className={`overlay ${this.props.card.color}`} onDoubleClick={this.props.resetColor}></div> : null}
         <img
           onClick={this.props.onClick}
           src={`/codenames-pictures/cards/card-${cardId}.jpg`}

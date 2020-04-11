@@ -32,15 +32,17 @@
   border-bottom: 1px solid;
   margin: 0;
   padding: .7rem 1rem;
+  font-weight: 500;
 }
 
 .context-menu:last-child {
   border-bottom: none;
 }
 
-.context-menu .menu-action:hover {
-  background-color: red;
+.context-menu .menu-action:not(.neutral):hover {
+  color: white;
   cursor: pointer;
+  border-color: black;
 }
 
 .overlay {
@@ -50,6 +52,7 @@
   position: absolute;
   top: 0;
   width: 210px;
+  border-radius: 12px;
 }
 
 .overlay.red {
@@ -73,15 +76,15 @@
 }
 
 .menu-action.red:hover {
-  background-color: rgba(255, 0, 0, 0.4);
+  background-color: rgba(255, 0, 0, 0.8);
 }
 
 .menu-action.blue:hover {
-  background-color: rgba(0, 149, 255, 0.4);
+  background-color: rgba(0, 149, 255, 0.8);
 }
 
 .menu-action.neutral:hover {
-  background-color: rgba(255, 212, 0, 0.4);
+  background-color: rgba(255, 212, 0, 0.8);
 }
 
 .menu-action.black:hover {
@@ -90,7 +93,7 @@
 
 @media only screen and (max-height: 1000px) {
   .overlay {
-    height: 178px;
-    width: 178px;
+    height: 180px;
+    width: 180px;
   }
 }
