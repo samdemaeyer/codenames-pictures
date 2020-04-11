@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import Card from './Card';
 import randomise from '../utils/array-helpers';
 import './Board.css';
@@ -60,6 +61,7 @@ class Board extends React.Component {
         </div>
         <div className="btn-wrapper">
           <div>
+            <Link className="btn blue" to={`/spy-master/${Math.floor(Math.random() * 50)}`}>Spy Master</Link>
             <button className="btn" onClick={() => this.newGames()}>New Game</button>
           </div>
         </div>

@@ -1,0 +1,68 @@
+.container.spy-master {
+  flex-direction: column;
+}
+
+.card-container {
+  display: flex;
+  align-items: center;
+}
+
+.title {
+  font-size: 3.5rem;
+}
+
+.spy-grid {
+  background-color: black;
+  border-radius: 12px;
+  display: grid;
+  grid-template-columns: 150px 150px 150px 150px 150px;
+  grid-template-rows: 125px 125px 125px 125px;
+  padding: 15px;
+}
+
+.spy-grid .card {
+  border-radius: 12px;
+  margin: 10px;
+}
+
+.spy-grid .card.red {
+  background: rgb(255,77,94);
+  background: radial-gradient(circle, rgba(255,77,94,1) 0%, rgba(201,34,50,1) 100%);
+}
+
+.spy-grid .card.blue {
+  background: rgb(72,168,255);
+  background: radial-gradient(circle, rgba(72,168,255,1) 0%, rgba(72,122,167,1) 100%);
+}
+
+.spy-grid .card.neutral {
+  background-color: #daca9e;
+}
+
+.spy-grid .card.black {
+  background: rgb(99,99,99);
+  background: radial-gradient(circle, rgba(99,99,99,1) 0%, rgba(62,60,58,1) 100%);
+}
+
+.starting-color {
+  border-radius: 8px;
+  height: 100px;
+  margin: 15px;
+  width: 30px;
+}
+
+.starting-color.red {
+  background: rgb(255,77,94);
+  background: radial-gradient(circle, rgba(255,77,94,1) 0%, rgba(201,34,50,1) 100%);
+  box-shadow: 0px 0px 21px 2px rgba(255,77,94,1);
+  -moz-box-shadow: 0px 0px 21px 2px rgba(255,77,94,1);
+  -webkit-box-shadow: 0px 0px 21px 2px rgba(255,77,94,1);
+}
+
+.starting-color.blue {
+  background: rgb(72,168,255);
+  background: radial-gradient(circle, rgba(72,168,255,1) 0%, rgba(72,122,167,1) 100%);
+  box-shadow: 0px 0px 21px 2px rgba(72,168,255,1);
+  -moz-box-shadow: 0px 0px 21px 2px rgba(72,168,255,1);
+  -webkit-box-shadow: 0px 0px 21px 2px rgba(72,168,255,1);
+}

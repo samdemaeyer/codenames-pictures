@@ -21,9 +21,13 @@
 .btn {
   border-radius: 6px;
   border: 2px solid #00a700;
+  color: initial;
+  display: block;
   font-size: 1rem;
   font-weight: 500;
+  margin-top: 1rem;
   padding: 0.5rem 1rem;
+  text-decoration: none;
   transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
 }
 
@@ -31,6 +35,15 @@
   background-color: #00a700;
   border-color: #009200;
   color: white;
+}
+
+.btn.blue {
+  border-color: #3a3aff;
+}
+
+.btn.blue:hover {
+  background-color: #3a3aff;
+  border-color: blue;
 }
 
 @media only screen and (max-height: 1000px) {
