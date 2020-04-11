@@ -8,7 +8,7 @@ function App() {
   return (
     <HashRouter>
       <Route exact path="/" component={Board} />
-      <Route exact path="/spy-master/:spyId" component={SpyMaster} />
+      <Route exact path="/spy-master/:spyCardId" component={SpyMaster} />
     </HashRouter>
   );
 }

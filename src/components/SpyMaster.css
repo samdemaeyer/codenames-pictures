@@ -1,5 +1,22 @@
+.find-card-wrapper {
+  text-align: center;
+}
+
+.input {
+  padding: 0.5rem 1rem;
+  border: 2px solid #c1c1c1;
+  border-radius: 4px;
+  font-size: 1rem;
+}
+
+.find-card-wrapper .btn {
+  display: inline-block;
+  margin-left: 1rem;
+}
+
 .container.spy-master {
   flex-direction: column;
+  height: 80vh;
 }
 
 .card-container {
