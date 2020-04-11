@@ -73,7 +73,7 @@ class Board extends React.Component {
         </div>
         <div className="btn-wrapper">
           <div>
-            <Link className="btn blue" target="_blank" to={`/spy-master/${Math.floor(Math.random() * 50)}`}>Spy Master</Link>
+            <Link className="btn blue" target="_blank" to={`/spy-master/${Math.floor(Math.random() * 100)}`}>Spy Master</Link>
             <button className="btn" onClick={() => this.newGames()}>New Game</button>
           </div>
         </div>

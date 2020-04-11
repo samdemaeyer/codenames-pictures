@@ -15,7 +15,7 @@ class SpyMaster extends React.Component {
   }
 
   async componentDidMount() {
-    const results = await fetch('/codenames-pictures/spy-cards.json');
+    const results = await fetch('/codenames-pictures/spy-master-cards.json');
     const cards = await results.json();
     const spyCardId = this.props.match.params.spyCardId;
     const card = cards.find(({ id }) => id === spyCardId);
@@ -60,7 +60,7 @@ class SpyMaster extends React.Component {
         </div>
         {this.state.card ?
           <div className="container spy-master">
-            <h1 className="title">Spy card: {this.state.spyCardIdToDisplay}</h1>
+            <h1 className="title">Spy master card: {this.state.spyCardIdToDisplay}</h1>
             <div className="card-container">
               <div className={`starting-color ${this.state.card.startingColor}`}></div>
               <div className="spy-grid">
@@ -72,7 +72,7 @@ class SpyMaster extends React.Component {
             </div>
           </div> : null}
         <div className="container spy-master">
-          {this.state.cardNotFound ? <h1 className="title">Spy card &quot;{this.state.spyCardIdToDisplay}&quot; not found</h1> : null}
+          {this.state.cardNotFound ? <h1 className="title">Spy master card &quot;{this.state.spyCardIdToDisplay}&quot; not found</h1> : null}
         </div>
       </div>
     );
