@@ -12,15 +12,24 @@
   grid-template-rows: 250px 250px 250px 250px;
 }
 
-.btn-wrapper {
-  align-items: flex-end;
+.side-wrapper {
   display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   height: 970px;
+}
+
+.side-wrapper .team-blue {
+  color: rgba(0, 149, 255, 1);
+}
+
+.side-wrapper .team-red {
+  color: rgba(255, 0, 0, 1);
 }
 
 .btn {
   border-radius: 6px;
-  border: 2px solid #00a700;
+  border: 2px solid #00af35;
   color: initial;
   cursor: pointer;
   display: block;
@@ -33,18 +42,27 @@
 }
 
 .btn:hover {
-  background-color: #00a700;
-  border-color: #009200;
+  background-color: #00af35;
+  border-color: #019c30;
   color: white;
 }
 
 .btn.blue {
-  border-color: #3a3aff;
+  border-color: #30a4ff;
 }
 
 .btn.blue:hover {
-  background-color: #3a3aff;
-  border-color: blue;
+  background-color: #30a4ff;
+  border-color: #058cf7;
+}
+
+.btn.purple {
+  border-color: #d54ffb;
+}
+
+.btn.purple:hover {
+  background-color: #c21df1;
+  border-color: #d54ffb;
 }
 
 @media only screen and (max-height: 1000px) {
@@ -54,7 +72,19 @@
     grid-template-rows: 220px 220px 220px 220px;
   }
 
-  .btn-wrapper {
+  .side-wrapper {
+    height: 850px;
+  }
+}
+
+@media only screen and (max-height: 800px) {
+  .grid {
+    display: grid;
+    grid-template-columns: 25vh 25vh 25vh 25vh 25vh;
+    grid-template-rows: 25vh 25vh 25vh 25vh;
+  }
+
+  .side-wrapper {
     height: 850px;
   }
 }
@@ -70,7 +100,7 @@
     flex-direction: column;
   }
 
-  .btn-wrapper {
+  .side-wrapper {
     height: auto;
     margin-bottom: 1rem;
   }

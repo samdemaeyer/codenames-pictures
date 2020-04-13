@@ -78,8 +78,8 @@ class Rules extends React.Component {
           </p>
         </blockquote>
         <p>
-          <img src="/codenames-pictures/images/cards/card-29.jpg" width="150px" style={{display: "inline-block"}} />
-          <img src="/codenames-pictures/images/cards/card-4.jpg" width="150px" style={{display: "inline-block", marginLeft: "1rem"}} />
+          <img src="/codenames-pictures/images/cards/card-29.jpg" width="150px" style={{display: 'inline-block'}} />
+          <img src="/codenames-pictures/images/cards/card-4.jpg" width="150px" style={{display: 'inline-block', marginLeft: '1rem'}} />
         </p>
         <p>
           You are allowed to give a clue for only one
@@ -98,7 +98,7 @@ class Rules extends React.Component {
           the table. (Online, verbal confirmation to the spymaster which card)
           <br />
           The spymaster reveals who is in that location by righ clicking on the tile and assigns one of the following
-          states: "Red", "Blue", "Neutral", "Game over".
+          states: &quot;Red&quot;, &quot;Blue&quot;, &quot;Neutral&quot;, &quot;Game over&quot;.
         </p>
         <ul>
           <li>
@@ -109,7 +109,7 @@ class Rules extends React.Component {
           <li>
             If the field operative verbally chooses a location
             <br />
-            with an innocent bystander, the spymaster marks it with an innocent ("Neutral") state.
+            with an innocent bystander, the spymaster marks it with an innocent (&quot;Neutral&quot;) state.
             <strong>This ends the turn</strong>.
           </li>
           <li>
@@ -121,7 +121,7 @@ class Rules extends React.Component {
           <li>
             If the field operative chooses the location
             <br />
-            with the assassin, the picture is marked as assassinated ("Game over"). <strong>This ends the game!</strong>
+            with the assassin, the picture is marked as assassinated (&quot;Game over&quot;). <strong>This ends the game!</strong>
             <br />
             The team that contacted the assassin loses.
           </li>
@@ -153,7 +153,7 @@ class Rules extends React.Component {
           For example, you might have received several clues for which you did not get all the pictures. You can guess
           these pictures instead of or in addition to those related to the current clue.
           <br />
-          The "one more guess" rule gives you a chance to catch up.
+          The &quot;one more guess&quot; rule gives you a chance to catch up.
         </p>
         <h3>Ending the game</h3>
         <p>

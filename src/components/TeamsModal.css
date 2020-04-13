@@ -1,0 +1,71 @@
+.modal {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1040;
+  background: rgba(88, 88, 88, 0.7);;
+}
+
+.modal-content {
+  width: 900px;
+  height: 80vh;
+  background: #f9e5a9;
+  border-radius: 12px;
+  border: 3px solid;
+  position: relative;
+}
+
+.close-modal {
+  position: absolute;
+  right: 1rem;
+  top: 1rem;
+  font-size: 2rem;
+  background: none;
+  border: none;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.modal-title {
+  font-size: 2.5rem;
+  text-align: center;
+}
+
+.teams-wrapper {
+  display: flex;
+}
+
+.teams-wrapper .team {
+  flex: 1;
+  padding: 2rem;
+}
+
+.teams-wrapper .input {
+  display: block;
+  margin-bottom: 1rem;
+}
+
+.teams-wrapper .team-blue {
+  border-left: 3px solid;
+}
+
+.teams-wrapper .team-title {
+  margin: 0 1rem 1rem 0
+}
+
+.team-red .team-title {
+  color: rgba(255, 0, 0, 0.6);
+}
+
+.team-blue .team-title {
+  color: rgba(0, 149, 255, 0.6);
+}
+
+@media only screen and (max-width: 1100px) {
+  .modal-content {
+    width: 80vw;
+  }
+}

@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import './Card.css';
 
 class Card extends React.Component {
@@ -12,7 +13,7 @@ class Card extends React.Component {
   }
 
   render() {
-    const { cardId, cardIsExpanded, contextMenuExpanded, index } = this.props.card;
+    const { cardId, cardIsExpanded, contextMenuExpanded } = this.props.card;
     return (
       <div onContextMenu={this.props.onContextMenu} className="card">
         <h5 className="card-id">{this.props.index}</h5>
@@ -40,5 +41,13 @@ class Card extends React.Component {
     );
   }
 }
+
+Card.propTypes = {
+  card: PropTypes.objectOf(PropTypes.string),
+  onContextMenu: PropTypes.func,
+  index: PropTypes.number,
+  resetColor: PropTypes.string,
+  onClick: PropTypes.func,
+};
 
 export default Card;

@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import './SpyMaster.css';
 
 class SpyMaster extends React.Component {
@@ -79,5 +80,9 @@ class SpyMaster extends React.Component {
   }
 }
 
+SpyMaster.propTypes = {
+  match: PropTypes.object,
+  history: PropTypes.array,
+};
 
 export default SpyMaster;
