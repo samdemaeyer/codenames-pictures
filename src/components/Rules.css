@@ -6,6 +6,10 @@
   border-radius: 12px;
 }
 
+.rules-container .btn {
+  display: inline-block;
+}
+
 .rules-container .btn.right {
   float: right;
   font-size: 1.5rem;

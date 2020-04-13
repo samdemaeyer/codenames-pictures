@@ -62,7 +62,7 @@ TeamsModal.propTypes = {
   addPlayer: PropTypes.func,
   toggleTeamsModal: PropTypes.func,
   updatePlayer: PropTypes.func,
-  teams: PropTypes.objectOf(PropTypes.objectOf(PropTypes.ArrayOf(PropTypes.string))),
+  teams: PropTypes.object,
 };
 
 

@@ -115,6 +115,7 @@ class Board extends React.Component {
               <button className="btn purple" onClick={() => this.toggleTeamsModal()}>Teams</button>
               <Link className="btn blue" target="_blank" to={`/spy-master/${Math.floor(Math.random() * 100)}`}>Spy Master</Link>
               <button className="btn" onClick={() => this.newGames()}>New Game</button>
+              <Link className="btn purple" to="/">Rules</Link>
             </div>
           </div>
         </div>
