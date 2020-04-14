@@ -16,40 +16,59 @@ class Board extends React.Component {
         red: [],
         blue: [],
       },
-    }
+    };
   }
 
   randomiseCards() {
-    const defaultCard = { cardIsExpanded: false, contextMenuExpanded: false, color: '' };
-    return randomise([...Array(280)].map((_, i) => ({ cardId: i, ...defaultCard }))).slice(0, 20);
+    const defaultCard = {
+      cardIsExpanded: false,
+      contextMenuExpanded: false,
+      color: '',
+    };
+    return randomise(
+      [...Array(280)].map((_, i) => ({ cardId: i, ...defaultCard }))
+    ).slice(0, 20);
   }
 
   toggleExpand(card) {
     this.resetCards(card);
-    card.cardIsExpanded = !card.cardIsExpanded;
-    this.setState({ cards: this.state.cards });
+    const cards = this.state.cards.concat();
+    cards.forEach(c => {
+      if (c.cardId === card.cardId) c.cardIsExpanded = !c.cardIsExpanded;
+    });
+    this.setState({ cards });
   }
 
   onContextMenu(card, e) {
     e.preventDefault();
     this.resetCards();
-    card.contextMenuExpanded = !card.contextMenuExpanded;
-    this.setState({ cards: this.state.cards });
+    const cards = this.state.cards.concat();
+    cards.forEach(c => {
+      if (c.cardId === card.cardId) c.contextMenuExpanded = !c.contextMenuExpanded;
+    });
+    this.setState({ cards });
   }
 
   resetAll(e) {
-    if (e.target.parentElement.className === 'card' || e.target.parentElement.className === 'card') {
+    if (e.target.parentElement.className === 'card') {
       return;
     }
     this.resetCards();
-    this.setState({ cards: this.state.cards });
   }
 
   resetCards(card = {}) {
-    this.state.cards.filter(c => c.cardId !== card.cardId).forEach(c => { c.cardIsExpanded = false; c.contextMenuExpanded = false; });
+    const cards = this.state.cards.concat();
+    cards.forEach(c => {
+      if (c.cardId !== card.cardId) {
+        c.cardIsExpanded = false;
+        c.contextMenuExpanded = false;
+      }
+    });
+    this.setState({ cards });
   }
 
-  newGames() {
+  newGames(e) {
+    e.stopPropagation();
     this.setState({ cards: this.randomiseCards() });
   }
 
@@ -65,7 +84,7 @@ class Board extends React.Component {
   }
 
   toggleTeamsModal() {
-    this.setState({ showTeamsModal: !this.state.showTeamsModal});
+    this.setState({ showTeamsModal: !this.state.showTeamsModal });
   }
 
   addPlayer(color, player) {
@@ -82,13 +101,16 @@ class Board extends React.Component {
   render() {
     return (
       <div>
-        {this.state.showTeamsModal ?
+        {this.state.showTeamsModal ? (
           <TeamsModal
             teams={this.state.teams}
             addPlayer={(color, player) => this.addPlayer(color, player)}
-            updatePlayer={(color, newValue, player) => this.updatePlayer(color, newValue, player)}
+            updatePlayer={(color, newValue, player) =>
+              this.updatePlayer(color, newValue, player)
+            }
             toggleTeamsModal={() => this.toggleTeamsModal()}
-          /> : null}
+          />
+        ) : null}
         <div className="container" onClick={e => this.resetAll(e)}>
           <div className="side-wrapper">
             <TeamNames teamNames={this.state.teams.red} color="red" />
@@ -98,22 +120,35 @@ class Board extends React.Component {
               <Card
                 key={card.cardId}
                 card={card}
-                index={index+1}
+                index={index + 1}
                 resetColor={() => this.resetColor(card)}
                 onClick={() => this.toggleExpand(card)}
                 onContextMenu={e => this.onContextMenu(card, e)}
               />
             ))}
           </div>
-          <div>
-          </div>
           <div className="side-wrapper">
             <TeamNames teamNames={this.state.teams.blue} color="blue" />
             <div>
-              <button className="btn purple" onClick={() => this.toggleTeamsModal()}>Teams</button>
-              <Link className="btn blue" target="_blank" to={`/spy-master/${Math.floor(Math.random() * 100)}`}>Spy Master</Link>
-              <button className="btn" onClick={() => this.newGames()}>New Game</button>
-              <Link className="btn purple" to="/">Rules</Link>
+              <button
+                className="btn purple"
+                onClick={() => this.toggleTeamsModal()}
+              >
+                Teams
+              </button>
+              <Link
+                className="btn blue"
+                target="_blank"
+                to={`/spy-master/${Math.floor(Math.random() * 100)}`}
+              >
+                Spy Master
+              </Link>
+              <button className="btn" onClick={e => this.newGames(e)}>
+                New Game
+              </button>
+              <Link className="btn purple" to="/">
+                Rules
+              </Link>
             </div>
           </div>
         </div>

@@ -43,7 +43,7 @@ class Card extends React.Component {
 }
 
 Card.propTypes = {
-  card: PropTypes.objectOf(PropTypes.string),
+  card: PropTypes.object,
   onContextMenu: PropTypes.func,
   index: PropTypes.number,
   resetColor: PropTypes.func,
