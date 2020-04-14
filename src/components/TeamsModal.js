@@ -27,7 +27,7 @@ class TeamsModal extends React.Component {
               <h3 className="team-title">Team red</h3>
               <form onSubmit={() => this.addPlayer('red', this.state.redNewPlayer)}>
                 {this.props.teams.red.map((player, index) => (
-                  <input className="input" key={index} value={player} onChange={({ target: { value } }) => this.props.updatePlayer('red', value, player)} />
+                  <input className="input" key={index} value={player} onChange={({ target: { value } }) => this.props.updatePlayer('red', value, index)} />
                 ))}
                 <input
                   className="input"
@@ -41,7 +41,7 @@ class TeamsModal extends React.Component {
               <h3 className="team-title">Team blue</h3>
               <form onSubmit={() => this.addPlayer('blue', this.state.blueNewPlayer)}>
                 {this.props.teams && this.props.teams.blue.map((player, index) => (
-                  <input className="input" key={index} value={player} onChange={({ target: { value } }) => this.props.updatePlayer('red', value, player)} />
+                  <input className="input" key={index} value={player} onChange={({ target: { value } }) => this.props.updatePlayer('blue', value, index)} />
                 ))}
                 <input
                   className="input"

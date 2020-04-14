@@ -46,7 +46,7 @@ Card.propTypes = {
   card: PropTypes.objectOf(PropTypes.string),
   onContextMenu: PropTypes.func,
   index: PropTypes.number,
-  resetColor: PropTypes.string,
+  resetColor: PropTypes.func,
   onClick: PropTypes.func,
 };
 

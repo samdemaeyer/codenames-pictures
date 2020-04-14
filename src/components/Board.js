@@ -50,8 +50,7 @@ class Board extends React.Component {
   }
 
   newGames() {
-    this.state.cards = this.randomiseCards();
-    this.forceUpdate();
+    this.setState({ cards: this.randomiseCards() });
   }
 
   resetColor(card) {
@@ -70,15 +69,14 @@ class Board extends React.Component {
   }
 
   addPlayer(color, player) {
-    console.log(this.state.teams[color]);
-
     this.state.teams[color].push(player);
     this.setState({ teams: this.state.teams });
   }
 
-  updatePlayer(color, newValue, player) {
-    this.state.teams[color][this.state.teams[color].indexOf(player)] = newValue;
-    this.forceUpdate();
+  updatePlayer(color, newValue, index) {
+    const newArray = [...this.state.teams[color]];
+    newArray[index] = newValue;
+    this.setState({ teams: { ...this.state.teams, [color]: newArray } });
   }
 
   render() {
