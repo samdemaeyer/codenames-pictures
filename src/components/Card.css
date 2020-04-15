@@ -1,7 +1,7 @@
 .card {
   border: 1px solid;
   cursor: pointer;
-  margin: 15px;
+  margin: 1rem;
   position: relative;
   border-radius: 12px;
 }
@@ -12,13 +12,13 @@
   border-radius: 8px;
   display: flex;
   font-size: 1rem;
-  height: 2rem;
+  height: 15%;
   justify-content: center;
   left: 0;
   margin: 0.3rem;
   position: absolute;
   top: 0;
-  width: 2rem;
+  width: 15%;
 }
 
 .card-img {

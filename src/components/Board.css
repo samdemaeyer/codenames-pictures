@@ -27,6 +27,18 @@
   color: rgba(255, 0, 0, 1);
 }
 
+.side-wrapper .teams-title {
+  text-decoration: underline;
+  text-align: center;
+}
+
+.side-wrapper .names {
+  list-style: none;
+  text-align: center;
+  padding: 0;
+  font-weight: 500;
+}
+
 .btn {
   border-radius: 6px;
   border: 2px solid #00af35;
@@ -85,28 +97,18 @@
   }
 
   .side-wrapper {
-    height: 850px;
+    height: calc(4 * 25vh - 2rem);
   }
 }
 
 @media only screen and (max-width: 1300px) {
   .grid {
     display: grid;
-    grid-template-columns: 18vw 18vw 18vw 18vw 18vw;
-    grid-template-rows: 18vw 18vw 18vw 18vw;
-  }
-
-  .container {
-    flex-direction: column;
+    grid-template-columns: 16vw 16vw 16vw 16vw 16vw;
+    grid-template-rows: 16vw 16vw 16vw 16vw;
   }
 
   .side-wrapper {
-    height: auto;
-    margin-bottom: 1rem;
-  }
-
-  .btn {
-    display: inline-block;
-    margin: 1rem 1rem 1rem 0;
+    height: calc(4 * 16vw - 2rem);
   }
 }

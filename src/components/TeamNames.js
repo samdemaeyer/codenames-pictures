@@ -4,8 +4,8 @@ import PropTypes from 'prop-types';
 function TeamNames(props) {
   return (
     <div className={`team-${props.color}`}>
-      {props.teamNames.length ? <h3>Team {props.color}</h3> : null}
-      <ul>
+      {props.teamNames.length ? <h3 className="teams-title">Team {props.color}</h3> : null}
+      <ul className="names">
         {props.teamNames.map((player, index) => (
           <li key={index}>
             <p>{player}</p>
