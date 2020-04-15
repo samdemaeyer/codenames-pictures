@@ -11,6 +11,8 @@ class Team extends React.Component {
   }
 
   addPlayer(newPlayer) {
+    if (!newPlayer)
+      return;
     this.props.addPlayer(this.props.teamColor, newPlayer);
     this.setState({ newPlayer: ''});
   }
