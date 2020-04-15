@@ -10,12 +10,22 @@
 }
 
 .modal-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
   width: 900px;
   height: 80vh;
-  background: #f9e5a9;
+  background: var(--background);
   border-radius: 12px;
   border: 3px solid;
   position: relative;
+  padding: 3rem;
+  box-sizing: border-box;
+}
+
+.modal-content .button-wrapper {
+  display: flex;
+  justify-content: center;
 }
 
 .close-modal {
@@ -27,41 +37,22 @@
   border: none;
   font-weight: bold;
   cursor: pointer;
+  font-family: inherit;
 }
 
 .modal-title {
   font-size: 2.5rem;
   text-align: center;
+  margin-top: 0;
 }
 
 .teams-wrapper {
   display: flex;
+  flex: 1 1 auto;
 }
 
-.teams-wrapper .team {
-  flex: 1;
-  padding: 2rem;
-}
-
-.teams-wrapper .input {
-  display: block;
-  margin-bottom: 1rem;
-}
-
-.teams-wrapper .team-blue {
-  border-left: 3px solid;
-}
-
-.teams-wrapper .team-title {
-  margin: 0 1rem 1rem 0
-}
-
-.team-red .team-title {
-  color: rgba(255, 0, 0, 0.6);
-}
-
-.team-blue .team-title {
-  color: rgba(0, 149, 255, 0.6);
+.teams-wrapper:last-child {
+  border-left: 2px dashed;
 }
 
 @media only screen and (max-width: 1100px) {

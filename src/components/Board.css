@@ -6,6 +6,14 @@
   width: 100%;
 }
 
+.inner-container {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  padding: 1rem;
+}
+
 .grid {
   display: grid;
   grid-template-columns: 250px 250px 250px 250px 250px;
@@ -15,33 +23,18 @@
 .side-wrapper {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  height: 970px;
+  justify-content: flex-end;
+  align-self: stretch;
+  margin: 1rem 0;
 }
 
-.side-wrapper .team-blue {
-  color: rgba(0, 149, 255, 1);
-}
-
-.side-wrapper .team-red {
-  color: rgba(255, 0, 0, 1);
-}
-
-.side-wrapper .teams-title {
-  text-decoration: underline;
-  text-align: center;
-}
-
-.side-wrapper .names {
-  list-style: none;
-  text-align: center;
-  padding: 0;
-  font-weight: 500;
+.side-wrapper .team-names {
+  flex: 1 1 auto;
 }
 
 .btn {
   border-radius: 6px;
-  border: 2px solid #00af35;
+  border: 2px solid #000;
   color: initial;
   cursor: pointer;
   display: block;
@@ -51,30 +44,31 @@
   padding: 0.5rem 1rem;
   text-decoration: none;
   transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+  font-family: inherit;
 }
 
 .btn:hover {
-  background-color: #00af35;
-  border-color: #019c30;
+  background-color: var(--green-light);
+  border-color: var(--green);
   color: white;
 }
 
 .btn.blue {
-  border-color: #30a4ff;
+  border-color: var(--blue-light);
 }
 
 .btn.blue:hover {
-  background-color: #30a4ff;
-  border-color: #058cf7;
+  background-color: var(--blue-light);
+  border-color: var(--blue);
 }
 
-.btn.purple {
-  border-color: #d54ffb;
+.btn.green {
+  border-color: var(--green-light);
 }
 
-.btn.purple:hover {
-  background-color: #c21df1;
-  border-color: #d54ffb;
+.btn.green:hover {
+  background-color: var(--green-light);
+  border-color: var(--green);
 }
 
 @media only screen and (max-height: 1000px) {
@@ -82,10 +76,6 @@
     display: grid;
     grid-template-columns: 220px 220px 220px 220px 220px;
     grid-template-rows: 220px 220px 220px 220px;
-  }
-
-  .side-wrapper {
-    height: 850px;
   }
 }
 
@@ -95,10 +85,6 @@
     grid-template-columns: 25vh 25vh 25vh 25vh 25vh;
     grid-template-rows: 25vh 25vh 25vh 25vh;
   }
-
-  .side-wrapper {
-    height: calc(4 * 25vh - 2rem);
-  }
 }
 
 @media only screen and (max-width: 1300px) {
@@ -106,9 +92,5 @@
     display: grid;
     grid-template-columns: 16vw 16vw 16vw 16vw 16vw;
     grid-template-rows: 16vw 16vw 16vw 16vw;
-  }
-
-  .side-wrapper {
-    height: calc(4 * 16vw - 2rem);
   }
 }

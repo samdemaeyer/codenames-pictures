@@ -1,56 +1,24 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import './TeamsModal.css';
+import Team from './Team';
 
 class TeamsModal extends React.Component {
-  constructor() {
-    super(...arguments);
-    this.state = {
-      redNewPlayer: '',
-      blueNewPlayer: '',
-    }
-  }
-
-  addPlayer(color, newPlayer) {
-    this.props.addPlayer(color, newPlayer);
-    this.setState({ [`${color}NewPlayer`]: ''});
-  }
 
   render() {
+    const { toggleTeamsModal, shuffleTeams} = this.props;
+
     return (
       <div className="modal">
         <div className="modal-content">
-          <button className="close-modal" onClick={this.props.toggleTeamsModal}>✕</button>
+          <button className="close-modal" onClick={toggleTeamsModal}>✕</button>
           <h3 className="modal-title">Setup your teams</h3>
           <div className="teams-wrapper">
-            <div className="team team-red">
-              <h3 className="team-title">Team red</h3>
-              <form onSubmit={() => this.addPlayer('red', this.state.redNewPlayer)}>
-                {this.props.teams.red.map((player, index) => (
-                  <input className="input" key={index} value={player} onChange={({ target: { value } }) => this.props.updatePlayer('red', value, index)} />
-                ))}
-                <input
-                  className="input"
-                  value={this.state.redNewPlayer}
-                  onChange={({ target: { value } }) => this.setState({ redNewPlayer: value })}
-                />
-                <button type="submit" className="btn">Add player</button>
-              </form>
-            </div>
-            <div className="team team-blue">
-              <h3 className="team-title">Team blue</h3>
-              <form onSubmit={() => this.addPlayer('blue', this.state.blueNewPlayer)}>
-                {this.props.teams && this.props.teams.blue.map((player, index) => (
-                  <input className="input" key={index} value={player} onChange={({ target: { value } }) => this.props.updatePlayer('blue', value, index)} />
-                ))}
-                <input
-                  className="input"
-                  value={this.state.blueNewPlayer}
-                  onChange={({ target: { value } }) => this.setState({ blueNewPlayer: value })}
-                />
-                <button type="submit" className="btn">Add player</button>
-              </form>
-            </div>
+            <Team teamColor="red" {...this.props}/>
+            <Team teamColor="blue" {...this.props}/>
+          </div>
+          <div className="button-wrapper">
+            <button className="btn blue" onClick={shuffleTeams}>Shuffle teams</button>
           </div>
         </div>
       </div>
@@ -62,8 +30,8 @@ TeamsModal.propTypes = {
   addPlayer: PropTypes.func,
   toggleTeamsModal: PropTypes.func,
   updatePlayer: PropTypes.func,
+  shuffleTeams: PropTypes.func,
   teams: PropTypes.object,
 };
-
 
 export default TeamsModal;

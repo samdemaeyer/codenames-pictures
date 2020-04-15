@@ -1,5 +1,22 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Special+Elite&display=swap');
 
 body {
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Special Elite', cursive;
+}
+
+:root {
+  --background:  #f9e5a9;
+  --grey: gainsboro;
+  --blue: rgb(0, 149, 255);
+  --blue-light: rgba(0, 149, 255, 0.8);
+  --blue-extra-light: rgba(0, 149, 255, 0.4);
+  --yellow: rgb(255, 212, 0);
+  --yellow-light: rgba(255, 212, 0, 0.8);
+  --yellow-extra-light: rgba(255, 212, 0, 0.4);
+  --red: rgb(255, 0, 0);
+  --red-light: rgba(255, 0, 0, 0.8);
+  --red-extra-light: rgba(255, 0, 0, 0.4);
+  --green: rgb(0, 177, 6);
+  --green-light: rgba(0, 177, 6, 0.8);
+  --green-extra-light: rgba(0, 177, 6, 0.4);
 }

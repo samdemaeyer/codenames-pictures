@@ -88,14 +88,27 @@ class Board extends React.Component {
   }
 
   addPlayer(color, player) {
-    this.state.teams[color].push(player);
-    this.setState({ teams: this.state.teams });
+    const teams = {...this.state.teams};
+    teams[color].push(player);
+    this.setState({ teams });
   }
 
   updatePlayer(color, newValue, index) {
     const newArray = [...this.state.teams[color]];
     newArray[index] = newValue;
     this.setState({ teams: { ...this.state.teams, [color]: newArray } });
+  }
+
+  shuffleTeams() {
+    const allPlayers = randomise([...this.state.teams.red, ...this.state.teams.blue]);
+    const roundFunction = Math.random() >= 0.5 ? Math.floor : Math.ceil;
+    const breakAt = roundFunction(allPlayers.length / 2);
+    this.setState({
+      teams: {
+        red: allPlayers.slice(0, breakAt),
+        blue: allPlayers.slice(breakAt, allPlayers.length),
+      },
+    })
   }
 
   render() {
@@ -108,47 +121,50 @@ class Board extends React.Component {
             updatePlayer={(color, newValue, player) =>
               this.updatePlayer(color, newValue, player)
             }
+            shuffleTeams={() => this.shuffleTeams()}
             toggleTeamsModal={() => this.toggleTeamsModal()}
           />
         ) : null}
         <div className="container" onClick={e => this.resetAll(e)}>
-          <div className="side-wrapper">
-            <TeamNames teamNames={this.state.teams.red} color="red" />
-          </div>
-          <div className="grid">
-            {this.state.cards.map((card, index) => (
-              <Card
-                key={card.cardId}
-                card={card}
-                index={index + 1}
-                resetColor={() => this.resetColor(card)}
-                onClick={() => this.toggleExpand(card)}
-                onContextMenu={e => this.onContextMenu(card, e)}
-              />
-            ))}
-          </div>
-          <div className="side-wrapper">
-            <TeamNames teamNames={this.state.teams.blue} color="blue" />
-            <div>
-              <button
-                className="btn purple"
-                onClick={() => this.toggleTeamsModal()}
-              >
+          <div className="inner-container">
+            <div className="side-wrapper">
+              <TeamNames teamNames={this.state.teams.red} color="red" />
+            </div>
+            <div className="grid">
+              {this.state.cards.map((card, index) => (
+                <Card
+                  key={card.cardId}
+                  card={card}
+                  index={index + 1}
+                  resetColor={() => this.resetColor(card)}
+                  onClick={() => this.toggleExpand(card)}
+                  onContextMenu={e => this.onContextMenu(card, e)}
+                />
+              ))}
+            </div>
+            <div className="side-wrapper">
+              <TeamNames teamNames={this.state.teams.blue} color="blue" />
+              <div>
+                <button
+                  className="btn green"
+                  onClick={() => this.toggleTeamsModal()}
+                >
                 Teams
-              </button>
-              <Link
-                className="btn blue"
-                target="_blank"
-                to={`/spy-master/${Math.floor(Math.random() * 100)}`}
-              >
+                </button>
+                <Link
+                  className="btn blue"
+                  target="_blank"
+                  to={`/spy-master/${Math.floor(Math.random() * 100)}`}
+                >
                 Spy Master
-              </Link>
-              <button className="btn" onClick={e => this.newGames(e)}>
+                </Link>
+                <button className="btn" onClick={e => this.newGames(e)}>
                 New Game
-              </button>
-              <Link className="btn purple" to="/">
+                </button>
+                <Link className="btn green" to="/">
                 Rules
-              </Link>
+                </Link>
+              </div>
             </div>
           </div>
         </div>

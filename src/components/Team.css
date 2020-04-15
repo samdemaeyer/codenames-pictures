@@ -1,0 +1,21 @@
+.teams-wrapper .team {
+    flex: 1;
+    padding: 0 2rem;
+}
+
+.teams-wrapper .input {
+    display: block;
+    margin-bottom: 1rem;
+}
+
+.teams-wrapper .team-title {
+    margin-top: 0;
+}
+
+.teams-wrapper .team-blue .team-title {
+    color: var(--blue-light)
+}
+
+.teams-wrapper .team-red .team-title {
+    color: var(--red-light)
+}
