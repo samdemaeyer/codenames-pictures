@@ -11,7 +11,7 @@ class TeamsModal extends React.Component {
     return (
       <div className="modal">
         <div className="modal-content">
-          <button className="close-modal" onClick={toggleTeamsModal}>✕</button>
+          <button className="close-modal" onClick={toggleTeamsModal}>x</button>
           <h3 className="modal-title">Setup your teams</h3>
           <div className="teams-wrapper">
             <Team teamColor="red" {...this.props}/>

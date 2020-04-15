@@ -1,0 +1,50 @@
+.score-board {
+    position: absolute;
+    background: var(--background);
+    z-index: 5;
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+    border: 2px solid;
+    border-top: none;
+    transition: all .2s;
+    min-width: 400px;
+
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, -100%);
+}
+
+.score-board.expanded {
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.score-board:after {
+    content: "^";
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, -60%) rotate(180deg);
+    width: 20px;
+    display: flex;
+    height: 20px;
+    align-items: center;
+    justify-content: center;
+    font-size: 4rem;
+    transition: all .2s;
+    cursor: pointer;
+}
+
+.score-board.expanded:after {
+    opacity: 0;
+}
+
+.score-board .score-wrapper {
+    display: flex;
+    justify-content: center;
+    padding: 0 2rem 2rem;
+}
+
+.score-board .score-wrapper .team-names:last-of-type {
+    margin-left: 5rem;
+}

@@ -2,9 +2,9 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import Card from './Card';
 import TeamsModal from './TeamsModal';
-import TeamNames from './TeamNames';
 import randomise from '../utils/array-helpers';
 import './Board.css';
+import ScoreBoard from './ScoreBoard';
 
 class Board extends React.Component {
   constructor() {
@@ -139,6 +139,7 @@ class Board extends React.Component {
 
     return (
       <div>
+        <ScoreBoard teams={teams} score={score} addScore={color => this.scorePlayer(color)}/>
         {showTeamsModal ? (
           <TeamsModal
             teams={teams}
@@ -152,9 +153,6 @@ class Board extends React.Component {
         ) : null}
         <div className="container" onClick={e => this.resetAll(e)}>
           <div className="inner-container">
-            <div className="side-wrapper">
-              <TeamNames teamNames={teams.red} color="red" score={score} addScore={color => this.scorePlayer(color)}/>
-            </div>
             <div className="grid">
               {cards.map((card, index) => (
                 <Card
@@ -168,7 +166,6 @@ class Board extends React.Component {
               ))}
             </div>
             <div className="side-wrapper">
-              <TeamNames teamNames={teams.blue} color="blue" score={score} addScore={color => this.scorePlayer(color)}/>
               <div>
                 <button
                   className="btn green"
