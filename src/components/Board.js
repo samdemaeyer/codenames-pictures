@@ -16,6 +16,10 @@ class Board extends React.Component {
         red: [],
         blue: [],
       },
+      score: {
+        red: 0,
+        blue: 0,
+      },
     };
   }
 
@@ -108,15 +112,36 @@ class Board extends React.Component {
         red: allPlayers.slice(0, breakAt),
         blue: allPlayers.slice(breakAt, allPlayers.length),
       },
+    });
+    this.resetScores();
+  }
+
+  scorePlayer(color) {
+    this.setState({
+      score: {
+        ...this.state.score,
+        [color]: (this.state.score[color] + 1),
+      },
+    })
+  }
+
+  resetScores() {
+    this.setState({
+      score: {
+        red: 0,
+        blue: 0,
+      },
     })
   }
 
   render() {
+    const { showTeamsModal, teams, score, cards } = this.state;
+
     return (
       <div>
-        {this.state.showTeamsModal ? (
+        {showTeamsModal ? (
           <TeamsModal
-            teams={this.state.teams}
+            teams={teams}
             addPlayer={(color, player) => this.addPlayer(color, player)}
             updatePlayer={(color, newValue, player) =>
               this.updatePlayer(color, newValue, player)
@@ -128,10 +153,10 @@ class Board extends React.Component {
         <div className="container" onClick={e => this.resetAll(e)}>
           <div className="inner-container">
             <div className="side-wrapper">
-              <TeamNames teamNames={this.state.teams.red} color="red" />
+              <TeamNames teamNames={teams.red} color="red" score={score} addScore={color => this.scorePlayer(color)}/>
             </div>
             <div className="grid">
-              {this.state.cards.map((card, index) => (
+              {cards.map((card, index) => (
                 <Card
                   key={card.cardId}
                   card={card}
@@ -143,7 +168,7 @@ class Board extends React.Component {
               ))}
             </div>
             <div className="side-wrapper">
-              <TeamNames teamNames={this.state.teams.blue} color="blue" />
+              <TeamNames teamNames={teams.blue} color="blue" score={score} addScore={color => this.scorePlayer(color)}/>
               <div>
                 <button
                   className="btn green"
