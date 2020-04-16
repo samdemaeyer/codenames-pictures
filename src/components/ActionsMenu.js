@@ -34,7 +34,7 @@ ActionsMenu.propTypes = {
   actionsExpanded: PropTypes.bool,
   toggleExpandActions: PropTypes.func,
   toggleTeamsModal: PropTypes.func,
-  // newGame: PropTypes.func,
+  newGame: PropTypes.func,
 }
 
 export default ActionsMenu;
