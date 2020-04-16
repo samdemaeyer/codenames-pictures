@@ -60,6 +60,7 @@ class Board extends React.Component {
       return;
     }
     this.resetCards();
+    this.toggleExpandActions();
   }
 
   resetCards(card = {}) {
