@@ -26,6 +26,8 @@
 .modal-content .button-wrapper {
   display: flex;
   justify-content: center;
+  flex-direction: column;
+  align-items: center;
 }
 
 .close-modal {

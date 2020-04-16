@@ -4,7 +4,7 @@ import './TeamSummary.css';
 
 class TeamSummary extends React.Component {
   render() {
-    const {color, teams, getGuessedCards} = this.props;
+    const {color, teams, getGuessedCards, isSpyMaster} = this.props;
 
     return (
       <div className={`team-summary team-${color}`}>
@@ -16,8 +16,8 @@ class TeamSummary extends React.Component {
             </h3>
             <ul className="names">
               {teams[color].map((player, index) => (
-                <li key={index}>
-                  <p>{player}</p>
+                <li key={index} className={`${isSpyMaster(color, index) ? 'spymaster' : ''}`}>
+                  <p>{isSpyMaster(color, index) && '>'} {player}</p>
                 </li>
               ))}
             </ul>
@@ -31,6 +31,7 @@ TeamSummary.propTypes = {
   color: PropTypes.string,
   teams: PropTypes.object,
   getGuessedCards: PropTypes.func,
+  isSpyMaster: PropTypes.func,
 };
 
 export default TeamSummary;

@@ -6,7 +6,7 @@ import Team from './Team';
 class TeamsModal extends React.Component {
 
   render() {
-    const { toggleTeamsModal, shuffleTeams} = this.props;
+    const { toggleTeamsModal, shuffleTeams, pickSpyMasters} = this.props;
 
     return (
       <div className="modal">
@@ -19,6 +19,7 @@ class TeamsModal extends React.Component {
           </div>
           <div className="button-wrapper">
             <button className="btn blue" onClick={shuffleTeams}>Shuffle teams</button>
+            <button className="btn" onClick={pickSpyMasters}>Pick spy masters</button>
           </div>
         </div>
       </div>
@@ -32,6 +33,7 @@ TeamsModal.propTypes = {
   updatePlayer: PropTypes.func,
   removePlayer: PropTypes.func,
   shuffleTeams: PropTypes.func,
+  pickSpyMasters: PropTypes.func,
   teams: PropTypes.object,
 };
 
