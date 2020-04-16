@@ -198,14 +198,15 @@ class Board extends React.Component {
           <div className="inner-container">
             <div className="grid">
               {cards.map((card, index) => (
-                <Card
-                  key={card.cardId}
-                  card={card}
-                  index={index + 1}
-                  resetColor={() => this.resetColor(card)}
-                  onClick={() => this.toggleExpand(card)}
-                  onContextMenu={e => this.onContextMenu(card, e)}
-                />
+                <div className="card-wrapper" key={card.cardId}>
+                  <Card
+                    card={card}
+                    index={index + 1}
+                    resetColor={() => this.resetColor(card)}
+                    onClick={() => this.toggleExpand(card)}
+                    onContextMenu={e => this.onContextMenu(card, e)}
+                  />
+                </div>
               ))}
             </div>
             <div className="side-wrapper">

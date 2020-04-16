@@ -1,9 +1,12 @@
+.card-wrapper {
+  display: flex;
+  align-items: center;
+  padding: 1rem;
+}
+
 .card {
-  border: 1px solid;
   cursor: pointer;
-  margin: 1rem;
   position: relative;
-  border-radius: 12px;
 }
 
 .badge.card-id {
@@ -17,6 +20,7 @@
 .card-img {
   width: 100%;
   border-radius: 12px;
+  border: 1px solid;
 }
 
 .card-img.expanded {

@@ -1,23 +1,25 @@
 .container {
   align-items: center;
   display: flex;
-  min-height: 100vh;
+  height: 100vh;
   justify-content: center;
   width: 100%;
+  overflow:hidden;
 }
 
 .inner-container {
   align-items: center;
   display: flex;
   justify-content: center;
+  height: 100vh;
   width: 100%;
   padding: 1rem;
 }
 
 .grid {
   display: grid;
-  grid-template-columns: 250px 250px 250px 250px 250px;
-  grid-template-rows: 250px 250px 250px 250px;
+  grid-template-columns: 15vw 15vw 15vw 15vw 15vw;
+  grid-template-rows: 25vh 25vh 25vh 25vh;
 }
 
 .side-wrapper {
@@ -82,28 +84,4 @@
 .btn.green:hover {
   background-color: var(--green-light);
   border-color: var(--green);
-}
-
-@media only screen and (max-height: 1000px) {
-  .grid {
-    display: grid;
-    grid-template-columns: 220px 220px 220px 220px 220px;
-    grid-template-rows: 220px 220px 220px 220px;
-  }
-}
-
-@media only screen and (max-height: 800px) {
-  .grid {
-    display: grid;
-    grid-template-columns: 25vh 25vh 25vh 25vh 25vh;
-    grid-template-rows: 25vh 25vh 25vh 25vh;
-  }
-}
-
-@media only screen and (max-width: 1300px) {
-  .grid {
-    display: grid;
-    grid-template-columns: 16vw 16vw 16vw 16vw 16vw;
-    grid-template-rows: 16vw 16vw 16vw 16vw;
-  }
 }
