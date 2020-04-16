@@ -19,3 +19,21 @@
 .teams-wrapper .team-red .team-title {
     color: var(--red-light)
 }
+
+.teams-wrapper hr {
+    border-style: dashed;
+}
+
+.player-wrap {
+    position: relative;
+}
+
+.remove-player {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 0.5rem;
+    background: none;
+    border: none;
+    font-family: inherit;
+}

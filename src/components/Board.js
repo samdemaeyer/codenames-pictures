@@ -103,6 +103,12 @@ class Board extends React.Component {
     this.setState({ teams: { ...this.state.teams, [color]: newArray } });
   }
 
+  removePlayer(color, index) {
+    const newArray = [...this.state.teams[color]];
+    newArray.splice(index, 1);
+    this.setState({ teams: { ...this.state.teams, [color]: newArray } });
+  }
+
   shuffleTeams() {
     const allPlayers = randomise([...this.state.teams.red, ...this.state.teams.blue]);
     const roundFunction = Math.random() >= 0.5 ? Math.floor : Math.ceil;
@@ -156,6 +162,7 @@ class Board extends React.Component {
             updatePlayer={(color, newValue, player) =>
               this.updatePlayer(color, newValue, player)
             }
+            removePlayer={(color, index) => this.removePlayer(color, index)}
             shuffleTeams={() => this.shuffleTeams()}
             toggleTeamsModal={() => this.toggleTeamsModal()}
           />

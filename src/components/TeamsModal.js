@@ -30,6 +30,7 @@ TeamsModal.propTypes = {
   addPlayer: PropTypes.func,
   toggleTeamsModal: PropTypes.func,
   updatePlayer: PropTypes.func,
+  removePlayer: PropTypes.func,
   shuffleTeams: PropTypes.func,
   teams: PropTypes.object,
 };
