@@ -16,6 +16,7 @@
     "react-scripts": "3.4.1"
   },
   "scripts": {
+    "preinstall": "ln -fs $(pwd)/pre-commit .git/hooks/",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",

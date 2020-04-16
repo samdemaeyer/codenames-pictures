@@ -10,8 +10,10 @@
   left: 0;
   position: absolute;
   top: 0;
-  width: 15%;
   height: 15%;
+  width: 15%;
+  border-radius: 8px;
+  padding: 4px 3px 0 3px;
 }
 
 .card-img {
