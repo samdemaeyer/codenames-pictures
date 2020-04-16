@@ -31,14 +31,13 @@ class Team extends React.Component {
           <h3 className="team-title">Team {teamColor}</h3>
           <form onSubmit={() => this.addPlayer(newPlayer)}>
             {teams[teamColor].map((player, index) => (
-              <div className="player-wrap">
+              <div className="player-wrap" key={index}>
                 <input
                   className="input"
-                  key={index}
                   value={player}
                   onChange={({ target: { value } }) => this.updatePlayer(value, index)}
                 />
-                <button onClick={() => removePlayer(teamColor, index)} className="remove-player">x</button>
+                <span onClick={() => {removePlayer(teamColor, index)}} className="remove-player">x</span>
               </div>
             ))}
             {!!teams[teamColor].length && <hr/>}
