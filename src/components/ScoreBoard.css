@@ -30,7 +30,7 @@
     height: 20px;
     align-items: center;
     justify-content: center;
-    font-size: 4rem;
+    font-size: 3rem;
     transition: all .2s;
     cursor: pointer;
 }
@@ -45,6 +45,6 @@
     padding: 0 2rem 2rem;
 }
 
-.score-board .score-wrapper .team-names:last-of-type {
+.score-board .score-wrapper .team-score:last-of-type {
     margin-left: 5rem;
 }

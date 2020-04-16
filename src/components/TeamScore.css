@@ -1,0 +1,19 @@
+.team-score {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.team-score .score {
+    text-align: center;
+    margin-bottom: 0;
+}
+
+.team-score.team-red .score {
+    color: var(--red-light);
+}
+
+.team-score.team-blue .score {
+    color: var(--blue-light);
+}
+
