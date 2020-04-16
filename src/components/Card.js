@@ -16,13 +16,13 @@ class Card extends React.Component {
     const { cardId, cardIsExpanded, contextMenuExpanded } = this.props.card;
     return (
       <div onContextMenu={this.props.onContextMenu} className="card">
-        <h5 className="card-id">{this.props.index}</h5>
+        <h5 className="card-id badge">{this.props.index}</h5>
         {this.props.card.color ?
           <div
             className={`overlay ${this.props.card.color}`}
             onDoubleClick={this.props.resetColor}
             style={{ height: this.state.cardHeight, width: this.state.cardWidth }}
-          ></div>
+          />
           : null}
         <img
           onClick={this.props.onClick}

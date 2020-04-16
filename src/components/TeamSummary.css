@@ -1,0 +1,21 @@
+.team-summary.team-blue .team-title {
+    color: var(--blue-light)
+}
+
+.team-summary.team-red .team-title {
+    color: var(--red-light)
+}
+
+.team-summary .team-title {
+    margin-top: 0;
+}
+
+.team-summary .names {
+    list-style: none;
+    text-align: left;
+    padding: 0;
+}
+
+.team-summary + .team-summary {
+    margin-top: 2rem;
+}

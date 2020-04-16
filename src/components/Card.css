@@ -7,18 +7,9 @@
 }
 
 .card-id {
-  align-items: center;
-  background: var(--background);
-  border-radius: 8px;
-  display: flex;
-  font-size: 1rem;
-  height: 15%;
-  justify-content: center;
   left: 0;
-  margin: 0.3rem;
   position: absolute;
   top: 0;
-  width: 15%;
 }
 
 .card-img {

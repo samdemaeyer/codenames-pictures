@@ -5,6 +5,7 @@ import TeamsModal from './TeamsModal';
 import randomise from '../utils/array-helpers';
 import './Board.css';
 import ScoreBoard from './ScoreBoard';
+import TeamSummary from './TeamSummary';
 
 class Board extends React.Component {
   constructor() {
@@ -182,6 +183,10 @@ class Board extends React.Component {
               ))}
             </div>
             <div className="side-wrapper">
+              <div className="teams-summary">
+                <TeamSummary color="red" teams={teams} getGuessedCards={color => this.getGuessedCardsAmount(color)}/>
+                <TeamSummary color="blue" teams={teams} getGuessedCards={color => this.getGuessedCardsAmount(color)}/>
+              </div>
               <div>
                 <button
                   className="btn green"

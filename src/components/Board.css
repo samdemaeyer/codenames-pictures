@@ -28,8 +28,21 @@
   margin: 1rem 0;
 }
 
-.side-wrapper .team-names {
+.side-wrapper .teams-summary {
   flex: 1 1 auto;
+}
+
+.badge {
+  align-items: center;
+  background: var(--background);
+  border-radius: 50%;
+  display: inline-flex;
+  font-size: 1rem;
+  justify-content: center;
+  margin: 0.3rem;
+  color: #000;
+  width: 1.5rem;
+  height: 1.5rem;
 }
 
 .btn {
