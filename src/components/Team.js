@@ -41,7 +41,7 @@ class Team extends React.Component {
                 <button onClick={() => removePlayer(teamColor, index)} className="remove-player">x</button>
               </div>
             ))}
-            {teams[teamColor].length && <hr/>}
+            {!!teams[teamColor].length && <hr/>}
             <input
               className="input"
               value={newPlayer}
