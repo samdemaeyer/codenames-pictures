@@ -20,6 +20,10 @@
   transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
 }
 
+.dropdown-trigger {
+  text-align: center;
+}
+
 .dropdown-item {
   display: block;
   border-bottom: 2px solid var(--green);

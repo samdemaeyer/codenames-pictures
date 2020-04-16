@@ -36,7 +36,7 @@ class Board extends React.Component {
     ).slice(0, 20);
   }
 
-  toggleExpand(card) {
+  toggleExpandCard(card) {
     this.resetCards(card);
     const cards = this.state.cards.concat();
     cards.forEach(c => {
@@ -56,11 +56,13 @@ class Board extends React.Component {
   }
 
   resetAll(e) {
+    if (e.target.className !== 'dropdown-trigger') {
+      this.setState({ actionsExpanded: false });
+    }
     if (e.target.parentElement.className === 'card') {
       return;
     }
     this.resetCards();
-    this.toggleExpandActions();
   }
 
   resetCards(card = {}) {
@@ -174,7 +176,7 @@ class Board extends React.Component {
             }
             removePlayer={(color, index) => this.removePlayer(color, index)}
             shuffleTeams={() => this.shuffleTeams()}
-            toggleTeamsModal={(e) => this.toggleTeamsModal(e)}
+            toggleTeamsModal={e => this.toggleTeamsModal(e)}
           />
         ) : null}
         <div className="container" onClick={e => this.resetAll(e)}>
@@ -186,7 +188,7 @@ class Board extends React.Component {
                   card={card}
                   index={index + 1}
                   resetColor={() => this.resetColor(card)}
-                  onClick={() => this.toggleExpand(card)}
+                  onClick={() => this.toggleExpandCard(card)}
                   onContextMenu={e => this.onContextMenu(card, e)}
                 />
               ))}
@@ -198,8 +200,8 @@ class Board extends React.Component {
               </div>
               <ActionsMenu
                 actionsExpanded={this.state.actionsExpanded}
-                toggleTeamsModal={(e) => this.toggleTeamsModal(e)}
-                newGame={(e) => this.newGame(e)}
+                toggleTeamsModal={e => this.toggleTeamsModal(e)}
+                newGame={e => this.newGame(e)}
                 toggleExpandActions={() => this.toggleExpandActions()}
               />
             </div>

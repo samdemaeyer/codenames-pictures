@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+set -e
+
+git diff --name-only --cached --diff-filter=ACMRTB | grep '.js$' | (grep . || echo src/app.js) | xargs ./node_modules/.bin/eslint
