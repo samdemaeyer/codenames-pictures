@@ -1,11 +1,11 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import Card from './Card';
 import TeamsModal from './TeamsModal';
-import randomise from '../utils/array-helpers';
-import './Board.css';
 import ScoreBoard from './ScoreBoard';
 import TeamSummary from './TeamSummary';
+import ActionsMenu from './ActionsMenu';
+import randomise from '../utils/array-helpers';
+import './Board.css';
 
 class Board extends React.Component {
   constructor() {
@@ -13,6 +13,7 @@ class Board extends React.Component {
     this.state = {
       cards: this.randomiseCards(),
       showTeamsModal: false,
+      actionsExpanded: false,
       teams: {
         red: [],
         blue: [],
@@ -72,9 +73,11 @@ class Board extends React.Component {
     this.setState({ cards });
   }
 
-  newGames(e) {
+  newGame(e) {
     e.stopPropagation();
+    e.preventDefault();
     this.setState({ cards: this.randomiseCards() });
+    this.toggleExpandActions();
   }
 
   resetColor(card) {
@@ -88,8 +91,13 @@ class Board extends React.Component {
     this.setState({ cards: this.state.cards });
   }
 
-  toggleTeamsModal() {
+  toggleTeamsModal(e) {
+    e.preventDefault();
     this.setState({ showTeamsModal: !this.state.showTeamsModal });
+  }
+
+  toggleExpandActions() {
+    this.setState({ actionsExpanded: !this.state.actionsExpanded });
   }
 
   addPlayer(color, player) {
@@ -165,7 +173,7 @@ class Board extends React.Component {
             }
             removePlayer={(color, index) => this.removePlayer(color, index)}
             shuffleTeams={() => this.shuffleTeams()}
-            toggleTeamsModal={() => this.toggleTeamsModal()}
+            toggleTeamsModal={(e) => this.toggleTeamsModal(e)}
           />
         ) : null}
         <div className="container" onClick={e => this.resetAll(e)}>
@@ -187,27 +195,12 @@ class Board extends React.Component {
                 <TeamSummary color="red" teams={teams} getGuessedCards={color => this.getGuessedCardsAmount(color)}/>
                 <TeamSummary color="blue" teams={teams} getGuessedCards={color => this.getGuessedCardsAmount(color)}/>
               </div>
-              <div>
-                <button
-                  className="btn green"
-                  onClick={() => this.toggleTeamsModal()}
-                >
-                Teams
-                </button>
-                <Link
-                  className="btn blue"
-                  target="_blank"
-                  to={`/spy-master/${Math.floor(Math.random() * 100)}`}
-                >
-                Spy Master
-                </Link>
-                <button className="btn" onClick={e => this.newGames(e)}>
-                New Game
-                </button>
-                <Link className="btn green" to="/">
-                Rules
-                </Link>
-              </div>
+              <ActionsMenu
+                actionsExpanded={this.state.actionsExpanded}
+                toggleTeamsModal={(e) => this.toggleTeamsModal(e)}
+                newGame={(e) => this.newGame(e)}
+                toggleExpandActions={() => this.toggleExpandActions()}
+              />
             </div>
           </div>
         </div>
