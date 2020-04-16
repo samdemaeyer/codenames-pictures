@@ -49,6 +49,7 @@ ScoreBoard.propTypes = {
   teams: PropTypes.object,
   score: PropTypes.object,
   addScore: PropTypes.func,
+  getGuessedCards: PropTypes.func,
 };
 
 export default ScoreBoard;

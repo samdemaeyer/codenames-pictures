@@ -134,12 +134,21 @@ class Board extends React.Component {
     })
   }
 
+  getGuessedCardsAmount(color) {
+    return this.state.cards.filter(card => card.color === color).length
+  }
+
   render() {
     const { showTeamsModal, teams, score, cards } = this.state;
 
     return (
       <div>
-        <ScoreBoard teams={teams} score={score} addScore={color => this.scorePlayer(color)}/>
+        <ScoreBoard
+          teams={teams}
+          score={score}
+          addScore={color => this.scorePlayer(color)}
+          getGuessedCards={color => this.getGuessedCardsAmount(color)}
+        />
         {showTeamsModal ? (
           <TeamsModal
             teams={teams}
