@@ -3,13 +3,8 @@ import PropTypes from 'prop-types';
 import './Card.css';
 
 class Card extends React.Component {
-  setColor(color, { target }) {
-    const card = target.closest('.card');
+  setColor(color) {
     this.props.card.color = color;
-    this.setState({
-      cardHeight: card.offsetHeight - 10,
-      cardWidth: card.offsetWidth - 10,
-    });
   }
 
   render() {
@@ -21,7 +16,6 @@ class Card extends React.Component {
           <div
             className={`overlay ${this.props.card.color}`}
             onDoubleClick={this.props.resetColor}
-            style={{ height: this.state.cardHeight, width: this.state.cardWidth }}
           />
           : null}
         <img
@@ -32,10 +26,10 @@ class Card extends React.Component {
         />
         {contextMenuExpanded ?
           <div className="context-menu">
-            <p className="menu-action red" onClick={e => this.setColor('red', e)}>Red</p>
-            <p className="menu-action blue" onClick={e => this.setColor('blue', e)}>Blue</p>
-            <p className="menu-action neutral" onClick={e => this.setColor('neutral', e)}>Neutral</p>
-            <p className="menu-action black" onClick={e => this.setColor('black', e)}>Game Over</p>
+            <p className="menu-action red" onClick={() => this.setColor('red')}>Red</p>
+            <p className="menu-action blue" onClick={() => this.setColor('blue')}>Blue</p>
+            <p className="menu-action neutral" onClick={() => this.setColor('neutral')}>Neutral</p>
+            <p className="menu-action black" onClick={() => this.setColor('black')}>Game Over</p>
           </div> : null}
       </div>
     );
