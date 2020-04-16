@@ -5,6 +5,7 @@ import ScoreBoard from './ScoreBoard';
 import TeamSummary from './TeamSummary';
 import ActionsMenu from './ActionsMenu';
 import randomise from '../utils/array-helpers';
+import { getRandomInt } from "../utils/number-helpers";
 import './Board.css';
 
 class Board extends React.Component {
@@ -22,6 +23,10 @@ class Board extends React.Component {
         red: 0,
         blue: 0,
       },
+      spyMasters: {
+        red: 0,
+        blue: 0
+      }
     };
   }
 
@@ -132,6 +137,21 @@ class Board extends React.Component {
       },
     });
     this.resetScores();
+    this.pickSpyMasters();
+  }
+
+  pickSpyMasters() {
+    const {teams} = this.state;
+    this.setState({
+      spyMasters: {
+        red: getRandomInt(teams.red.length),
+        blue: getRandomInt(teams.blue.length),
+      },
+    })
+  }
+
+  isSpyMaster(color, index) {
+    return this.state.spyMasters[color] === index;
   }
 
   scorePlayer(color) {
@@ -158,6 +178,11 @@ class Board extends React.Component {
 
   render() {
     const { showTeamsModal, teams, score, cards } = this.state;
+    const teamSummaryProps = {
+      teams,
+      isSpyMaster: (color, index) => this.isSpyMaster(color, index),
+      getGuessedCards: color => this.getGuessedCardsAmount(color),
+    };
 
     return (
       <div>
@@ -177,6 +202,7 @@ class Board extends React.Component {
             removePlayer={(color, index) => this.removePlayer(color, index)}
             shuffleTeams={() => this.shuffleTeams()}
             toggleTeamsModal={e => this.toggleTeamsModal(e)}
+            pickSpyMasters={() => this.pickSpyMasters()}
           />
         ) : null}
         <div className="container" onClick={e => this.resetAll(e)}>
@@ -195,8 +221,8 @@ class Board extends React.Component {
             </div>
             <div className="side-wrapper">
               <div className="teams-summary">
-                <TeamSummary color="red" teams={teams} getGuessedCards={color => this.getGuessedCardsAmount(color)}/>
-                <TeamSummary color="blue" teams={teams} getGuessedCards={color => this.getGuessedCardsAmount(color)}/>
+                <TeamSummary color="red" {...teamSummaryProps}/>
+                <TeamSummary color="blue" {...teamSummaryProps}/>
               </div>
               <ActionsMenu
                 actionsExpanded={this.state.actionsExpanded}

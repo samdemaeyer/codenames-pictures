@@ -1,8 +1,10 @@
-.team-summary.team-blue .team-title {
+.team-summary.team-blue .team-title,
+.team-summary.team-blue .spymaster {
     color: var(--blue-light)
 }
 
-.team-summary.team-red .team-title {
+.team-summary.team-red .team-title,
+.team-summary.team-red .spymaster {
     color: var(--red-light)
 }
 

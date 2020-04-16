@@ -59,11 +59,12 @@
 
 .overlay {
   border: 4px solid;
-  height: 210px;
-  left: 0;
+  box-sizing: border-box;
   position: absolute;
+  height: 100%;
+  width: 100%;
+  left: 0;
   top: 0;
-  width: 210px;
   border-radius: 12px;
 }
 
@@ -101,11 +102,4 @@
 
 .menu-action.black:hover {
   background-color: rgba(0, 0, 0, 0.7);
-}
-
-@media only screen and (max-height: 1000px) {
-  .overlay {
-    height: 180px;
-    width: 180px;
-  }
 }

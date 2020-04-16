@@ -1,6 +1,9 @@
 .teams-wrapper .team {
     flex: 1;
     padding: 0 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .teams-wrapper .input {
@@ -20,19 +23,30 @@
     color: var(--red-light)
 }
 
-.teams-wrapper hr {
-    border-style: dashed;
-}
-
 .player-wrap {
     position: relative;
+}
+
+.teams-wrapper form {
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 auto;
+    align-items: center;
+}
+
+.teams-wrapper .players {
+    flex: 1 1 auto;
+    max-height: 200px;
+    margin-bottom: 1rem;
+    border-bottom: 2px dashed;
+    overflow: scroll;
 }
 
 .remove-player {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    right: 0.5rem;
+    right: 1rem;
     background: none;
     border: none;
     font-family: inherit;

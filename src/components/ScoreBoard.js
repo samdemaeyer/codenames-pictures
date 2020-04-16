@@ -1,7 +1,7 @@
 import * as React from 'react';
 import PropTypes from 'prop-types';
 import './ScoreBoard.css';
-import TeamNames from './TeamNames';
+import TeamScore from './TeamScore';
 
 class ScoreBoard extends React.Component {
 
@@ -37,8 +37,8 @@ class ScoreBoard extends React.Component {
         onMouseLeave={this.collapse}
       >
         <div className="score-wrapper">
-          <TeamNames color="red" {...this.props}/>
-          <TeamNames color="blue" {...this.props}/>
+          <TeamScore color="red" {...this.props}/>
+          <TeamScore color="blue" {...this.props}/>
         </div>
       </div>
     )
