@@ -30,17 +30,18 @@ class Team extends React.Component {
         <div className={`team team-${teamColor}`}>
           <h3 className="team-title">Team {teamColor}</h3>
           <form onSubmit={() => this.addPlayer(newPlayer)}>
-            {teams[teamColor].map((player, index) => (
-              <div className="player-wrap" key={index}>
-                <input
-                  className="input"
-                  value={player}
-                  onChange={({ target: { value } }) => this.updatePlayer(value, index)}
-                />
-                <span onClick={() => {removePlayer(teamColor, index)}} className="remove-player">x</span>
-              </div>
-            ))}
-            {!!teams[teamColor].length && <hr/>}
+            <div className="players">
+              {teams[teamColor].map((player, index) => (
+                  <div className="player-wrap" key={index}>
+                    <input
+                        className="input"
+                        value={player}
+                        onChange={({ target: { value } }) => this.updatePlayer(value, index)}
+                    />
+                    <span onClick={() => {removePlayer(teamColor, index)}} className="remove-player">x</span>
+                  </div>
+              ))}
+            </div>
             <input
               className="input"
               value={newPlayer}

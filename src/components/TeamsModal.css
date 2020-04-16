@@ -52,7 +52,3 @@
   display: flex;
   flex: 1 1 auto;
 }
-
-.teams-wrapper:last-child {
-  border-left: 2px dashed;
-}
