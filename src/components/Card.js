@@ -40,6 +40,8 @@ class Card extends OutsideClickHandler {
     const { setColor, card } = this.props;
     setColor(card, color);
   };
+
+  resetColor = () => { this.setColor('') };
   
   render() {
     const { index, card: { cardId, color } } = this.props;
@@ -52,7 +54,7 @@ class Card extends OutsideClickHandler {
         {color &&
           <div
             className={`overlay ${color}`}
-            onDoubleClick={() => this.setColor('')}
+            onDoubleClick={this.resetColor}
           />}
 
         <img

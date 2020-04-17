@@ -86,7 +86,7 @@ class Board extends React.Component {
       },
     });
     this.resetScores();
-    this.pickSpyMasters();
+    this.resetSpyMasters();
   };
 
   pickSpyMasters = () => {
@@ -98,6 +98,13 @@ class Board extends React.Component {
       },
     })
   };
+
+  resetSpyMasters = () => {
+    this.setState({
+      red: 0,
+      blue: 0,
+    })
+  }
 
   isSpyMaster = (color, index) => {
     return this.state.spyMasters[color] === index;
