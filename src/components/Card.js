@@ -1,40 +1,68 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import './Card.css';
+import OutsideClickHandler from './OutsideClickHandler';
+import CardContextMenu from './CardContextMenu';
 
-class Card extends React.Component {
+class Card extends OutsideClickHandler {
 
-  setColor(color) {
-    this.props.card.color = color;
+  constructor() {
+    super(...arguments);
+    this.state = {
+      enlarged: false,
+      showMenu: false,
+    }
   }
 
+  enlargeCard = () => {
+    this.setState({ enlarged: true })
+  };
+
+  minimizeCard = () => {
+    this.setState({ enlarged: false })
+  };
+
+  showMenu = e => {
+    e.preventDefault();
+    this.minimizeCard();
+    this.setState({showMenu: true})
+  };
+
+  hideMenu = () => {
+    this.setState({showMenu: false})
+  };
+
+  onOutsideClick() {
+    this.minimizeCard();
+  }
+
+  setColor = color => {
+    const { setColor, card } = this.props;
+    setColor(card, color);
+  };
+  
   render() {
-    const { onContextMenu, index, resetColor, onClick, card: {
-      cardId, cardIsExpanded, contextMenuExpanded, color,
-    }} = this.props;
+    const { index, card: { cardId, color } } = this.props;
+    const { enlarged, showMenu } = this.state;
 
     return (
-      <div onContextMenu={onContextMenu} className="card">
+      <div onContextMenu={this.showMenu} className="card" ref={ref => this.ref = ref}>
         <h5 className="card-id badge">{index}</h5>
-        {color ?
+
+        {color &&
           <div
             className={`overlay ${color}`}
-            onDoubleClick={resetColor}
-          />
-          : null}
+            onDoubleClick={() => this.setColor('')}
+          />}
+
         <img
-          onClick={onClick}
+          onClick={this.enlargeCard}
           src={`/codenames-pictures/images/cards/card-${cardId}.jpg`}
-          className={`card-img ${cardIsExpanded ? 'expanded' : ''}`}
+          className={`card-img ${enlarged ? 'enlarged' : ''}`}
           alt={`codename card-${cardId}`}
         />
-        {contextMenuExpanded ?
-          <div className="context-menu">
-            <p className="menu-action red" onClick={() => this.setColor('red')}>Red</p>
-            <p className="menu-action blue" onClick={() => this.setColor('blue')}>Blue</p>
-            <p className="menu-action neutral" onClick={() => this.setColor('neutral')}>Neutral</p>
-            <p className="menu-action black" onClick={() => this.setColor('black')}>Game Over</p>
-          </div> : null}
+
+        {showMenu && <CardContextMenu hideMenu={this.hideMenu} setColor={this.setColor}/>}
       </div>
     );
   }
@@ -42,10 +70,8 @@ class Card extends React.Component {
 
 Card.propTypes = {
   card: PropTypes.object,
-  onContextMenu: PropTypes.func,
   index: PropTypes.number,
-  resetColor: PropTypes.func,
-  onClick: PropTypes.func,
+  setColor: PropTypes.func,
 };
 
 export default Card;

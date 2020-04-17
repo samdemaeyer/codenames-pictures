@@ -3,10 +3,11 @@ import Card from './Card';
 import TeamsModal from './TeamsModal';
 import ScoreBoard from './ScoreBoard';
 import TeamSummary from './TeamSummary';
-import ActionsMenu from './ActionsMenu';
+import Menu from './Menu';
 import randomise from '../utils/array-helpers';
 import { getRandomInt } from '../utils/number-helpers';
 import './Board.css';
+import {Link} from 'react-router-dom';
 
 class Board extends React.Component {
 
@@ -15,7 +16,6 @@ class Board extends React.Component {
     this.state = {
       cards: this.randomiseCards(),
       showTeamsModal: false,
-      actionsExpanded: false,
       startingTeam: '',
       teams: {
         red: [],
@@ -33,82 +33,28 @@ class Board extends React.Component {
   }
 
   randomiseCards() {
-    const defaultCard = {
-      cardIsExpanded: false,
-      contextMenuExpanded: false,
-      color: '',
-    };
+    const defaultCard = { color: '' };
     return randomise(
       [...Array(280)].map((_, i) => ({ cardId: i, ...defaultCard }))
     ).slice(0, 20);
   }
 
-  toggleExpandCard = card => {
-    this.resetCards(card);
-    const cards = [...this.state.cards];
-    cards.forEach(c => {
-      if (c.cardId === card.cardId) c.cardIsExpanded = !c.cardIsExpanded;
-    });
-    this.setState({ cards });
-  }
-
-  onContextMenu = (card, e) => {
-    e.preventDefault();
-    this.resetCards();
-    const cards = [...this.state.cards];
-    cards.forEach(c => {
-      if (c.cardId === card.cardId) c.contextMenuExpanded = !c.contextMenuExpanded;
-    });
-    this.setState({ cards });
-  };
-
-  resetAll = e => {
-    if (e.target.className !== 'dropdown-trigger') {
-      this.setState({ actionsExpanded: false });
-    }
-    if (e.target.parentElement.className === 'card') {
-      return;
-    }
-    this.resetCards();
-  };
-
-  resetCards = (card = {}) => {
-    const cards = this.state.cards.concat();
-    cards.forEach(c => {
-      if (c.cardId !== card.cardId) {
-        c.cardIsExpanded = false;
-        c.contextMenuExpanded = false;
-      }
-    });
-    this.setState({ cards });
-  };
-
   newGame = e => {
-    e.stopPropagation();
     e.preventDefault();
     this.setState({ cards: this.randomiseCards() });
-    this.toggleExpandActions();
     this.setState({ startingTeam: '' });
   };
 
-  resetColor = card => {
-    if (document.selection && document.selection.empty) {
-      document.selection.empty();
-    } else if (window.getSelection) {
-      const sel = window.getSelection();
-      sel.removeAllRanges();
-    }
-    card.color = '';
-    this.setState({ cards: this.state.cards });
+  setColor = (card, color) => {
+    const cards = [...this.state.cards];
+    cards.forEach(c => {
+      if (card === c) c.color = color;
+    });
+    this.setState({ cards });
   };
 
   toggleTeamsModal = e => {
-    e.preventDefault();
     this.setState({ showTeamsModal: !this.state.showTeamsModal });
-  };
-
-  toggleExpandActions = () => {
-    this.setState({ actionsExpanded: !this.state.actionsExpanded });
   };
 
   addPlayer = (color, player) => {
@@ -180,7 +126,7 @@ class Board extends React.Component {
   };
 
   render() {
-    const { showTeamsModal, teams, score, cards, actionsExpanded, startingTeam } = this.state;
+    const { showTeamsModal, teams, score, cards, startingTeam } = this.state;
     const teamSummaryProps = {
       teams,
       startingTeam,
@@ -209,7 +155,7 @@ class Board extends React.Component {
             setStaringTeam={color => this.setState({ startingTeam: color })}
           />
         ) : null}
-        <div className="container" onClick={this.resetAll}>
+        <div className="container">
           <div className="inner-container">
             <div className="grid">
               {cards.map((card, index) => (
@@ -217,9 +163,7 @@ class Board extends React.Component {
                   key={card.cardId}
                   card={card}
                   index={index + 1}
-                  resetColor={() => this.resetColor(card)}
-                  onClick={() => this.toggleExpandCard(card)}
-                  onContextMenu={e => this.onContextMenu(card, e)}
+                  setColor={this.setColor}
                 />
               ))}
             </div>
@@ -228,12 +172,20 @@ class Board extends React.Component {
                 <TeamSummary color="red" {...teamSummaryProps}/>
                 <TeamSummary color="blue" {...teamSummaryProps}/>
               </div>
-              <ActionsMenu
-                actionsExpanded={actionsExpanded}
-                toggleTeamsModal={this.toggleTeamsModal}
-                newGame={this.newGame}
-                toggleExpandActions={this.toggleExpandActions}
-              />
+              <Menu>
+                <Link to="#" onClick={this.toggleTeamsModal}>
+                  Teams
+                </Link>
+                <Link target="_blank" to={`/spy-master/${Math.floor(Math.random() * 100)}`}>
+                  Spy Master
+                </Link>
+                <Link to="#" onClick={this.newGame}>
+                  New Game
+                </Link>
+                <Link to="/">
+                  Rules
+                </Link>
+              </Menu>
             </div>
           </div>
         </div>
