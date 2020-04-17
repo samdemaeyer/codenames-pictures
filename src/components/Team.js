@@ -23,13 +23,20 @@ class Team extends React.Component {
   }
 
   render() {
-    const { teams, teamColor, removePlayer } = this.props;
+    const { teams, teamColor, removePlayer, startingTeam, setStaringTeam } = this.props;
     const { newPlayer } = this.state;
+    const currentStaringTeam = startingTeam === teamColor;
 
     return (
       <div className="teams-wrapper">
         <div className={`team team-${teamColor}`}>
-          <h3 className="team-title">Team {teamColor}</h3>
+          <h3 className="team-title">
+            Team {teamColor}
+            <span
+              className={`starting-team ${currentStaringTeam ? 'active' : ''}`}
+              onClick={() => setStaringTeam(teamColor)}
+            ></span>
+          </h3>
           <form onSubmit={e => this.addPlayer(newPlayer, e)}>
             <div className="players">
               {teams[teamColor].map((player, index) => (
@@ -60,8 +67,10 @@ Team.propTypes = {
   addPlayer: PropTypes.func,
   updatePlayer: PropTypes.func,
   removePlayer: PropTypes.func,
+  setStaringTeam: PropTypes.func,
   teams: PropTypes.object,
   teamColor: PropTypes.string,
+  startingTeam: PropTypes.string,
 };
 
 export default Team;

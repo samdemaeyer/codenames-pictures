@@ -45,6 +45,13 @@
   height: 1.5rem;
 }
 
+.badge.has-total {
+  width: auto;
+  border-radius: 6px;
+  height: auto;
+  padding: .2rem;
+}
+
 .btn {
   border-radius: 6px;
   border: 2px solid #000;

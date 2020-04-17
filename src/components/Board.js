@@ -16,6 +16,7 @@ class Board extends React.Component {
       cards: this.randomiseCards(),
       showTeamsModal: false,
       actionsExpanded: false,
+      startingTeam: '',
       teams: {
         red: [],
         blue: [],
@@ -87,9 +88,10 @@ class Board extends React.Component {
     e.preventDefault();
     this.setState({ cards: this.randomiseCards() });
     this.toggleExpandActions();
+    this.setState({ startingTeam: '' });
   };
 
-  resetColor = (card) => {
+  resetColor = card => {
     if (document.selection && document.selection.empty) {
       document.selection.empty();
     } else if (window.getSelection) {
@@ -178,9 +180,10 @@ class Board extends React.Component {
   };
 
   render() {
-    const { showTeamsModal, teams, score, cards, actionsExpanded } = this.state;
+    const { showTeamsModal, teams, score, cards, actionsExpanded, startingTeam } = this.state;
     const teamSummaryProps = {
       teams,
+      startingTeam,
       isSpyMaster: this.isSpyMaster,
       getGuessedCards: this.getGuessedCardsAmount,
     };
@@ -196,12 +199,14 @@ class Board extends React.Component {
         {showTeamsModal ? (
           <TeamsModal
             teams={teams}
+            startingTeam={startingTeam}
             addPlayer={this.addPlayer}
             updatePlayer={this.updatePlayer}
             removePlayer={this.removePlayer}
             shuffleTeams={this.shuffleTeams}
             toggleTeamsModal={this.toggleTeamsModal}
             pickSpyMasters={this.pickSpyMasters}
+            setStaringTeam={color => this.setState({ startingTeam: color })}
           />
         ) : null}
         <div className="container" onClick={this.resetAll}>
