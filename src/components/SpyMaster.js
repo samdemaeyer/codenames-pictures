@@ -47,7 +47,7 @@ class SpyMaster extends React.Component {
   };
 
   render() {
-    const { card, showInput, spyCardId, spyCardIdToDisplay, startingColor, cardNotFound } = this.state;
+    const { card, showInput, spyCardId, spyCardIdToDisplay, cardNotFound } = this.state;
 
     return (
       <div>
@@ -62,13 +62,13 @@ class SpyMaster extends React.Component {
         {card && <div className="container spy-master">
           <h1 className="title">Spy master card: {spyCardIdToDisplay}</h1>
           <div className="card-container">
-            <div className={`starting-color ${startingColor}`}/>
+            <div className={`starting-color ${card.startingColor}`}/>
             <div className="spy-grid">
               {card.cells.map(({ color }, index) => (
                 <div className={`card ${color}`} key={index}/>
               ))}
             </div>
-            <div className={`starting-color ${startingColor}`}/>
+            <div className={`starting-color ${card.startingColor}`}/>
           </div>
         </div>}
 
