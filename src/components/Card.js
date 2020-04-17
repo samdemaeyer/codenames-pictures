@@ -3,23 +3,27 @@ import PropTypes from 'prop-types';
 import './Card.css';
 
 class Card extends React.Component {
+
   setColor(color) {
     this.props.card.color = color;
   }
 
   render() {
-    const { cardId, cardIsExpanded, contextMenuExpanded } = this.props.card;
+    const { onContextMenu, index, resetColor, onClick, card: {
+      cardId, cardIsExpanded, contextMenuExpanded, color,
+    }} = this.props;
+
     return (
-      <div onContextMenu={this.props.onContextMenu} className="card">
-        <h5 className="card-id badge">{this.props.index}</h5>
-        {this.props.card.color ?
+      <div onContextMenu={onContextMenu} className="card">
+        <h5 className="card-id badge">{index}</h5>
+        {color ?
           <div
-            className={`overlay ${this.props.card.color}`}
-            onDoubleClick={this.props.resetColor}
+            className={`overlay ${color}`}
+            onDoubleClick={resetColor}
           />
           : null}
         <img
-          onClick={this.props.onClick}
+          onClick={onClick}
           src={`/codenames-pictures/images/cards/card-${cardId}.jpg`}
           className={`card-img ${cardIsExpanded ? 'expanded' : ''}`}
           alt={`codename card-${cardId}`}

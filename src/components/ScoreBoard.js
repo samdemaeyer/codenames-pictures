@@ -26,13 +26,14 @@ class ScoreBoard extends React.Component {
     
   render() {
     const { teams } = this.props;
+    const { expanded } = this.state;
 
     if (!teams.red.length || !teams.blue.length)
       return null;
 
     return (
       <div 
-        className={`score-board ${this.state.expanded ? 'expanded' : ''}`} 
+        className={`score-board ${expanded ? 'expanded' : ''}`}
         onMouseEnter={this.expand} 
         onMouseLeave={this.collapse}
       >

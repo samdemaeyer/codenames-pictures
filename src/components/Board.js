@@ -9,6 +9,7 @@ import { getRandomInt } from '../utils/number-helpers';
 import './Board.css';
 
 class Board extends React.Component {
+
   constructor() {
     super(...arguments);
     this.state = {
@@ -41,26 +42,26 @@ class Board extends React.Component {
     ).slice(0, 20);
   }
 
-  toggleExpandCard(card) {
+  toggleExpandCard = card => {
     this.resetCards(card);
-    const cards = this.state.cards.concat();
+    const cards = [...this.state.cards];
     cards.forEach(c => {
       if (c.cardId === card.cardId) c.cardIsExpanded = !c.cardIsExpanded;
     });
     this.setState({ cards });
   }
 
-  onContextMenu(card, e) {
+  onContextMenu = (card, e) => {
     e.preventDefault();
     this.resetCards();
-    const cards = this.state.cards.concat();
+    const cards = [...this.state.cards];
     cards.forEach(c => {
       if (c.cardId === card.cardId) c.contextMenuExpanded = !c.contextMenuExpanded;
     });
     this.setState({ cards });
-  }
+  };
 
-  resetAll(e) {
+  resetAll = e => {
     if (e.target.className !== 'dropdown-trigger') {
       this.setState({ actionsExpanded: false });
     }
@@ -68,9 +69,9 @@ class Board extends React.Component {
       return;
     }
     this.resetCards();
-  }
+  };
 
-  resetCards(card = {}) {
+  resetCards = (card = {}) => {
     const cards = this.state.cards.concat();
     cards.forEach(c => {
       if (c.cardId !== card.cardId) {
@@ -79,16 +80,16 @@ class Board extends React.Component {
       }
     });
     this.setState({ cards });
-  }
+  };
 
-  newGame(e) {
+  newGame = e => {
     e.stopPropagation();
     e.preventDefault();
     this.setState({ cards: this.randomiseCards() });
     this.toggleExpandActions();
-  }
+  };
 
-  resetColor(card) {
+  resetColor = (card) => {
     if (document.selection && document.selection.empty) {
       document.selection.empty();
     } else if (window.getSelection) {
@@ -97,36 +98,36 @@ class Board extends React.Component {
     }
     card.color = '';
     this.setState({ cards: this.state.cards });
-  }
+  };
 
-  toggleTeamsModal(e) {
+  toggleTeamsModal = e => {
     e.preventDefault();
     this.setState({ showTeamsModal: !this.state.showTeamsModal });
-  }
+  };
 
-  toggleExpandActions() {
+  toggleExpandActions = () => {
     this.setState({ actionsExpanded: !this.state.actionsExpanded });
-  }
+  };
 
-  addPlayer(color, player) {
+  addPlayer = (color, player) => {
     const teams = {...this.state.teams};
     teams[color].push(player);
     this.setState({ teams });
-  }
+  };
 
-  updatePlayer(color, newValue, index) {
+  updatePlayer = (color, newValue, index) => {
     const newArray = [...this.state.teams[color]];
     newArray[index] = newValue;
     this.setState({ teams: { ...this.state.teams, [color]: newArray } });
-  }
+  };
 
-  removePlayer(color, index) {
+  removePlayer = (color, index) => {
     const newArray = [...this.state.teams[color]];
     newArray.splice(index, 1);
     this.setState({ teams: { ...this.state.teams, [color]: newArray } });
-  }
+  };
 
-  shuffleTeams() {
+  shuffleTeams = () => {
     const allPlayers = randomise([...this.state.teams.red, ...this.state.teams.blue]);
     const roundFunction = Math.random() >= 0.5 ? Math.floor : Math.ceil;
     const breakAt = roundFunction(allPlayers.length / 2);
@@ -138,9 +139,9 @@ class Board extends React.Component {
     });
     this.resetScores();
     this.pickSpyMasters();
-  }
+  };
 
-  pickSpyMasters() {
+  pickSpyMasters = () => {
     const {teams} = this.state;
     this.setState({
       spyMasters: {
@@ -148,40 +149,40 @@ class Board extends React.Component {
         blue: getRandomInt(teams.blue.length),
       },
     })
-  }
+  };
 
-  isSpyMaster(color, index) {
+  isSpyMaster = (color, index) => {
     return this.state.spyMasters[color] === index;
-  }
+  };
 
-  scorePlayer(color) {
+  scorePlayer = color => {
     this.setState({
       score: {
         ...this.state.score,
         [color]: (this.state.score[color] + 1),
       },
     })
-  }
+  };
 
-  resetScores() {
+  resetScores = () => {
     this.setState({
       score: {
         red: 0,
         blue: 0,
       },
     })
-  }
+  };
 
-  getGuessedCardsAmount(color) {
+  getGuessedCardsAmount = color => {
     return this.state.cards.filter(card => card.color === color).length
-  }
+  };
 
   render() {
-    const { showTeamsModal, teams, score, cards } = this.state;
+    const { showTeamsModal, teams, score, cards, actionsExpanded } = this.state;
     const teamSummaryProps = {
       teams,
-      isSpyMaster: (color, index) => this.isSpyMaster(color, index),
-      getGuessedCards: color => this.getGuessedCardsAmount(color),
+      isSpyMaster: this.isSpyMaster,
+      getGuessedCards: this.getGuessedCardsAmount,
     };
 
     return (
@@ -189,23 +190,21 @@ class Board extends React.Component {
         <ScoreBoard
           teams={teams}
           score={score}
-          addScore={color => this.scorePlayer(color)}
-          getGuessedCards={color => this.getGuessedCardsAmount(color)}
+          addScore={this.scorePlayer}
+          getGuessedCards={this.getGuessedCardsAmount}
         />
         {showTeamsModal ? (
           <TeamsModal
             teams={teams}
-            addPlayer={(color, player) => this.addPlayer(color, player)}
-            updatePlayer={(color, newValue, player) =>
-              this.updatePlayer(color, newValue, player)
-            }
-            removePlayer={(color, index) => this.removePlayer(color, index)}
-            shuffleTeams={() => this.shuffleTeams()}
-            toggleTeamsModal={e => this.toggleTeamsModal(e)}
-            pickSpyMasters={() => this.pickSpyMasters()}
+            addPlayer={this.addPlayer}
+            updatePlayer={this.updatePlayer}
+            removePlayer={this.removePlayer}
+            shuffleTeams={this.shuffleTeams}
+            toggleTeamsModal={this.toggleTeamsModal}
+            pickSpyMasters={this.pickSpyMasters}
           />
         ) : null}
-        <div className="container" onClick={e => this.resetAll(e)}>
+        <div className="container" onClick={this.resetAll}>
           <div className="inner-container">
             <div className="grid">
               {cards.map((card, index) => (
@@ -225,10 +224,10 @@ class Board extends React.Component {
                 <TeamSummary color="blue" {...teamSummaryProps}/>
               </div>
               <ActionsMenu
-                actionsExpanded={this.state.actionsExpanded}
-                toggleTeamsModal={e => this.toggleTeamsModal(e)}
-                newGame={e => this.newGame(e)}
-                toggleExpandActions={() => this.toggleExpandActions()}
+                actionsExpanded={actionsExpanded}
+                toggleTeamsModal={this.toggleTeamsModal}
+                newGame={this.newGame}
+                toggleExpandActions={this.toggleExpandActions}
               />
             </div>
           </div>

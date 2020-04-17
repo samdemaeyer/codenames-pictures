@@ -29,52 +29,52 @@ class SpyMaster extends React.Component {
     });
   }
 
-  toggleInput(e) {
+  toggleInput = e => {
     e.preventDefault();
     this.setState({ showInput: !this.state.showInput });
-  }
+  };
 
-  findCard(e) {
+  findCard = e => {
     e.preventDefault();
     this.setState({ spyCardIdToDisplay: this.state.spyCardId });
     this.props.history.push(this.state.spyCardId);
     const card = this.state.cards.find(({ id }) => id === this.state.spyCardId);
     this.setState({ card, showInput: false, cardNotFound: !card });
-  }
+  };
 
-  changeSpyCardInput({ target }) {
+  changeSpyCardInput = ({ target }) => {
     this.setState({ spyCardId: target.value });
-  }
+  };
 
   render() {
+    const { card, showInput, spyCardId, spyCardIdToDisplay, startingColor, cardNotFound } = this.state;
+
     return (
       <div>
         <div className="find-card-wrapper">
-          <p>Looking for a card? <a href="#" onClick={e => this.toggleInput(e)}>Click here</a> to find a specific card</p>
-          {this.state.showInput ?
-            <form onSubmit={e => this.findCard(e)}>
-              <input className="input" value={this.state.spyCardId} onChange={e => this.changeSpyCardInput(e)} />
-              <button className="btn blue">Search</button>
-            </form>
-            : null}
+          <p>Looking for a card? <a href="#" onClick={this.toggleInput}>Click here</a> to find a specific card</p>
+          {showInput && <form onSubmit={this.findCard}>
+            <input className="input" value={spyCardId} onChange={this.changeSpyCardInput} />
+            <button className="btn blue">Search</button>
+          </form>}
         </div>
-        {this.state.card ?
-          <div className="container spy-master">
-            <h1 className="title">Spy master card: {this.state.spyCardIdToDisplay}</h1>
-            <div className="card-container">
-              <div className={`starting-color ${this.state.card.startingColor}`}></div>
-              <div className="spy-grid">
-                {this.state.card.cells.map(({ color }, index) => (
-                  <div className={`card ${color}`} key={index}></div>
-                ))}
-              </div>
-              <div className={`starting-color ${this.state.card.startingColor}`}></div>
+
+        {card && <div className="container spy-master">
+          <h1 className="title">Spy master card: {spyCardIdToDisplay}</h1>
+          <div className="card-container">
+            <div className={`starting-color ${startingColor}`}/>
+            <div className="spy-grid">
+              {card.cells.map(({ color }, index) => (
+                <div className={`card ${color}`} key={index}/>
+              ))}
             </div>
-          </div> : null}
-        {this.state.cardNotFound ?
-          <div className="container spy-master">
-            <h1 className="title">Spy master card &quot;{this.state.spyCardIdToDisplay}&quot; not found</h1>
-          </div> : null}
+            <div className={`starting-color ${startingColor}`}/>
+          </div>
+        </div>}
+
+        {cardNotFound && <div className="container spy-master">
+          <h1 className="title">Spy master card &quot;{spyCardIdToDisplay}&quot; not found</h1>
+        </div>}
       </div>
     );
   }

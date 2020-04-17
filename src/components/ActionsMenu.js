@@ -11,13 +11,13 @@ class ActionsMenu extends React.Component {
         onClick={() => this.props.toggleExpandActions()}
       >
         <div className="dropdown-content">
-          <a href="#" className="dropdown-item" onClick={e => this.props.toggleTeamsModal(e)}>
+          <a href="#" className="dropdown-item" onClick={this.props.toggleTeamsModal}>
             Teams
           </a>
           <Link className="dropdown-item" target="_blank" to={`/spy-master/${Math.floor(Math.random() * 100)}`}>
             Spy Master
           </Link>
-          <a href="#" className="dropdown-item" onClick={e => this.props.newGame(e)}>
+          <a href="#" className="dropdown-item" onClick={this.props.newGame}>
             New Game
           </a>
           <Link className="dropdown-item" to="/">
