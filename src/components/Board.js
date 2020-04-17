@@ -5,7 +5,7 @@ import ScoreBoard from './ScoreBoard';
 import TeamSummary from './TeamSummary';
 import ActionsMenu from './ActionsMenu';
 import randomise from '../utils/array-helpers';
-import { getRandomInt } from "../utils/number-helpers";
+import { getRandomInt } from '../utils/number-helpers';
 import './Board.css';
 
 class Board extends React.Component {
@@ -25,8 +25,8 @@ class Board extends React.Component {
       },
       spyMasters: {
         red: 0,
-        blue: 0
-      }
+        blue: 0,
+      },
     };
   }
 

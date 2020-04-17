@@ -10,13 +10,14 @@ class Team extends React.Component {
     }
   }
 
-  addPlayer(newPlayer) {
+  addPlayer(newPlayer, e) {
+    e.preventDefault();
     if (!newPlayer)
       return;
     this.props.addPlayer(this.props.teamColor, newPlayer);
     this.setState({ newPlayer: ''});
   }
-  
+
   updatePlayer(updatedPlayer, playerIndex) {
     this.props.updatePlayer(this.props.teamColor, updatedPlayer, playerIndex);
   }
@@ -29,17 +30,17 @@ class Team extends React.Component {
       <div className="teams-wrapper">
         <div className={`team team-${teamColor}`}>
           <h3 className="team-title">Team {teamColor}</h3>
-          <form onSubmit={() => this.addPlayer(newPlayer)}>
+          <form onSubmit={e => this.addPlayer(newPlayer, e)}>
             <div className="players">
               {teams[teamColor].map((player, index) => (
-                  <div className="player-wrap" key={index}>
-                    <input
-                        className="input"
-                        value={player}
-                        onChange={({ target: { value } }) => this.updatePlayer(value, index)}
-                    />
-                    <span onClick={() => {removePlayer(teamColor, index)}} className="remove-player">x</span>
-                  </div>
+                <div className="player-wrap" key={index}>
+                  <input
+                    className="input"
+                    value={player}
+                    onChange={({ target: { value } }) => this.updatePlayer(value, index)}
+                  />
+                  <span onClick={() => {removePlayer(teamColor, index)}} className="remove-player">x</span>
+                </div>
               ))}
             </div>
             <input
