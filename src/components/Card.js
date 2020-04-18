@@ -15,7 +15,7 @@ class Card extends OutsideClickHandler {
   }
 
   toggleEnlargeCard = () => {
-    this.setState({ enlarged: !this.state.enlarged });
+    this.setState({ enlarged: !this.state.enlarged })
   }
 
   minimizeCard = () => {
