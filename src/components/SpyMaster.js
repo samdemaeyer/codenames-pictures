@@ -16,10 +16,15 @@ class SpyMaster extends React.Component {
   }
 
   async componentDidMount() {
+    window.addEventListener('hashchange', () => {
+      const card = this.findCard();
+      const { spyCardId } = this.props.match.params;
+      this.setState({ card, cardNotFound: !card, spyCardIdToDisplay: spyCardId, spyCardId });
+    });
     const results = await fetch('/codenames-pictures/spy-master-cards.json');
     const cards = await results.json();
     const spyCardId = this.props.match.params.spyCardId;
-    const card = cards.find(({ id }) => id === spyCardId);
+    const card = this.findCard(cards);
     this.setState({
       card,
       cards,
@@ -29,16 +34,21 @@ class SpyMaster extends React.Component {
     });
   }
 
+  findCard = (cards = this.state.cards) => {
+    const { spyCardId } = this.props.match.params;
+    return cards.find(({ id }) => id === spyCardId);
+  }
+
   toggleInput = e => {
     e.preventDefault();
     this.setState({ showInput: !this.state.showInput });
   };
 
-  findCard = e => {
+  changeCard = e => {
     e.preventDefault();
     this.setState({ spyCardIdToDisplay: this.state.spyCardId });
     this.props.history.push(this.state.spyCardId);
-    const card = this.state.cards.find(({ id }) => id === this.state.spyCardId);
+    const card = this.findCard()
     this.setState({ card, showInput: false, cardNotFound: !card });
   };
 
@@ -53,7 +63,7 @@ class SpyMaster extends React.Component {
       <div>
         <div className="find-card-wrapper">
           <p>Looking for a card? <a href="#" onClick={this.toggleInput}>Click here</a> to find a specific card</p>
-          {showInput && <form onSubmit={this.findCard}>
+          {showInput && <form onSubmit={this.changeCard}>
             <input className="input" value={spyCardId} onChange={this.changeSpyCardInput} />
             <button className="btn blue">Search</button>
           </form>}
