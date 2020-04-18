@@ -7,7 +7,7 @@ class Team extends React.Component {
     super(...arguments);
     this.state = {
       newPlayer: '',
-    }
+    };
   }
 
   addPlayer(newPlayer, e) {
@@ -46,7 +46,7 @@ class Team extends React.Component {
                     value={player}
                     onChange={({ target: { value } }) => this.updatePlayer(value, index)}
                   />
-                  <span onClick={() => {removePlayer(teamColor, index)}} className="remove-player">x</span>
+                  <span onClick={() => {removePlayer(teamColor, index);}} className="remove-player">x</span>
                 </div>
               ))}
             </div>

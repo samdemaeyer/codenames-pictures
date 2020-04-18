@@ -12,7 +12,7 @@ class SpyMaster extends React.Component {
       cardNotFound: false,
       showInput: false,
       cards: [],
-    }
+    };
   }
 
   async componentDidMount() {
@@ -48,7 +48,7 @@ class SpyMaster extends React.Component {
     e.preventDefault();
     this.setState({ spyCardIdToDisplay: this.state.spyCardId });
     this.props.history.push(this.state.spyCardId);
-    const card = this.findCard()
+    const card = this.findCard();
     this.setState({ card, showInput: false, cardNotFound: !card });
   };
 

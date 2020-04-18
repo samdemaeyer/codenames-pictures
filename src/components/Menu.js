@@ -8,13 +8,13 @@ class Menu extends OutsideClickHandler {
     super(...arguments);
     this.state = {
       expanded: false,
-    }
+    };
   }
 
   toggleExpand = () => {
     this.setState({
       expanded: !this.state.expanded,
-    })
+    });
   };
 
   onOutsideClick() {

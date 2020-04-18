@@ -162,7 +162,12 @@ a {
     font-size: 2rem;
   }
   .spy-grid {
-    grid-template-columns: 50px 50px 50px 50px 50px;
-    grid-template-rows: 40px 40px 40px 40px;
+    grid-template-columns: 15vw 15vw 15vw 15vw 15vw;
+    grid-template-rows: 12vw 12vw 12vw 12vw;
+    padding: 10px;
+  }
+
+  .spy-grid .card {
+    margin: 8px;
   }
 }

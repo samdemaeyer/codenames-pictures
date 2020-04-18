@@ -53,7 +53,7 @@ class Board extends React.Component {
     this.setState({ cards });
   };
 
-  toggleTeamsModal = e => {
+  toggleTeamsModal = () => {
     this.setState({ showTeamsModal: !this.state.showTeamsModal });
   };
 
@@ -96,14 +96,14 @@ class Board extends React.Component {
         red: getRandomInt(teams.red.length),
         blue: getRandomInt(teams.blue.length),
       },
-    })
+    });
   };
 
   resetSpyMasters = () => {
     this.setState({
       red: 0,
       blue: 0,
-    })
+    });
   }
 
   isSpyMaster = (color, index) => {
@@ -116,7 +116,7 @@ class Board extends React.Component {
         ...this.state.score,
         [color]: (this.state.score[color] + 1),
       },
-    })
+    });
   };
 
   resetScores = () => {
@@ -125,11 +125,11 @@ class Board extends React.Component {
         red: 0,
         blue: 0,
       },
-    })
+    });
   };
 
   getGuessedCardsAmount = color => {
-    return this.state.cards.filter(card => card.color === color).length
+    return this.state.cards.filter(card => card.color === color).length;
   };
 
   render() {

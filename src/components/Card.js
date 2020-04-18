@@ -11,25 +11,25 @@ class Card extends OutsideClickHandler {
     this.state = {
       enlarged: false,
       showMenu: false,
-    }
+    };
   }
 
-  enlargeCard = () => {
-    this.setState({ enlarged: true })
-  };
+  toggleEnlargeCard = () => {
+    this.setState({ enlarged: !this.state.enlarged });
+  }
 
   minimizeCard = () => {
-    this.setState({ enlarged: false })
+    this.setState({ enlarged: false });
   };
 
   showMenu = e => {
     e.preventDefault();
     this.minimizeCard();
-    this.setState({showMenu: true})
+    this.setState({showMenu: true});
   };
 
   hideMenu = () => {
-    this.setState({showMenu: false})
+    this.setState({showMenu: false});
   };
 
   onOutsideClick() {
@@ -41,8 +41,8 @@ class Card extends OutsideClickHandler {
     setColor(card, color);
   };
 
-  resetColor = () => { this.setColor('') };
-  
+  resetColor = () => { this.setColor(''); };
+
   render() {
     const { index, card: { cardId, color } } = this.props;
     const { enlarged, showMenu } = this.state;
@@ -58,7 +58,7 @@ class Card extends OutsideClickHandler {
           />}
 
         <img
-          onClick={this.enlargeCard}
+          onClick={this.toggleEnlargeCard}
           src={`/codenames-pictures/images/cards/card-${cardId}.jpg`}
           className={`card-img ${enlarged ? 'enlarged' : ''}`}
           alt={`codename card-${cardId}`}

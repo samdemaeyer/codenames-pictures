@@ -5,11 +5,11 @@ class OutsideClickHandler extends React.Component {
     ref = null;
 
     componentDidMount() {
-      document.addEventListener('mousedown', this.handleOutsideClick)
+      document.addEventListener('mousedown', this.handleOutsideClick);
     }
 
     componentWillUnmount() {
-      document.removeEventListener('mousedown', this.handleOutsideClick)
+      document.removeEventListener('mousedown', this.handleOutsideClick);
     }
 
     handleOutsideClick = e => {

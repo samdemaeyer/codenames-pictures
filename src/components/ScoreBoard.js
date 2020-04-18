@@ -9,19 +9,19 @@ class ScoreBoard extends React.Component {
     super(...arguments);
     this.state = {
       expanded: false,
-    }
+    };
   }
     
   collapse = () => {
     this.setState({
       expanded: false,
-    })
+    });
   };
     
   expand = () => {
     this.setState({
       expanded: true,
-    })
+    });
   };
     
   render() {
@@ -42,7 +42,7 @@ class ScoreBoard extends React.Component {
           <TeamScore color="blue" {...this.props}/>
         </div>
       </div>
-    )
+    );
   }
 }
 

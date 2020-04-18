@@ -29,7 +29,7 @@ class CardContextMenu extends OutsideClickHandler {
             <p key={color.id} className={`menu-action ${color.id}`} onClick={() => this.setColor(color.id)}>{color.display}</p>)
           }
         </div>
-      )
+      );
     }
 }
 
