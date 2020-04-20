@@ -1,7 +1,7 @@
 import React from 'react';
-import Rules from './components/Rules';
-import Board from './components/Board';
-import SpyMaster from './components/SpyMaster';
+import Rules from './routes/Rules';
+import Board from './routes/Board';
+import SpyMaster from './routes/SpyMaster';
 import { HashRouter, Route } from 'react-router-dom';
 import './App.css';
 

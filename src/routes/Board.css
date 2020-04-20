@@ -91,14 +91,6 @@
   border-color: var(--green);
 }
 
-button.link {
-  color: var(--blue);
-}
-
-button.link:hover {
-  text-decoration: underline;
-}
-
 button.no-style, button.link {
   background: none;
   border: none;
@@ -107,6 +99,15 @@ button.no-style, button.link {
   font-size: inherit;
   font-family: inherit;
   cursor: pointer;
+}
+
+button.link {
+  color: var(--blue);
+  padding-left: .2rem;
+}
+
+button.link:hover {
+  text-decoration: underline;
 }
 
 @media only screen and (max-height: 1000px) {

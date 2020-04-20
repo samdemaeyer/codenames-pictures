@@ -1,9 +1,9 @@
 import React from 'react';
-import Card from './Card';
-import TeamsModal from './TeamsModal';
-import ScoreBoard from './ScoreBoard';
-import TeamSummary from './TeamSummary';
-import Menu from './Menu';
+import Card from '../components/Card';
+import TeamsModal from '../components/TeamsModal';
+import ScoreBoard from '../components/ScoreBoard';
+import TeamSummary from '../components/TeamSummary';
+import Menu from '../components/Menu';
 import randomise from '../utils/array-helpers';
 import { getRandomInt } from '../utils/number-helpers';
 import './Board.css';
