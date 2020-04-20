@@ -3,7 +3,11 @@ import Rules from './components/Rules';
 import Board from './components/Board';
 import SpyMaster from './components/SpyMaster';
 import { HashRouter, Route } from 'react-router-dom';
+import ReactGA from 'react-ga';
 import './App.css';
+
+const trackingId = 'UA-163953243-1';
+ReactGA.initialize(trackingId);
 
 function App() {
   return (
