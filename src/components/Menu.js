@@ -25,20 +25,26 @@ class Menu extends OutsideClickHandler {
   render() {
     const { expanded } = this.state;
     return (
-      <div
+      <button
         className={`menu ${expanded ? 'expanded' : ''}`}
         onClick={this.toggleExpand}
         ref={ref => this.ref = ref}
       >
         <div className="menu-content">
-          {/* eslint-disable-next-line react/prop-types */}
-          {this.props.children.map((option, index) => 
-            <div className="menu-item" key={index} onClick={this.toggleExpand}>
+          {this.props.children.map((option, index) =>
+            <div
+              className="menu-item"
+              key={index}
+              onClick={this.toggleExpand}
+              onKeyPress={this.toggleExpand}
+              role="button"
+              tabIndex={index}
+            >
               {option}
             </div>)}
         </div>
         <div className="menu-trigger">Menu</div>
-      </div>
+      </button>
     );
   }
 }

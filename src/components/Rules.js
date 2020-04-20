@@ -9,7 +9,10 @@ class Rules extends React.Component {
         <Link className="btn right" to="/play">Start!</Link>
         <h1>Codenames Pictures Online </h1>
         <p>
-          The online version of Codenames Pictures by <a href="https://czechgames.com/en/codenames-pictures/" target="_blank" rel="noopener noreferrer">czechgames</a>
+          The online version of Codenames Pictures by
+          <a href="https://czechgames.com/en/codenames-pictures/" target="_blank" rel="noopener noreferrer">
+            czechgames
+          </a>
         </p>
         <h3>Intro</h3>
         <p>
@@ -74,12 +77,22 @@ class Rules extends React.Component {
         <blockquote>
           <p>
             Example: A good clue for these two pictures might be
-            <strong><em>flying: 2</em></strong>.
+            <strong><em> flying: 2</em></strong>.
           </p>
         </blockquote>
         <p>
-          <img src="/codenames-pictures/images/cards/card-29.jpg" width="150px" style={{display: 'inline-block'}} />
-          <img src="/codenames-pictures/images/cards/card-4.jpg" width="150px" style={{display: 'inline-block', marginLeft: '1rem'}} />
+          <img
+            src="/codenames-pictures/images/cards/card-29.jpg"
+            width="150px"
+            alt="card-example doughnut"
+            style={{display: 'inline-block'}}
+          />
+          <img
+            src="/codenames-pictures/images/cards/card-4.jpg"
+            width="150px"
+            alt="card-example witch"
+            style={{display: 'inline-block', marginLeft: '1rem'}}
+          />
         </p>
         <p>
           You are allowed to give a clue for only one
@@ -121,7 +134,8 @@ class Rules extends React.Component {
           <li>
             If the field operative chooses the location
             <br />
-            with the assassin, the picture is marked as assassinated (&quot;Game over&quot;). <strong>This ends the game!</strong>
+            with the assassin, the picture is marked as assassinated (&quot;Game over&quot;).
+            <strong>This ends the game!</strong>
             <br />
             The team that contacted the assassin loses.
           </li>
@@ -147,8 +161,9 @@ class Rules extends React.Component {
         </ul>
         <p>
           guesses as the number specified by the clue <strong>plus one more</strong>.<br />
-          For example, if your spymaster says <strong><em>flying: 2</em></strong> , you can make as many as 3 correct guesses.
-          This doesn’t make much sense on your first turn, but later in the game it can be very useful.
+          For example, if your spymaster says <strong><em>flying: 2</em></strong>,
+          you can make as many as 3 correct guesses. This doesn’t make much sense on your first turn,
+          but later in the game it can be very useful.
           <br />
           For example, you might have received several clues for which you did not get all the pictures. You can guess
           these pictures instead of or in addition to those related to the current clue.

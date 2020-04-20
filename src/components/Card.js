@@ -15,7 +15,7 @@ class Card extends OutsideClickHandler {
   }
 
   toggleEnlargeCard = () => {
-    this.setState({ enlarged: !this.state.enlarged })
+    this.setState({ enlarged: !this.state.enlarged });
   }
 
   minimizeCard = () => {
@@ -56,13 +56,13 @@ class Card extends OutsideClickHandler {
             className={`overlay ${color}`}
             onDoubleClick={this.resetColor}
           />}
-
-        <img
-          onClick={this.toggleEnlargeCard}
-          src={`/codenames-pictures/images/cards/card-${cardId}.jpg`}
-          className={`card-img ${enlarged ? 'enlarged' : ''}`}
-          alt={`codename card-${cardId}`}
-        />
+        <button onClick={this.toggleEnlargeCard} className="no-style">
+          <img
+            src={`/codenames-pictures/images/cards/card-${cardId}.jpg`}
+            className={`card-img ${enlarged ? 'enlarged' : ''}`}
+            alt={`codename card-${cardId}`}
+          />
+        </button>
 
         {showMenu && <CardContextMenu hideMenu={this.hideMenu} setColor={this.setColor}/>}
       </div>

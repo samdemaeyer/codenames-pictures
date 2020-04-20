@@ -1,7 +1,8 @@
 {
   "extends": [
     "eslint:recommended",
-    "plugin:react/recommended"
+    "plugin:react/recommended",
+    "plugin:jsx-a11y/recommended"
   ],
   "parser": "babel-eslint",
   "parserOptions": {
@@ -34,6 +35,7 @@
     }],
     "indent": [2, 2],
     "jsx-quotes": [2, "prefer-double"],
+    "max-len": [2, { "code": 120 }],
     "no-multi-spaces": 2,
     "prefer-arrow-callback": 2,
     "quotes": [2, "single"],

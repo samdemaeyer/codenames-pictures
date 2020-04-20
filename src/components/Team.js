@@ -32,10 +32,10 @@ class Team extends React.Component {
         <div className={`team team-${teamColor}`}>
           <h3 className="team-title">
             Team {teamColor}
-            <span
+            <button
               className={`starting-team ${currentStaringTeam ? 'active' : ''}`}
               onClick={() => setStaringTeam(teamColor)}
-            ></span>
+            ></button>
           </h3>
           <form onSubmit={e => this.addPlayer(newPlayer, e)}>
             <div className="players">
@@ -46,7 +46,7 @@ class Team extends React.Component {
                     value={player}
                     onChange={({ target: { value } }) => this.updatePlayer(value, index)}
                   />
-                  <span onClick={() => {removePlayer(teamColor, index);}} className="remove-player">x</span>
+                  <button onClick={() => {removePlayer(teamColor, index);}} className="remove-player">x</button>
                 </div>
               ))}
             </div>

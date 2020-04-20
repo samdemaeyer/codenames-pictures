@@ -4,7 +4,7 @@ import OutsideClickHandler from './OutsideClickHandler';
 import './CardContextMenu.css';
 
 class CardContextMenu extends OutsideClickHandler {
-    
+
     colors = [
       {id: 'red', display: 'Red'},
       {id: 'blue', display: 'Blue'},
@@ -17,7 +17,7 @@ class CardContextMenu extends OutsideClickHandler {
       hideMenu();
       setColor(color);
     }
-  
+
     onOutsideClick() {
       this.props.hideMenu();
     }
@@ -26,7 +26,13 @@ class CardContextMenu extends OutsideClickHandler {
       return (
         <div className="context-menu" ref={ref => this.ref = ref}>
           {this.colors.map(color =>
-            <p key={color.id} className={`menu-action ${color.id}`} onClick={() => this.setColor(color.id)}>{color.display}</p>)
+            <button
+              key={color.id}
+              className={`menu-action ${color.id}`}
+              onClick={() => this.setColor(color.id)}
+            >
+              {color.display}
+            </button>)
           }
         </div>
       );

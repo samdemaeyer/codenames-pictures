@@ -91,6 +91,24 @@
   border-color: var(--green);
 }
 
+button.link {
+  color: var(--blue);
+}
+
+button.link:hover {
+  text-decoration: underline;
+}
+
+button.no-style, button.link {
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  font-size: inherit;
+  font-family: inherit;
+  cursor: pointer;
+}
+
 @media only screen and (max-height: 1000px) {
   .grid {
     display: grid;

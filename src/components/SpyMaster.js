@@ -62,7 +62,10 @@ class SpyMaster extends React.Component {
     return (
       <div>
         <div className="find-card-wrapper">
-          <p>Looking for a card? <a href="#" onClick={this.toggleInput}>Click here</a> to find a specific card</p>
+          <p>
+            Looking for a card?
+            <button className="link" onClick={this.toggleInput}>Click here</button> to find a specific card
+          </p>
           {showInput && <form onSubmit={this.changeCard}>
             <input className="input" value={spyCardId} onChange={this.changeSpyCardInput} />
             <button className="btn blue">Search</button>
@@ -92,7 +95,7 @@ class SpyMaster extends React.Component {
 
 SpyMaster.propTypes = {
   match: PropTypes.object,
-  history: PropTypes.array,
+  history: PropTypes.object,
 };
 
 export default SpyMaster;

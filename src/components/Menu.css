@@ -2,6 +2,7 @@
   border-radius: 6px;
   border: 2px solid var(--green-light);
   min-width: 120px;
+  padding: 0;
 }
 
 .menu-content {
