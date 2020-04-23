@@ -3,48 +3,26 @@ import PropTypes from 'prop-types';
 import './ScoreBoard.css';
 import TeamScore from './TeamScore';
 
-class ScoreBoard extends React.Component {
+const ScoreBoard = props => {
+  const [expanded, setExpanded] = React.useState(false);
+  const {teams} = props;
 
-  constructor() {
-    super(...arguments);
-    this.state = {
-      expanded: false,
-    };
-  }
-    
-  collapse = () => {
-    this.setState({
-      expanded: false,
-    });
-  };
-    
-  expand = () => {
-    this.setState({
-      expanded: true,
-    });
-  };
-    
-  render() {
-    const { teams } = this.props;
-    const { expanded } = this.state;
+  if (!teams.red.length || !teams.blue.length)
+    return null;
 
-    if (!teams.red.length || !teams.blue.length)
-      return null;
-
-    return (
-      <div 
-        className={`score-board ${expanded ? 'expanded' : ''}`}
-        onMouseEnter={this.expand} 
-        onMouseLeave={this.collapse}
-      >
-        <div className="score-wrapper">
-          <TeamScore color="red" {...this.props}/>
-          <TeamScore color="blue" {...this.props}/>
-        </div>
+  return (
+    <div
+      className={`score-board ${expanded ? 'expanded' : ''}`}
+      onMouseEnter={() => setExpanded(true)}
+      onMouseLeave={() => setExpanded(false)}
+    >
+      <div className="score-wrapper">
+        <TeamScore color="red" {...props}/>
+        <TeamScore color="blue" {...props}/>
       </div>
-    );
-  }
-}
+    </div>
+  );
+};
 
 ScoreBoard.propTypes = {
   teams: PropTypes.object,

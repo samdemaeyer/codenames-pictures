@@ -3,29 +3,26 @@ import PropTypes from 'prop-types';
 import './TeamsModal.css';
 import Team from './Team';
 
-class TeamsModal extends React.Component {
+const TeamsModal = props => {
+  const { toggleTeamsModal, shuffleTeams, pickSpyMasters} = props;
 
-  render() {
-    const { toggleTeamsModal, shuffleTeams, pickSpyMasters} = this.props;
-
-    return (
-      <div className="modal">
-        <div className="modal-content">
-          <button className="close-modal" onClick={toggleTeamsModal}>x</button>
-          <h3 className="modal-title">Setup your teams</h3>
-          <div className="teams-wrapper">
-            <Team teamColor="red" {...this.props}/>
-            <Team teamColor="blue" {...this.props}/>
-          </div>
-          <div className="button-wrapper">
-            <button className="btn blue" onClick={shuffleTeams}>Shuffle teams</button>
-            <button className="btn" onClick={pickSpyMasters}>Pick spy masters</button>
-          </div>
+  return (
+    <div className="modal">
+      <div className="modal-content">
+        <button className="close-modal" onClick={toggleTeamsModal}>x</button>
+        <h3 className="modal-title">Setup your teams</h3>
+        <div className="teams-wrapper">
+          <Team teamColor="red" {...props}/>
+          <Team teamColor="blue" {...props}/>
+        </div>
+        <div className="button-wrapper">
+          <button className="btn blue" onClick={shuffleTeams}>Shuffle teams</button>
+          <button className="btn" onClick={pickSpyMasters}>Pick spy masters</button>
         </div>
       </div>
-    );
-  }
-}
+    </div>
+  );
+};
 
 TeamsModal.propTypes = {
   addPlayer: PropTypes.func,

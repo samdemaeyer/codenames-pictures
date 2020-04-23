@@ -1,52 +1,44 @@
 import React from 'react';
 import './Menu.css';
-import OutsideClickHandler from './OutsideClickHandler';
+import useOutsideClickListener from '../hooks/useOutsideClickListener';
+import PropTypes from 'prop-types';
 
-class Menu extends OutsideClickHandler {
-
-  constructor() {
-    super(...arguments);
-    this.state = {
-      expanded: false,
-    };
-  }
-
-  toggleExpand = () => {
-    this.setState({
-      expanded: !this.state.expanded,
-    });
+const Menu = ({children}) => {
+  const [expanded, setExpanded] = React.useState(false);
+  const container = React.useRef(null);
+  const onOutsideClick = () => {
+    if (expanded)
+      setExpanded(false);
   };
+  useOutsideClickListener(container, onOutsideClick);
+  const toggleExpand = () => setExpanded(!expanded);
 
-  onOutsideClick() {
-    if (this.state.expanded)
-      this.toggleExpand();
-  }
+  return (
+    <button
+      className={`menu ${expanded ? 'expanded' : ''}`}
+      onClick={toggleExpand}
+      ref={container}
+    >
+      <div className="menu-content">
+        {children.map((option, index) =>
+          <div
+            className="menu-item"
+            key={index}
+            onClick={toggleExpand}
+            onKeyPress={toggleExpand}
+            role="button"
+            tabIndex={index}
+          >
+            {option}
+          </div>)}
+      </div>
+      <div className="menu-trigger">Menu</div>
+    </button>
+  );
+};
 
-  render() {
-    const { expanded } = this.state;
-    return (
-      <button
-        className={`menu ${expanded ? 'expanded' : ''}`}
-        onClick={this.toggleExpand}
-        ref={ref => this.ref = ref}
-      >
-        <div className="menu-content">
-          {this.props.children.map((option, index) =>
-            <div
-              className="menu-item"
-              key={index}
-              onClick={this.toggleExpand}
-              onKeyPress={this.toggleExpand}
-              role="button"
-              tabIndex={index}
-            >
-              {option}
-            </div>)}
-        </div>
-        <div className="menu-trigger">Menu</div>
-      </button>
-    );
-  }
-}
+Menu.propTypes = {
+  children: PropTypes.array,
+};
 
 export default Menu;

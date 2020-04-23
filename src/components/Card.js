@@ -1,74 +1,49 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import './Card.css';
-import OutsideClickHandler from './OutsideClickHandler';
 import CardContextMenu from './CardContextMenu';
+import useOutsideClickListener from '../hooks/useOutsideClickListener';
 
-class Card extends OutsideClickHandler {
+const Card = ({index, card, setColor}) => {
+  const {cardId, color} = card;
+  const [enlarged, setEnlargement] = React.useState(false);
+  const [menuVisible, setMenuVisible] = React.useState(false);
+  const container = React.useRef(null);
+  useOutsideClickListener(container, () => setEnlargement(false));
 
-  constructor() {
-    super(...arguments);
-    this.state = {
-      enlarged: false,
-      showMenu: false,
-    };
-  }
-
-  toggleEnlargeCard = () => {
-    this.setState({ enlarged: !this.state.enlarged });
-  }
-
-  minimizeCard = () => {
-    this.setState({ enlarged: false });
-  };
-
-  showMenu = e => {
+  const showMenu = e => {
     e.preventDefault();
-    this.minimizeCard();
-    this.setState({showMenu: true});
+    setEnlargement(false);
+    setMenuVisible(true);
   };
 
-  hideMenu = () => {
-    this.setState({showMenu: false});
-  };
+  const setCardColor = color => setColor(card, color);
+  const resetColor = () => setCardColor('');
 
-  onOutsideClick() {
-    this.minimizeCard();
-  }
+  return (
+    <div onContextMenu={showMenu} className="card" ref={container}>
+      <h5 className="card-id badge">{index}</h5>
 
-  setColor = color => {
-    const { setColor, card } = this.props;
-    setColor(card, color);
-  };
+      {color && <div
+        className={`overlay ${color}`}
+        onDoubleClick={resetColor}
+      />}
 
-  resetColor = () => { this.setColor(''); };
+      <button onClick={() => setEnlargement(!enlarged)} className="no-style">
+        <img
+          src={`/codenames-pictures/images/cards/card-${cardId}.jpg`}
+          className={`card-img ${enlarged ? 'enlarged' : ''}`}
+          alt={`codename card-${cardId}`}
+        />
+      </button>
 
-  render() {
-    const { index, card: { cardId, color } } = this.props;
-    const { enlarged, showMenu } = this.state;
-
-    return (
-      <div onContextMenu={this.showMenu} className="card" ref={ref => this.ref = ref}>
-        <h5 className="card-id badge">{index}</h5>
-
-        {color &&
-          <div
-            className={`overlay ${color}`}
-            onDoubleClick={this.resetColor}
-          />}
-        <button onClick={this.toggleEnlargeCard} className="no-style">
-          <img
-            src={`/codenames-pictures/images/cards/card-${cardId}.jpg`}
-            className={`card-img ${enlarged ? 'enlarged' : ''}`}
-            alt={`codename card-${cardId}`}
-          />
-        </button>
-
-        {showMenu && <CardContextMenu hideMenu={this.hideMenu} setColor={this.setColor}/>}
-      </div>
-    );
-  }
-}
+      {menuVisible && <CardContextMenu
+        hideMenu={() => setMenuVisible(false)}
+        setColor={setCardColor}
+      />}
+    </div>
+  );
+};
 
 Card.propTypes = {
   card: PropTypes.object,

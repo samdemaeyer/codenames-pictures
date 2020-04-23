@@ -1,97 +1,67 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import './SpyMaster.css';
+import SpyCard from '../components/SpyCard';
 
-class SpyMaster extends React.Component {
-  constructor() {
-    super(...arguments);
-    this.state = {
-      card: null,
-      spyCardId: '',
-      spyCardIdToDisplay: '',
-      cardNotFound: false,
-      showInput: false,
-      cards: [],
-    };
-  }
+const SpyMaster = ({match, history}) => {
+  const [searchCardId, setSearchCardId] = React.useState('');
+  const [card, setCard] = React.useState(null);
+  const cardIdToDisplay = match.params.spyCardId;
+  let cards = React.useRef([]);
 
-  async componentDidMount() {
-    window.addEventListener('hashchange', () => {
-      const card = this.findCard();
-      const { spyCardId } = this.props.match.params;
-      this.setState({ card, cardNotFound: !card, spyCardIdToDisplay: spyCardId, spyCardId });
-    });
-    const results = await fetch('/codenames-pictures/spy-master-cards.json');
-    const cards = await results.json();
-    const spyCardId = this.props.match.params.spyCardId;
-    const card = this.findCard(cards);
-    this.setState({
-      card,
-      cards,
-      spyCardId,
-      cardNotFound: !card,
-      spyCardIdToDisplay: spyCardId,
-    });
-  }
+  React.useEffect(() => {
+    fetchCards();
+  }, []);
 
-  findCard = (cards = this.state.cards) => {
-    const { spyCardId } = this.props.match.params;
-    return cards.find(({ id }) => id === spyCardId);
-  }
+  React.useEffect(() => {
+    setCardToDisplay();
+  });
 
-  toggleInput = e => {
+  const fetchCards = async() => {
+    const response = await fetch('/codenames-pictures/spy-master-cards.json');
+    cards.current = await response.json();
+    setCardToDisplay();
+  };
+
+  const setCardToDisplay = (spyCardId = match.params.spyCardId) => {
+    const card = cards.current.find(({ id }) => id === spyCardId);
+    setCard(card);
+  };
+
+  const changeCard = e => {
     e.preventDefault();
-    this.setState({ showInput: !this.state.showInput });
+    setSearchCardId('');
+    history.push(searchCardId);
+    setCardToDisplay();
   };
 
-  changeCard = e => {
-    e.preventDefault();
-    this.setState({ spyCardIdToDisplay: this.state.spyCardId });
-    this.props.history.push(this.state.spyCardId);
-    const card = this.findCard();
-    this.setState({ card, showInput: false, cardNotFound: !card });
-  };
-
-  changeSpyCardInput = ({ target }) => {
-    this.setState({ spyCardId: target.value });
-  };
-
-  render() {
-    const { card, showInput, spyCardId, spyCardIdToDisplay, cardNotFound } = this.state;
-
-    return (
-      <div>
-        <div className="find-card-wrapper">
-          <p>
-            Looking for a card?
-            <button className="link" onClick={this.toggleInput}>Click here</button> to find a specific card
-          </p>
-          {showInput && <form onSubmit={this.changeCard}>
-            <input className="input" value={spyCardId} onChange={this.changeSpyCardInput} />
-            <button className="btn blue">Search</button>
-          </form>}
-        </div>
-
-        {card && <div className="container spy-master">
-          <h1 className="title">Spy master card: {spyCardIdToDisplay}</h1>
-          <div className="card-container">
-            <div className={`starting-color ${card.startingColor}`}/>
-            <div className="spy-grid">
-              {card.cells.map(({ color }, index) => (
-                <div className={`card ${color}`} key={index}/>
-              ))}
-            </div>
-            <div className={`starting-color ${card.startingColor}`}/>
-          </div>
-        </div>}
-
-        {cardNotFound && <div className="container spy-master">
-          <h1 className="title">Spy master card &quot;{spyCardIdToDisplay}&quot; not found</h1>
-        </div>}
+  return (
+    <div>
+      <div className="find-card-wrapper">
+        <form onSubmit={changeCard}>
+          <label htmlFor="card-id">Looking for a card?</label>
+          <input 
+            id="card-id" 
+            className="input" 
+            value={searchCardId} 
+            onChange={({target: {value}}) => setSearchCardId(value)}
+            placeholder="Insert card id"
+          />
+          <button className="btn blue">Search</button>
+        </form>
       </div>
-    );
-  }
-}
+
+      {card && <div className="container spy-master">
+        <h1 className="title">Spy master card: {cardIdToDisplay}</h1>
+        <SpyCard card={card}/>
+      </div>}
+
+      {cards.current.length && !card && <div className="container spy-master">
+        <h1 className="title">Spy master card &quot;{cardIdToDisplay}&quot; not found</h1>
+      </div>}
+    </div>
+  );
+};
 
 SpyMaster.propTypes = {
   match: PropTypes.object,

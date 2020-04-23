@@ -1,43 +1,36 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import OutsideClickHandler from './OutsideClickHandler';
 import './CardContextMenu.css';
+import useOutsideClickListener from '../hooks/useOutsideClickListener';
 
-class CardContextMenu extends OutsideClickHandler {
+const colors = [
+  {id: 'red', display: 'Red'},
+  {id: 'blue', display: 'Blue'},
+  {id: 'neutral', display: 'Neutral'},
+  {id: 'black', display: 'Game Over'},
+];
 
-    colors = [
-      {id: 'red', display: 'Red'},
-      {id: 'blue', display: 'Blue'},
-      {id: 'neutral', display: 'Neutral'},
-      {id: 'black', display: 'Game Over'},
-    ];
-
-    setColor(color) {
-      const { hideMenu, setColor } = this.props;
-      hideMenu();
-      setColor(color);
-    }
-
-    onOutsideClick() {
-      this.props.hideMenu();
-    }
-
-    render() {
-      return (
-        <div className="context-menu" ref={ref => this.ref = ref}>
-          {this.colors.map(color =>
-            <button
-              key={color.id}
-              className={`menu-action ${color.id}`}
-              onClick={() => this.setColor(color.id)}
-            >
-              {color.display}
-            </button>)
-          }
-        </div>
-      );
-    }
-}
+const CardContextMenu = ({hideMenu, setColor}) => {
+  const container = React.useRef(null);
+  useOutsideClickListener(container, hideMenu);
+    
+  const setCardColor = color => {
+    hideMenu();
+    setColor(color);  
+  };
+    
+  return (
+    <div className="context-menu" ref={container}>
+      {colors.map(color => <button
+        key={color.id}
+        className={`menu-action ${color.id}`}
+        onClick={() => setCardColor(color.id)}
+      >
+        {color.display}
+      </button>)}
+    </div>
+  );
+};
 
 CardContextMenu.propTypes = {
   hideMenu: PropTypes.func,

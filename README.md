@@ -52,7 +52,7 @@ The spymaster reveals who is in that location by righ clicking on the tile and a
 - If the field operative verbally chooses a picture belonging to his or her team, the spymaster marks the picture with the correct color. The operatives may continue making guesses (but they do not get another clue).
 - If the field operative verbally chooses a location
 with an innocent bystander, the spymaster marks it with an innocent  ("Neutral") state. **This ends the turn**.
-- If the field operative chooses a picture belonging to the other team, the picture is marked by one of the other team's agent colors.
+- If the field operative chooses a picture belonging to the other team, the picture is marked by one of the other team's agent cardColors.
 This **ends the turn**. (And it helps the other team)
 - If the field operative chooses the location
 with the assassin, the picture is marked as assassinated ("Game over"). **This ends the game!**
