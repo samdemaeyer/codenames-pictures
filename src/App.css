@@ -1,7 +1,7 @@
-@import url('https://fonts.googleapis.com/css2?family=Special+Elite&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Gaegu:wght@400;700&display=swap');
 
 body {
-  font-family: 'Special Elite', cursive;
+  font-family: 'Gaegu', cursive;
 }
 
 :root {
@@ -19,4 +19,5 @@ body {
   --green: rgb(0, 177, 6);
   --green-light: rgba(0, 177, 6, 0.8);
   --green-extra-light: rgba(0, 177, 6, 0.4);
+  font-size: 20px;
 }

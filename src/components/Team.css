@@ -14,6 +14,7 @@
 .teams-wrapper .team-title {
     margin-top: 0;
     display: flex;
+    align-items: center;
 }
 
 .teams-wrapper .team-blue .team-title {

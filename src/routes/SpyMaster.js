@@ -57,7 +57,7 @@ const SpyMaster = ({match, history}) => {
       </div>}
 
       {cards.current.length && !card && <div className="container spy-master">
-        <h1 className="title">Spy master card &quot;{cardIdToDisplay}&quot; not found</h1>
+        <h1 className="title">Spy master card &quot;{cardIdToDisplay}&quot;<br/>does not exist you twat.</h1>
       </div>}
     </div>
   );

@@ -1,7 +1,7 @@
 .card {
   border: 1px solid;
   cursor: pointer;
-  margin: 1rem;
+  margin: 0.5rem;
   position: relative;
   border-radius: 12px;
 }

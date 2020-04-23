@@ -4,7 +4,6 @@
   border: 2px dashed var(--grey);
   padding: 2rem;
   border-radius: 12px;
-  line-height: 2;
 }
 
 .rules-container .btn {
