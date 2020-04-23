@@ -35,7 +35,10 @@ const Team = ({teams, teamColor, addPlayer, removePlayer, startingTeam, setStari
                   value={player}
                   onChange={({ target: { value } }) => updateExistingPlayer(value, index)}
                 />
-                <button onClick={() => removePlayer(teamColor, index)} className="remove-player">x</button>
+                <button 
+                  type="button" 
+                  onClick={() => removePlayer(teamColor, index)} 
+                  className="remove-player">x</button>
               </div>
             ))}
           </div>
