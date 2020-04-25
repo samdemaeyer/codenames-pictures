@@ -2,8 +2,17 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import './Team.css';
 import classNames from 'classnames';
+import GameContext from '../contexts/gameContext';
 
-const Team = ({teams, teamColor, addPlayer, removePlayer, startingTeam, setStaringTeam, updatePlayer}) => {
+const Team = ({teamColor}) => {
+  const {
+    teams,
+    startingTeam,
+    setStartingTeam,
+    addPlayer,
+    updatePlayer,
+    removePlayer,
+  } = React.useContext(GameContext);
   const [newPlayer, setNewPlayer] = React.useState('');
   
   const addNewPlayer = e => {
@@ -21,10 +30,10 @@ const Team = ({teams, teamColor, addPlayer, removePlayer, startingTeam, setStari
     <div className="teams-wrapper">
       <div className={classNames('team', teamColor)}>
         <h3 className={classNames('team-title', `text-${teamColor}`)}>
-            Team {teamColor}
+          Team {teamColor}
           <button
             className={classNames('starting-team', {'active': currentStaringTeam})}
-            onClick={() => setStaringTeam(teamColor)}
+            onClick={() => setStartingTeam(teamColor)}
           />
         </h3>
         <form onSubmit={addNewPlayer}>
@@ -56,13 +65,7 @@ const Team = ({teams, teamColor, addPlayer, removePlayer, startingTeam, setStari
 };
 
 Team.propTypes = {
-  addPlayer: PropTypes.func,
-  updatePlayer: PropTypes.func,
-  removePlayer: PropTypes.func,
-  setStaringTeam: PropTypes.func,
-  teams: PropTypes.object,
   teamColor: PropTypes.string,
-  startingTeam: PropTypes.string,
 };
 
 export default Team;

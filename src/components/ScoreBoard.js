@@ -1,12 +1,12 @@
 import * as React from 'react';
-import PropTypes from 'prop-types';
 import './ScoreBoard.css';
 import TeamScore from './TeamScore';
 import classNames from 'classnames';
+import GameContext from '../contexts/gameContext';
 
-const ScoreBoard = props => {
+const ScoreBoard = () => {
   const [expanded, setExpanded] = React.useState(false);
-  const {teams} = props;
+  const {teams} = React.useContext(GameContext);
 
   if (!teams.red.length || !teams.blue.length)
     return null;
@@ -18,18 +18,11 @@ const ScoreBoard = props => {
       onMouseLeave={() => setExpanded(false)}
     >
       <div className="score-wrapper">
-        <TeamScore color="red" {...props}/>
-        <TeamScore color="blue" {...props}/>
+        <TeamScore color="red"/>
+        <TeamScore color="blue"/>
       </div>
     </div>
   );
-};
-
-ScoreBoard.propTypes = {
-  teams: PropTypes.object,
-  score: PropTypes.object,
-  addScore: PropTypes.func,
-  getGuessedCards: PropTypes.func,
 };
 
 export default ScoreBoard;

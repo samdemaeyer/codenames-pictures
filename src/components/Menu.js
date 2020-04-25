@@ -8,8 +8,8 @@ const Menu = ({children}) => {
   const [expanded, setExpanded] = React.useState(false);
   const container = React.useRef(null);
   const onOutsideClick = () => setExpanded(false);
-  useOutsideClickListener(container, onOutsideClick);
   const toggleExpand = () => setExpanded(!expanded);
+  useOutsideClickListener(container, onOutsideClick);
 
   return (
     <button

@@ -4,8 +4,10 @@ import './Card.css';
 import CardContextMenu from './CardContextMenu';
 import useOutsideClickListener from '../hooks/useOutsideClickListener';
 import classNames from 'classnames';
+import GameContext from '../contexts/gameContext';
 
-const Card = ({index, card, setColor}) => {
+const Card = ({index, card}) => {
+  const {setColor} = React.useContext(GameContext);
   const {cardId, color} = card;
   const [enlarged, setEnlargement] = React.useState(false);
   const [menuVisible, setMenuVisible] = React.useState(false);
@@ -52,7 +54,6 @@ const Card = ({index, card, setColor}) => {
 Card.propTypes = {
   card: PropTypes.object,
   index: PropTypes.number,
-  setColor: PropTypes.func,
 };
 
 export default Card;

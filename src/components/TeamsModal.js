@@ -2,9 +2,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import './TeamsModal.css';
 import Team from './Team';
+import GameContext from '../contexts/gameContext';
 
-const TeamsModal = props => {
-  const { toggleTeamsModal, shuffleTeams, pickSpyMasters} = props;
+const TeamsModal = ({toggleTeamsModal}) => {
+  const { shuffleTeams, pickSpyMasters } = React.useContext(GameContext);
 
   return (
     <div className="modal">
@@ -12,8 +13,8 @@ const TeamsModal = props => {
         <button className="close-modal" onClick={toggleTeamsModal}>x</button>
         <h3 className="modal-title">Setup your teams</h3>
         <div className="teams-wrapper">
-          <Team teamColor="red" {...props}/>
-          <Team teamColor="blue" {...props}/>
+          <Team teamColor="red"/>
+          <Team teamColor="blue"/>
         </div>
         <div className="button-wrapper">
           <button className="btn blue" onClick={shuffleTeams}>Shuffle teams</button>
