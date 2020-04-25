@@ -1,9 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import './TeamScore.css';
+import classNames from 'classnames';
 
 const TeamScore = ({color, score, addScore}) => 
-  <div className={`team-score team-${color}`}>
+  <div className={classNames('team-score', color)}>
     <h1 className="score">{score[color]}</h1>
     <button className="btn" onClick={() => addScore(color)}>Score</button>
   </div>;

@@ -9,11 +9,11 @@
     margin-bottom: 0;
 }
 
-.team-score.team-red .score {
+.team-score.red .score {
     color: var(--red-light);
 }
 
-.team-score.team-blue .score {
+.team-score.blue .score {
     color: var(--blue-light);
 }
 

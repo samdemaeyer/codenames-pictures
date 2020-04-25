@@ -39,7 +39,8 @@
   z-index: 2;
 }
 
-.overlay {
+.card.selected:after {
+  content: "";
   border: 4px solid;
   box-sizing: border-box;
   position: absolute;
@@ -50,22 +51,22 @@
   border-radius: 12px;
 }
 
-.overlay.red {
+.card.red:after {
   background-color: var(--red-extra-light);
   border-color: var(--red);
 }
 
-.overlay.blue {
+.card.blue:after {
   background-color: var(--blue-extra-light);
   border-color: var(--blue);
 }
 
-.overlay.neutral {
+.card.neutral:after {
   background-color: var(--yellow-extra-light);
   border-color: var(--yellow);
 }
 
-.overlay.black {
+.card.black:after {
   background-color: rgba(0, 0, 0, 0.7);
   border-color: rgb(0, 0, 0);
 }

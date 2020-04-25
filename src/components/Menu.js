@@ -2,6 +2,7 @@ import React from 'react';
 import './Menu.css';
 import useOutsideClickListener from '../hooks/useOutsideClickListener';
 import PropTypes from 'prop-types';
+import classNames from 'classnames';
 
 const Menu = ({children}) => {
   const [expanded, setExpanded] = React.useState(false);
@@ -12,7 +13,7 @@ const Menu = ({children}) => {
 
   return (
     <button
-      className={`menu ${expanded ? 'expanded' : ''}`}
+      className={classNames('menu', {'expanded': expanded})}
       onClick={toggleExpand}
       ref={container}
     >

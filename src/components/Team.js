@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import './Team.css';
+import classNames from 'classnames';
 
 const Team = ({teams, teamColor, addPlayer, removePlayer, startingTeam, setStaringTeam, updatePlayer}) => {
   const [newPlayer, setNewPlayer] = React.useState('');
@@ -18,11 +19,11 @@ const Team = ({teams, teamColor, addPlayer, removePlayer, startingTeam, setStari
 
   return (
     <div className="teams-wrapper">
-      <div className={`team team-${teamColor}`}>
+      <div className={classNames('team', teamColor)}>
         <h3 className="team-title">
             Team {teamColor}
           <button
-            className={`starting-team ${currentStaringTeam ? 'active' : ''}`}
+            className={classNames('starting-team', {'active': currentStaringTeam})}
             onClick={() => setStaringTeam(teamColor)}
           />
         </h3>

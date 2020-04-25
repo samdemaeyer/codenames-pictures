@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import './CardContextMenu.css';
 import useOutsideClickListener from '../hooks/useOutsideClickListener';
+import classNames from 'classnames';
 
 const colors = [
   {id: 'red', display: 'Red'},
@@ -23,7 +24,7 @@ const CardContextMenu = ({hideMenu, setColor}) => {
     <div className="context-menu" ref={container}>
       {colors.map(color => <button
         key={color.id}
-        className={`menu-action ${color.id}`}
+        className={classNames('menu-action', color.id)}
         onClick={() => setCardColor(color.id)}
       >
         {color.display}

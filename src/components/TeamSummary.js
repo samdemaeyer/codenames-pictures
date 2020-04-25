@@ -1,13 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import './TeamSummary.css';
+import classNames from 'classnames';
 
 const TeamSummary = ({color, teams, getGuessedCards, startingTeam }) => {
   const currentStaringTeam = startingTeam === color;
   const totalCards = currentStaringTeam ? 8 : 7;
 
   return (
-    <div className={`team-summary team-${color}`}>
+    <div className={classNames('team-summary', color)}>
       {teams[color].length ?
         <>
           <h3 className="team-title">

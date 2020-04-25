@@ -2,6 +2,7 @@ import * as React from 'react';
 import PropTypes from 'prop-types';
 import './ScoreBoard.css';
 import TeamScore from './TeamScore';
+import classNames from 'classnames';
 
 const ScoreBoard = props => {
   const [expanded, setExpanded] = React.useState(false);
@@ -12,7 +13,7 @@ const ScoreBoard = props => {
 
   return (
     <div
-      className={`score-board ${expanded ? 'expanded' : ''}`}
+      className={classNames('score-board', {'expanded': expanded})}
       onMouseEnter={() => setExpanded(true)}
       onMouseLeave={() => setExpanded(false)}
     >

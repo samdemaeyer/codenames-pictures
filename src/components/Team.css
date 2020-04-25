@@ -17,11 +17,11 @@
     align-items: center;
 }
 
-.teams-wrapper .team-blue .team-title {
+.teams-wrapper .blue .team-title {
     color: var(--blue-light)
 }
 
-.teams-wrapper .team-red .team-title {
+.teams-wrapper .red .team-title {
     color: var(--red-light)
 }
 
@@ -39,19 +39,19 @@
     opacity: 1;
 }
 
-.teams-wrapper .team-red .team-title .starting-team {
+.teams-wrapper .red .team-title .starting-team {
     background-color: var(--red);
 }
 
-.teams-wrapper .team-blue .team-title .starting-team {
+.teams-wrapper .blue .team-title .starting-team {
     background-color: var(--blue);
 }
 
-.teams-wrapper .team-red .team-title .starting-team.active {
+.teams-wrapper .red .team-title .starting-team.active {
     box-shadow: 0px 0px 7px 0px var(--red);
 }
 
-.teams-wrapper .team-blue .team-title .starting-team.active {
+.teams-wrapper .blue .team-title .starting-team.active {
     box-shadow: 0px 0px 7px 0px var(--blue);
 }
 
