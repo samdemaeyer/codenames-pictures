@@ -1,0 +1,19 @@
+@import "./../style/colors";
+
+.Rules {
+  max-width: 80vw;
+  margin: 2rem auto;
+  border: 2px dashed $primaryGrey;
+  padding: 2rem;
+  border-radius: 12px;
+
+  .btn {
+    display: inline-block;
+
+    &.right {
+      float: right;
+      font-size: 1.5rem;
+      padding: 0 1rem;
+    }
+  }
+}

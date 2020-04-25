@@ -1,0 +1,52 @@
+@import "./../style/colors";
+
+.ScoreBoard {
+  position: absolute;
+  background: $background;
+  z-index: 5;
+  border-bottom-right-radius: 10px;
+  border-bottom-left-radius: 10px;
+  border: 2px solid;
+  border-top: none;
+  transition: all 0.2s;
+  min-width: 400px;
+
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, -100%);
+
+  &:after {
+    content: "^";
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, -60%) rotate(180deg);
+    width: 20px;
+    display: flex;
+    height: 20px;
+    align-items: center;
+    justify-content: center;
+    font-size: 3rem;
+    transition: all 0.2s;
+    cursor: pointer;
+  }
+
+  &.expanded {
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+
+    &:after {
+      opacity: 0;
+    }
+  }
+
+  .score-wrapper {
+    display: flex;
+    justify-content: center;
+    padding: 0 2rem 2rem;
+
+    .TeamScore:last-of-type {
+      margin-left: 5rem;
+    }
+  }
+}

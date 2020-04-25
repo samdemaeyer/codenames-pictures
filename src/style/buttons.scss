@@ -1,0 +1,63 @@
+@import "./../style/colors";
+
+$buttonColors: (
+  "blue": $primaryBlue,
+  "green": $primaryGreen,
+);
+
+@mixin colored-buttons {
+  @each $name, $hex in $buttonColors {
+    $lightened: rgba($hex, 0.8);
+    &.#{$name} {
+      border-color: $lightened;
+
+      &:hover {
+        background-color: $lightened;
+        border-color: $hex;
+      }
+    }
+  }
+}
+
+.btn {
+  border-radius: 6px;
+  border: 2px solid #000;
+  color: initial;
+  cursor: pointer;
+  display: block;
+  font-size: 1rem;
+  font-weight: 500;
+  margin-top: 1rem;
+  padding: 0.5rem 1rem;
+  text-decoration: none;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
+    border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  font-family: inherit;
+  @include colored-buttons();
+
+  &:hover {
+    background-color: rgba($primaryGreen, 0.8);
+    border-color: $primaryGreen;
+    color: white;
+  }
+}
+
+button.no-style,
+button.link {
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  font-size: inherit;
+  font-family: inherit;
+  cursor: pointer;
+}
+
+button.link {
+  color: $primaryBlue;
+  padding-left: 0.2rem;
+}
+
+button.link:hover {
+  text-decoration: underline;
+}

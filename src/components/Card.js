@@ -1,10 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import './Card.css';
+import './Card.scss';
 import CardContextMenu from './CardContextMenu';
 import useOutsideClickListener from '../hooks/useOutsideClickListener';
 import classNames from 'classnames';
 import GameContext from '../contexts/gameContext';
+import Badge from './library/Badge';
 
 const Card = ({index, card}) => {
   const {setColor} = React.useContext(GameContext);
@@ -26,15 +27,14 @@ const Card = ({index, card}) => {
   return (
     <div
       onContextMenu={showMenu}
-      className={classNames('card', {
+      className={classNames('Card', {
         'selected': !!color,
         [color]: !!color,
       })}
       ref={container}
       onDoubleClick={resetColor}
     >
-      <h5 className="card-id badge">{index}</h5>
-
+      <Badge classname="card-id">{index}</Badge>
       <button onClick={() => setEnlargement(!enlarged)} className="no-style">
         <img
           src={`/codenames-pictures/images/cards/card-${cardId}.jpg`}

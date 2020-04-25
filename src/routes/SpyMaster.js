@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import './SpyMaster.css';
+import './SpyMaster.scss';
 import SpyCard from '../components/SpyCard';
 
 const SpyMaster = ({match, history}) => {
@@ -36,7 +36,7 @@ const SpyMaster = ({match, history}) => {
   };
 
   return (
-    <div>
+    <div className="SpyMaster">
       <div className="find-card-wrapper">
         <form onSubmit={changeCard}>
           <label htmlFor="card-id">Looking for a card?</label>

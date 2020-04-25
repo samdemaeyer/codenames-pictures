@@ -1,0 +1,65 @@
+@import "./../style/colors";
+
+@mixin card-overlay {
+  @each $name, $hex in $cardColors {
+    &.#{$name}:after {
+      background-color: rgba($hex, 0.5);
+      border-color: $hex;
+    }
+  }
+}
+
+.Card {
+  border: 1px solid;
+  cursor: pointer;
+  margin: 0.5rem;
+  position: relative;
+  border-radius: 12px;
+
+  .CardContextMenu {
+    position: absolute;
+    z-index: 2;
+    left: 20%;
+    top: 20%;
+    width: 100%;
+  }
+
+  .card-id {
+    left: 0;
+    position: absolute;
+    top: 0;
+    height: 15%;
+    width: 15%;
+  }
+
+  .card-img {
+    width: 100%;
+    border-radius: 12px;
+    user-select: none;
+
+    &.enlarged {
+      border: 2px solid;
+      left: -50%;
+      position: absolute;
+      top: -50%;
+      width: 200%;
+      z-index: 2;
+    }
+  }
+
+  &.selected {
+    @include card-overlay();
+
+    &:after {
+      content: "";
+      border: 4px solid;
+      box-sizing: border-box;
+      position: absolute;
+      height: 100%;
+      width: 100%;
+      left: 0;
+      top: 0;
+      border-radius: 12px;
+    }
+  }
+}

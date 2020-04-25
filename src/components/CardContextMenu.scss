@@ -1,0 +1,36 @@
+@import "./../style/colors";
+
+@mixin option-color-hover {
+  @each $name, $hex in $cardColors {
+    &.#{$name}:hover {
+      background-color: rgba($hex, 0.7);
+    }
+  }
+}
+
+.CardContextMenu {
+  background-color: white;
+  border: 2px solid #000;
+  border-radius: 5px;
+
+  .menu-action {
+    border-bottom: 1px dashed;
+    margin: 0;
+    padding: 0.3rem 1rem;
+    width: 100%;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 1rem;
+    @include option-color-hover();
+
+    &:last-of-type {
+      border-bottom: none;
+    }
+
+    &:not(.neutral):hover {
+      color: white;
+      cursor: pointer;
+      border-color: black;
+    }
+  }
+}

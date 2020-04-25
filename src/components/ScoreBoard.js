@@ -1,5 +1,5 @@
 import * as React from 'react';
-import './ScoreBoard.css';
+import './ScoreBoard.scss';
 import TeamScore from './TeamScore';
 import classNames from 'classnames';
 import GameContext from '../contexts/gameContext';
@@ -13,7 +13,7 @@ const ScoreBoard = () => {
 
   return (
     <div
-      className={classNames('score-board', {'expanded': expanded})}
+      className={classNames('ScoreBoard', {'expanded': expanded})}
       onMouseEnter={() => setExpanded(true)}
       onMouseLeave={() => setExpanded(false)}
     >

@@ -1,0 +1,48 @@
+@import "../../style/colors";
+
+.Menu {
+  border-radius: 6px;
+  border: 2px solid rgba($primaryGreen, 0.8);
+  min-width: 120px;
+  padding: 0;
+  font-family: inherit;
+
+  .menu-trigger {
+    text-align: center;
+
+    &:after {
+      content: "⋀";
+      margin-left: 0.3rem;
+    }
+  }
+
+  .menu-item {
+    display: block;
+    border-bottom: 2px solid $primaryGreen;
+    color: initial;
+  }
+
+  .menu-item > *,
+  .menu-trigger {
+    display: block;
+    color: initial;
+    font-size: 1rem;
+    font-weight: 500;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
+      border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+
+    &:hover {
+      background-color: rgba($primaryGreen, 0.8);
+      border-color: $primaryGreen;
+      color: white;
+    }
+  }
+
+  &.expanded {
+    .menu-trigger::after {
+      content: "⋁";
+    }
+  }
+}

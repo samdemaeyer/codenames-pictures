@@ -10,8 +10,8 @@ Both teams race to contact all their agents, but only one team can win.
 ### The spymasters key card
 Each game has one spy master key that shows who can be found in each location.
 The spymasters should choose the key card randomly, don't let the field operatives see the key.
-The key corresponds to the grid. Blue squares correspond to pictures that Blue Team
-must guess (locations with blue agents). Red squares correspond to pictures that Red Team must
+The key corresponds to the grid. Blue squares correspond to pictures that Blue TeamSetup
+must guess (locations with blue agents). Red squares correspond to pictures that Red TeamSetup must
 guess (locations with red agents). Pale squares have innocent bystanders, and the black square
 hides an assassin!
 

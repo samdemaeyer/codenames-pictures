@@ -1,8 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import './TeamSummary.css';
+import './TeamSummary.scss';
 import classNames from 'classnames';
 import GameContext from '../contexts/gameContext';
+import Badge from './library/Badge';
 
 const TeamSummary = ({color}) => {
   const {teams, getGuessedCardsAmount, startingTeam} = React.useContext(GameContext);
@@ -10,15 +11,15 @@ const TeamSummary = ({color}) => {
   const totalCards = currentStaringTeam ? 8 : 7;
 
   return (
-    <div className={'team-summary'}>
+    <div className={'TeamSummary'}>
       {!!teams[color].length &&
         <>
           <h3 className={classNames('team-title', `text-${color}`)}>
             Team {color}
-            <span className={classNames('badge', {'has-total': startingTeam})}>
+            <Badge>
               {getGuessedCardsAmount(color)}
               {startingTeam && <>/{totalCards}</>}
-            </span>
+            </Badge>
           </h3>
           <ul className="names">
             {teams[color].map((player, index) => {

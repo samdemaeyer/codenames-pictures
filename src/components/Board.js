@@ -1,33 +1,25 @@
 import React from 'react';
-import Card from './Card';
 import TeamsModal from './TeamsModal';
 import ScoreBoard from './ScoreBoard';
 import TeamSummary from './TeamSummary';
-import Menu from './Menu';
-import './Board.css';
+import Menu from './library/Menu';
+import './Board.scss';
 import {Link} from 'react-router-dom';
 import GameContext from '../contexts/gameContext';
+import CardGrid from './CardGrid';
 
 const Board = () => {
-  const {cards, newGame} = React.useContext(GameContext);
+  const {newGame} = React.useContext(GameContext);
   const [showTeamsModal, setShowTeamsModal] = React.useState(false);
   const toggleTeamsModal = () => setShowTeamsModal(!showTeamsModal);
 
   return (
-    <div>
+    <>
       <ScoreBoard/>
       {showTeamsModal && <TeamsModal toggleTeamsModal={toggleTeamsModal}/>}
       <div className="container">
         <div className="inner-container">
-          <div className="grid">
-            {cards.map((card, index) => (
-              <Card
-                key={card.cardId}
-                card={card}
-                index={index + 1}
-              />
-            ))}
-          </div>
+          <CardGrid/>
           <div className="side-wrapper">
             <div className="teams-summary">
               <TeamSummary color="red"/>
@@ -50,7 +42,7 @@ const Board = () => {
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 

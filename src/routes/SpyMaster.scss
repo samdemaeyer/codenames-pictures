@@ -1,0 +1,31 @@
+.SpyMaster {
+  .find-card-wrapper {
+    text-align: center;
+
+    .btn {
+      display: inline-block;
+    }
+  }
+
+  input {
+    margin: 1rem;
+  }
+
+  .container.spy-master {
+    flex-direction: column;
+    min-height: 80vh;
+  }
+
+  .title {
+    text-align: center;
+    font-size: 3.5rem;
+
+    @media only screen and (max-width: 900px) {
+      font-size: 2.5rem;
+    }
+
+    @media only screen and (max-width: 525px) {
+      font-size: 2rem;
+    }
+  }
+}

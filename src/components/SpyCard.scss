@@ -1,0 +1,73 @@
+@import "./../style/colors";
+
+@mixin team-gradient {
+  @each $name, $hex in $spyCardCellColors {
+    $lightened: lighten($hex, 15%);
+    &.#{$name} {
+      background: $hex;
+      background: radial-gradient(circle, $lightened 0%, $hex 100%);
+    }
+  }
+}
+
+.SpyCard {
+  display: flex;
+  align-items: center;
+
+  .spy-grid {
+    background-color: black;
+    border-radius: 12px;
+    display: grid;
+    grid-template-columns: 150px 150px 150px 150px 150px;
+    grid-template-rows: 125px 125px 125px 125px;
+    padding: 15px;
+
+    .cell {
+      border-radius: 12px;
+      margin: 10px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      @include team-gradient();
+
+      &:before {
+        font-weight: 900;
+        font-size: 3rem;
+      }
+
+      &.neutral {
+        background-color: #daca9e;
+      }
+    }
+
+    @media only screen and (max-width: 900px) {
+      grid-template-columns: 100px 100px 100px 100px 100px;
+      grid-template-rows: 75px 75px 75px 75px;
+    }
+
+    @media only screen and (max-width: 650px) {
+      grid-template-columns: 75px 75px 75px 75px 75px;
+      grid-template-rows: 55px 55px 55px 55px;
+    }
+
+    @media only screen and (max-width: 525px) {
+      grid-template-columns: 15vw 15vw 15vw 15vw 15vw;
+      grid-template-rows: 12vw 12vw 12vw 12vw;
+      padding: 10px;
+    }
+  }
+
+  .starting-color {
+    border-radius: 8px;
+    height: 100px;
+    margin: 15px;
+    width: 30px;
+    @include team-gradient();
+
+    @media only screen and (max-width: 650px) {
+      height: 60px;
+      margin: 10px;
+      width: 20px;
+    }
+  }
+}

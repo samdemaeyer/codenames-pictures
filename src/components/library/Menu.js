@@ -1,6 +1,6 @@
 import React from 'react';
-import './Menu.css';
-import useOutsideClickListener from '../hooks/useOutsideClickListener';
+import './Menu.scss';
+import useOutsideClickListener from '../../hooks/useOutsideClickListener';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
@@ -13,11 +13,11 @@ const Menu = ({children}) => {
 
   return (
     <button
-      className={classNames('menu', {'expanded': expanded})}
+      className={classNames('Menu', {'expanded': expanded})}
       onClick={toggleExpand}
       ref={container}
     >
-      <div className="menu-content">
+      {expanded && <div className="menu-content">
         {children.map((option, index) =>
           <div
             className="menu-item"
@@ -29,7 +29,7 @@ const Menu = ({children}) => {
           >
             {option}
           </div>)}
-      </div>
+      </div>}
       <div className="menu-trigger">Menu</div>
     </button>
   );

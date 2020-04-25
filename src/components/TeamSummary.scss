@@ -1,13 +1,15 @@
-.team-summary .team-title {
+.TeamSummary {
+  .team-title {
     margin-top: 0;
-}
+  }
 
-.team-summary .names {
+  .names {
     list-style: none;
     text-align: left;
     padding: 0;
-}
+  }
 
-.team-summary + .team-summary {
+  & + .TeamSummary {
     margin-top: 2rem;
+  }
 }

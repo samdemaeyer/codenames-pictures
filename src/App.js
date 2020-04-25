@@ -3,7 +3,7 @@ import Rules from './routes/Rules';
 import Game from './routes/Game';
 import SpyMaster from './routes/SpyMaster';
 import { HashRouter, Route } from 'react-router-dom';
-import './App.css';
+import './App.scss';
 
 function App() {
   return (

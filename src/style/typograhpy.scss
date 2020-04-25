@@ -1,0 +1,26 @@
+@import url("https://fonts.googleapis.com/css2?family=Gaegu:wght@400;700&display=swap");
+
+body {
+  font-family: "Gaegu", cursive;
+}
+
+:root {
+  font-size: 20px;
+}
+
+a {
+  text-decoration: none;
+  color: $primaryBlue;
+}
+
+@mixin color-modifiers {
+  @each $name, $hex in $teamColors {
+    &-#{$name} {
+      color: $hex;
+    }
+  }
+}
+
+.text {
+  @include color-modifiers();
+}

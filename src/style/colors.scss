@@ -1,0 +1,20 @@
+$background: #f9e5a9;
+$primaryGrey: gainsboro;
+$primaryBlue: rgb(0, 149, 255);
+$primaryRed: rgb(255, 0, 0);
+$primaryYellow: rgb(255, 212, 0);
+$primaryGreen: rgb(0, 177, 6);
+
+$teamColors: (
+  "red": $primaryRed,
+  "blue": $primaryBlue,
+  "green": $primaryGreen,
+);
+
+$cardColors: map-merge(
+  $teamColors,
+  (
+    "neutral": $primaryYellow,
+    "black": #000,
+  )
+);

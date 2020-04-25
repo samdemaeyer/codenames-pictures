@@ -1,10 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import './Team.css';
+import './TeamSetup.scss';
 import classNames from 'classnames';
 import GameContext from '../contexts/gameContext';
 
-const Team = ({teamColor}) => {
+const TeamSetup = ({teamColor}) => {
   const {
     teams,
     startingTeam,
@@ -27,11 +27,11 @@ const Team = ({teamColor}) => {
   const currentStaringTeam = startingTeam === teamColor;
 
   return (
-    <div className={classNames('team', teamColor)}>
+    <div className={'TeamSetup'}>
       <h3 className={classNames('team-title', `text-${teamColor}`)}>
           Team {teamColor}
         <button
-          className={classNames('starting-team', {'active': currentStaringTeam})}
+          className={classNames('starting-team', teamColor, {'active': currentStaringTeam})}
           onClick={() => setStartingTeam(teamColor)}
         />
       </h3>
@@ -40,7 +40,6 @@ const Team = ({teamColor}) => {
           {teams[teamColor].map((player, index) => (
             <div className="player-wrap" key={index}>
               <input
-                className="input"
                 value={player}
                 onChange={({ target: { value } }) => updateExistingPlayer(value, index)}
               />
@@ -52,7 +51,6 @@ const Team = ({teamColor}) => {
           ))}
         </div>
         <input
-          className="input"
           value={newPlayer}
           onChange={({ target: { value } }) => setNewPlayer(value)}
         />
@@ -62,8 +60,8 @@ const Team = ({teamColor}) => {
   );
 };
 
-Team.propTypes = {
+TeamSetup.propTypes = {
   teamColor: PropTypes.string,
 };
 
-export default Team;
+export default TeamSetup;

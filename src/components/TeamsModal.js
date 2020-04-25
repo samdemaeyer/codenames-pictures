@@ -1,27 +1,28 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import './TeamsModal.css';
-import Team from './Team';
+import './TeamsModal.scss';
+import TeamSetup from './TeamSetup';
 import GameContext from '../contexts/gameContext';
+import Modal from './library/Modal';
 
 const TeamsModal = ({toggleTeamsModal}) => {
   const { shuffleTeams, pickSpyMasters } = React.useContext(GameContext);
 
   return (
-    <div className="modal">
-      <div className="modal-content">
-        <button className="close-modal" onClick={toggleTeamsModal}>x</button>
-        <h3 className="modal-title">Setup your teams</h3>
-        <div className="teams-wrapper">
-          <Team teamColor="red"/>
-          <Team teamColor="blue"/>
-        </div>
-        <div className="button-wrapper">
-          <button className="btn blue" onClick={shuffleTeams}>Shuffle teams</button>
-          <button className="btn" onClick={pickSpyMasters}>Pick spy masters</button>
-        </div>
+    <Modal 
+      title="Setup your teams" 
+      classname="TeamsModal"
+      onCloseModal={toggleTeamsModal}
+    >
+      <div className="teams-wrapper">
+        <TeamSetup teamColor="red"/>
+        <TeamSetup teamColor="blue"/>
       </div>
-    </div>
+      <div className="button-wrapper">
+        <button className="btn blue" onClick={shuffleTeams}>Shuffle teams</button>
+        <button className="btn" onClick={pickSpyMasters}>Pick spy masters</button>
+      </div>
+    </Modal>
   );
 };
 

@@ -1,0 +1,15 @@
+@import "./../../style/colors";
+
+.Badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: $background;
+  color: #000;
+  font-size: 1rem;
+  font-weight: bold;
+  margin: 0.3rem;
+  min-width: 1rem;
+  border-radius: 8px;
+  padding: 3px;
+}
