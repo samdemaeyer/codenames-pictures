@@ -4,7 +4,7 @@ import './TeamSetup.scss';
 import classNames from 'classnames';
 import GameContext from '../contexts/gameContext';
 
-const TeamSetup = ({teamColor}) => {
+const TeamSetup = ({ color }) => {
   const {
     teams,
     startingTeam,
@@ -19,25 +19,25 @@ const TeamSetup = ({teamColor}) => {
     e.preventDefault();
     if (!newPlayer)
       return;
-    addPlayer(teamColor, newPlayer);
+    addPlayer(color , newPlayer);
     setNewPlayer('');
   };
   
-  const updateExistingPlayer = (player, idx) => updatePlayer(teamColor, player, idx);
-  const currentStaringTeam = startingTeam === teamColor;
+  const updateExistingPlayer = (player, idx) => updatePlayer(color , player, idx);
+  const currentStaringTeam = startingTeam === color ;
 
   return (
     <div className={'TeamSetup'}>
-      <h3 className={classNames('team-title', `text-${teamColor}`)}>
-          Team {teamColor}
+      <h3 className={classNames('team-title', `text-${color }`)}>
+          Team {color }
         <button
-          className={classNames('starting-team', teamColor, {'active': currentStaringTeam})}
-          onClick={() => setStartingTeam(teamColor)}
+          className={classNames('starting-team', color , {'active': currentStaringTeam})}
+          onClick={() => setStartingTeam(color )}
         />
       </h3>
       <form onSubmit={addNewPlayer}>
         <div className="players">
-          {teams[teamColor].map((player, index) => (
+          {teams[color ].map((player, index) => (
             <div className="player-wrap" key={index}>
               <input
                 value={player}
@@ -45,7 +45,7 @@ const TeamSetup = ({teamColor}) => {
               />
               <button 
                 type="button" 
-                onClick={() => removePlayer(teamColor, index)} 
+                onClick={() => removePlayer(color , index)} 
                 className="remove-player">x</button>
             </div>
           ))}
@@ -61,7 +61,7 @@ const TeamSetup = ({teamColor}) => {
 };
 
 TeamSetup.propTypes = {
-  teamColor: PropTypes.string,
+  color : PropTypes.string,
 };
 
 export default TeamSetup;

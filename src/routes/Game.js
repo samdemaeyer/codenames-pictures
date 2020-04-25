@@ -1,20 +1,32 @@
 import React from 'react';
-import randomise from '../utils/array-helpers';
 import GameContext from '../contexts/gameContext';
 import Board from '../components/Board';
+import {capitalizeFirstLetter} from '../utils/string-helpers';
+import {randomise, chunkify} from '../utils/array-helpers';
 
-const randomiseCards = () => {
-  const defaultCard = { color: '' };
-  return randomise(
-    [...Array(280)].map((_, i) => ({ cardId: i, ...defaultCard }))
-  ).slice(0, 20);
-};
+const randomiseCards = () => randomise(
+  [...Array(280)].map((_, i) => ({ cardId: i, color: '' }))
+).slice(0, 20);
 
 const Game = () => {
+  const teamColors = ['red', 'blue'];
+  const isDuetGame = teamColors.length < 2;
+  let cardColors = [
+    {id: 'neutral', display: 'Neutral'},
+    {id: 'black', display: 'Game Over'},
+  ];
+  teamColors.forEach(color => cardColors.unshift({ id: color, display: capitalizeFirstLetter(color) }));
+
+  const getTeamObject = value => {
+    const obj = {};
+    teamColors.forEach(color => obj[color] = value);
+    return obj;
+  };
+
   const [cards, setCards] = React.useState(randomiseCards());
   const [startingTeam, setStartingTeam] = React.useState('');
-  const [teams, setTeams] = React.useState({red: [], blue: []});
-  const [score, setScore] = React.useState({red: 0, blue: 0});
+  const [teams, setTeams] = React.useState(getTeamObject([]));
+  const [score, setScore] = React.useState(getTeamObject(0));
 
   const newGame = e => {
     e.preventDefault();
@@ -31,9 +43,12 @@ const Game = () => {
   };
 
   const addPlayer = (color, player) => {
-    const newTeams = {...teams};
-    newTeams[color].push(player);
-    setTeams(newTeams);
+    const newTeam = [...teams[color]];
+    newTeam.push(player);
+    setTeams({
+      ...teams,
+      [color]: newTeam,
+    });
   };
 
   const updatePlayer = (color, newValue, index) => {
@@ -49,31 +64,28 @@ const Game = () => {
   };
 
   const shuffleTeams = () => {
-    const allPlayers = randomise([...teams.red, ...teams.blue]);
-    const roundFunction = Math.random() >= 0.5 ? Math.floor : Math.ceil;
-    const breakAt = roundFunction(allPlayers.length / 2);
-    setTeams({
-      red: allPlayers.slice(0, breakAt),
-      blue: allPlayers.slice(breakAt, allPlayers.length),
-    });
+    const allPlayers = teamColors.reduce((players, color) => [...players, ...teams[color]], []);
+    const chunkedPlayers = chunkify(randomise(allPlayers), teamColors.length);
+    let newTeams = {};
+    teamColors.forEach((color, index) => newTeams[color] = chunkedPlayers[index] || []);
+    setTeams(newTeams);
     resetScores();
   };
 
-  const pickSpyMasters = () => setTeams({
-    red: randomise(teams.red),
-    blue: randomise(teams.blue),
-  });
+  const pickSpyMasters = () => {
+    let newTeams = {};
+    teamColors.forEach(color => {
+      newTeams[color] = randomise(teams[color]);
+    });
+    setTeams(newTeams);
+  };
 
   const scorePlayer = color => setScore({
     ...score,
     [color]: (score[color] + 1),
   });
 
-  const resetScores = () => setScore({
-    red: 0,
-    blue: 0,
-  });
-
+  const resetScores = () => setScore(getTeamObject(0));
   const getGuessedCardsAmount = color => cards.filter(card => card.color === color).length;
 
   return (
@@ -92,6 +104,9 @@ const Game = () => {
       pickSpyMasters, 
       scorePlayer, 
       getGuessedCardsAmount,
+      cardColors,
+      teamColors,
+      isDuetGame,
     }}>
       <Board/>
     </GameContext.Provider>

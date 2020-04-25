@@ -3,16 +3,11 @@ import PropTypes from 'prop-types';
 import './CardContextMenu.scss';
 import useOutsideClickListener from '../hooks/useOutsideClickListener';
 import classNames from 'classnames';
-
-const colors = [
-  {id: 'red', display: 'Red'},
-  {id: 'blue', display: 'Blue'},
-  {id: 'neutral', display: 'Neutral'},
-  {id: 'black', display: 'Game Over'},
-];
+import GameContext from '../contexts/gameContext';
 
 const CardContextMenu = ({hideMenu, setColor}) => {
   const container = React.useRef(null);
+  const {cardColors} = React.useContext(GameContext);
   useOutsideClickListener(container, hideMenu);
     
   const setCardColor = color => {
@@ -22,7 +17,7 @@ const CardContextMenu = ({hideMenu, setColor}) => {
     
   return (
     <div className="CardContextMenu" ref={container}>
-      {colors.map(color => <button
+      {cardColors.map(color => <button
         key={color.id}
         className={classNames('menu-action', color.id)}
         onClick={() => setCardColor(color.id)}

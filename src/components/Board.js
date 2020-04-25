@@ -9,7 +9,7 @@ import GameContext from '../contexts/gameContext';
 import CardGrid from './CardGrid';
 
 const Board = () => {
-  const {newGame} = React.useContext(GameContext);
+  const { newGame, teamColors } = React.useContext(GameContext);
   const [showTeamsModal, setShowTeamsModal] = React.useState(false);
   const toggleTeamsModal = () => setShowTeamsModal(!showTeamsModal);
 
@@ -22,8 +22,7 @@ const Board = () => {
           <CardGrid/>
           <div className="side-wrapper">
             <div className="teams-summary">
-              <TeamSummary color="red"/>
-              <TeamSummary color="blue"/>
+              {teamColors.map(color => <TeamSummary key={color} color={color}/>)}
             </div>
             <Menu>
               <Link to="#" onClick={toggleTeamsModal}>

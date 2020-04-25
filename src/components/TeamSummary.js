@@ -6,7 +6,7 @@ import GameContext from '../contexts/gameContext';
 import Badge from './library/Badge';
 
 const TeamSummary = ({color}) => {
-  const {teams, getGuessedCardsAmount, startingTeam} = React.useContext(GameContext);
+  const {teams, getGuessedCardsAmount, startingTeam, isDuetGame} = React.useContext(GameContext);
   const currentStaringTeam = startingTeam === color;
   const totalCards = currentStaringTeam ? 8 : 7;
 
@@ -23,7 +23,7 @@ const TeamSummary = ({color}) => {
           </h3>
           <ul className="names">
             {teams[color].map((player, index) => {
-              const isSpyMaster = index === 0;
+              const isSpyMaster = index === 0 && !isDuetGame;
               return <li key={index} className={classNames({
                 'spymaster': isSpyMaster,
                 [`text-${color}`]: isSpyMaster,

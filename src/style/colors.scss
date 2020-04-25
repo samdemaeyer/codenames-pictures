@@ -18,3 +18,10 @@ $cardColors: map-merge(
     "black": #000,
   )
 );
+
+$spyCardCellColors: map-merge(
+  $teamColors,
+  (
+    "black": #292929,
+  )
+);

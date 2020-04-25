@@ -6,9 +6,10 @@ import GameContext from '../contexts/gameContext';
 
 const ScoreBoard = () => {
   const [expanded, setExpanded] = React.useState(false);
-  const {teams} = React.useContext(GameContext);
+  const { teams, isDuetGame, teamColors } = React.useContext(GameContext);
+  const teamsSetup = teamColors.every(color => teams[color].length > 0);
 
-  if (!teams.red.length || !teams.blue.length)
+  if (!teamsSetup || isDuetGame)
     return null;
 
   return (
@@ -18,8 +19,7 @@ const ScoreBoard = () => {
       onMouseLeave={() => setExpanded(false)}
     >
       <div className="score-wrapper">
-        <TeamScore color="red"/>
-        <TeamScore color="blue"/>
+        {teamColors.map(color => <TeamScore color={color} key={color}/>)}
       </div>
     </div>
   );

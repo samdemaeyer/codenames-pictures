@@ -6,22 +6,21 @@ import GameContext from '../contexts/gameContext';
 import Modal from './library/Modal';
 
 const TeamsModal = ({toggleTeamsModal}) => {
-  const { shuffleTeams, pickSpyMasters } = React.useContext(GameContext);
+  const { shuffleTeams, pickSpyMasters, teamColors, isDuetGame } = React.useContext(GameContext);
 
   return (
-    <Modal 
-      title="Setup your teams" 
+    <Modal
+      title={`Setup your ${isDuetGame ? 'team': 'teams'}`}
       classname="TeamsModal"
       onCloseModal={toggleTeamsModal}
     >
       <div className="teams-wrapper">
-        <TeamSetup teamColor="red"/>
-        <TeamSetup teamColor="blue"/>
+        {teamColors.map(color => <TeamSetup color={color} key={color}/>)}
       </div>
-      <div className="button-wrapper">
+      {!isDuetGame && <div className="button-wrapper">
         <button className="btn blue" onClick={shuffleTeams}>Shuffle teams</button>
         <button className="btn" onClick={pickSpyMasters}>Pick spy masters</button>
-      </div>
+      </div>}
     </Modal>
   );
 };
