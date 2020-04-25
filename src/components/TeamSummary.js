@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import './TeamSummary.css';
 
-const TeamSummary = ({color, teams, getGuessedCards, isSpyMaster, startingTeam }) => {
+const TeamSummary = ({color, teams, getGuessedCards, startingTeam }) => {
   const currentStaringTeam = startingTeam === color;
   const totalCards = currentStaringTeam ? 8 : 7;
 
@@ -11,18 +11,17 @@ const TeamSummary = ({color, teams, getGuessedCards, isSpyMaster, startingTeam }
       {teams[color].length ?
         <>
           <h3 className="team-title">
-                Team {color}
+            Team {color}
             <span className={`badge ${startingTeam ? 'has-total' : ''}`}>
               {getGuessedCards(color)}
-              {startingTeam && <>/ {totalCards}</>}
+              {startingTeam && <>/{totalCards}</>}
             </span>
           </h3>
           <ul className="names">
-            {teams[color].map((player, index) => (
-              <li key={index} className={`${isSpyMaster(color, index) ? 'spymaster' : ''}`}>
-                <p>{isSpyMaster(color, index) && '>'} {player}</p>
-              </li>
-            ))}
+            {teams[color].map((player, index) => {
+              const isSpyMaster = index === 0;
+              return <li key={index} className={`${isSpyMaster ? 'spymaster' : ''}`}>{isSpyMaster && '>'} {player}</li>;
+            })}
           </ul>
         </> : null}
     </div>
@@ -34,7 +33,6 @@ TeamSummary.propTypes = {
   startingTeam: PropTypes.string,
   teams: PropTypes.object,
   getGuessedCards: PropTypes.func,
-  isSpyMaster: PropTypes.func,
 };
 
 export default TeamSummary;

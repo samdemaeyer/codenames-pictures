@@ -5,7 +5,6 @@ import ScoreBoard from '../components/ScoreBoard';
 import TeamSummary from '../components/TeamSummary';
 import Menu from '../components/Menu';
 import randomise from '../utils/array-helpers';
-import { getRandomInt } from '../utils/number-helpers';
 import './Board.css';
 import {Link} from 'react-router-dom';
 
@@ -22,7 +21,6 @@ const Board = () => {
   const [startingTeam, setStartingTeam] = React.useState('');
   const [teams, setTeams] = React.useState({red: [], blue: []});
   const [score, setScore] = React.useState({red: 0, blue: 0});
-  const [spyMasters, setSpyMasters] = React.useState({red: 0, blue: 0});
 
   const newGame = e => {
     e.preventDefault();
@@ -67,20 +65,12 @@ const Board = () => {
       blue: allPlayers.slice(breakAt, allPlayers.length),
     });
     resetScores();
-    resetSpyMasters();
   };
 
-  const pickSpyMasters = () => setSpyMasters({
-    red: getRandomInt(teams.red.length),
-    blue: getRandomInt(teams.blue.length),
+  const pickSpyMasters = () => setTeams({
+    red: randomise(teams.red),
+    blue: randomise(teams.blue),
   });
-
-  const resetSpyMasters = () => setSpyMasters({
-    red: 0,
-    blue: 0,
-  });
-
-  const isSpyMaster = (color, index) => spyMasters[color] === index;
 
   const scorePlayer = color => setScore({
     ...score,
@@ -97,7 +87,6 @@ const Board = () => {
   const teamSummaryProps = {
     teams,
     startingTeam,
-    isSpyMaster: isSpyMaster,
     getGuessedCards: getGuessedCardsAmount,
   };
 

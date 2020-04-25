@@ -7,9 +7,11 @@
 .context-menu .menu-action {
     border-bottom: 1px dashed;
     margin: 0;
-    padding: .7rem 1rem;
+    padding: .3rem 1rem;
     width: 100%;
     cursor: pointer;
+    font-family: inherit;
+    font-size: 1rem;
 }
 
 .context-menu .menu-action:last-of-type {
