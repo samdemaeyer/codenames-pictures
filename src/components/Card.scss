@@ -1,4 +1,5 @@
 @import "./../style/colors";
+@import "./library/Badge";
 
 @mixin card-overlay {
   @each $name, $hex in $cardColors {
@@ -60,6 +61,16 @@
       left: 0;
       top: 0;
       border-radius: 12px;
+    }
+
+    &.duet.neutral:after {
+      @extend .Badge;
+      border: 2px solid;
+      height: 15%;
+      width: 15%;
+      left: unset;
+      right: 0;
+      content: "x";
     }
   }
 }

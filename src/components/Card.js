@@ -8,7 +8,7 @@ import GameContext from '../contexts/gameContext';
 import Badge from './library/Badge';
 
 const Card = ({index, card}) => {
-  const {setColor} = React.useContext(GameContext);
+  const {setColor, isDuetGame} = React.useContext(GameContext);
   const {cardId, color} = card;
   const [enlarged, setEnlargement] = React.useState(false);
   const [menuVisible, setMenuVisible] = React.useState(false);
@@ -30,6 +30,7 @@ const Card = ({index, card}) => {
       className={classNames('Card', {
         'selected': !!color,
         [color]: !!color,
+        'duet': isDuetGame,
       })}
       ref={container}
       onDoubleClick={resetColor}
