@@ -6,10 +6,7 @@ import PropTypes from 'prop-types';
 const Menu = ({children}) => {
   const [expanded, setExpanded] = React.useState(false);
   const container = React.useRef(null);
-  const onOutsideClick = () => {
-    if (expanded)
-      setExpanded(false);
-  };
+  const onOutsideClick = () => setExpanded(false);
   useOutsideClickListener(container, onOutsideClick);
   const toggleExpand = () => setExpanded(!expanded);
 

@@ -138,7 +138,7 @@ const Board = () => {
               <Link to="#" onClick={newGame}>
                   New Game
               </Link>
-              <Link to="/">
+              <Link target="_blank" to="/">
                   Rules
               </Link>
             </Menu>
