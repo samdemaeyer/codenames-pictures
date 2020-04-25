@@ -1,13 +1,3 @@
-.team-summary.blue .team-title,
-.team-summary.blue .spymaster {
-    color: var(--blue-light)
-}
-
-.team-summary.red .team-title,
-.team-summary.red .spymaster {
-    color: var(--red-light)
-}
-
 .team-summary .team-title {
     margin-top: 0;
 }

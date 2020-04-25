@@ -20,7 +20,7 @@ const Team = ({teams, teamColor, addPlayer, removePlayer, startingTeam, setStari
   return (
     <div className="teams-wrapper">
       <div className={classNames('team', teamColor)}>
-        <h3 className="team-title">
+        <h3 className={classNames('team-title', `text-${teamColor}`)}>
             Team {teamColor}
           <button
             className={classNames('starting-team', {'active': currentStaringTeam})}

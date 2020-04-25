@@ -8,12 +8,12 @@ const TeamSummary = ({color, teams, getGuessedCards, startingTeam }) => {
   const totalCards = currentStaringTeam ? 8 : 7;
 
   return (
-    <div className={classNames('team-summary', color)}>
-      {teams[color].length ?
+    <div className={'team-summary'}>
+      {teams[color].length &&
         <>
-          <h3 className="team-title">
+          <h3 className={classNames('team-title', `text-${color}`)}>
             Team {color}
-            <span className={`badge ${startingTeam ? 'has-total' : ''}`}>
+            <span className={classNames('badge', {'has-total': startingTeam})}>
               {getGuessedCards(color)}
               {startingTeam && <>/{totalCards}</>}
             </span>
@@ -21,10 +21,15 @@ const TeamSummary = ({color, teams, getGuessedCards, startingTeam }) => {
           <ul className="names">
             {teams[color].map((player, index) => {
               const isSpyMaster = index === 0;
-              return <li key={index} className={`${isSpyMaster ? 'spymaster' : ''}`}>{isSpyMaster && '>'} {player}</li>;
+              return <li key={index} className={classNames({
+                'spymaster': isSpyMaster,
+                [`text-${color}`]: isSpyMaster,
+              })}>
+                {isSpyMaster && '>'} {player}
+              </li>;
             })}
           </ul>
-        </> : null}
+        </>}
     </div>
   );
 };

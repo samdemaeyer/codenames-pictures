@@ -21,3 +21,11 @@ body {
   --green-extra-light: rgba(0, 177, 6, 0.4);
   font-size: 20px;
 }
+
+.text-red {
+  color: var(--red-light);
+}
+
+.text-blue {
+  color: var(--blue-light);
+}

@@ -17,14 +17,6 @@
     align-items: center;
 }
 
-.teams-wrapper .blue .team-title {
-    color: var(--blue-light)
-}
-
-.teams-wrapper .red .team-title {
-    color: var(--red-light)
-}
-
 .teams-wrapper .team .team-title .starting-team {
     display: inline-block;
     width: 1rem;

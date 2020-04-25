@@ -8,12 +8,3 @@
     text-align: center;
     margin-bottom: 0;
 }
-
-.team-score.red .score {
-    color: var(--red-light);
-}
-
-.team-score.blue .score {
-    color: var(--blue-light);
-}
-
