@@ -14,8 +14,6 @@
     "@types/react-dom": "^16.9.6",
     "@types/react-router-dom": "^5.1.4",
     "classnames": "^2.2.6",
-    "eslint": "^6.8.0",
-    "eslint-plugin-react": "^7.19.0",
     "gh-pages": "^2.2.0",
     "node-sass": "^4.14.0",
     "react": "^16.13.1",
@@ -47,5 +45,11 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^2.29.0",
+    "@typescript-eslint/parser": "^2.29.0",
+    "eslint": "^6.8.0",
+    "eslint-plugin-react": "^7.19.0"
   }
 }
