@@ -1,18 +1,22 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import './TeamsModal.scss';
 import TeamSetup from './TeamSetup';
 import GameContext from '../contexts/gameContext';
 import Modal from './library/Modal';
+import {IGameContext} from '../interfaces/Game';
 
-const TeamsModal = ({toggleTeamsModal}) => {
-  const { shuffleTeams, pickSpyMasters, teamColors, isDuetGame } = React.useContext(GameContext);
+interface IProps {
+  onCloseModal: () => void;
+}
+
+const TeamsModal:React.FC<IProps> = ({onCloseModal}) => {
+  const { shuffleTeams, pickSpyMasters, teamColors, isDuetGame } = React.useContext<IGameContext>(GameContext);
 
   return (
     <Modal
       title={`Setup your ${isDuetGame ? 'team': 'teams'}`}
       classname="TeamsModal"
-      onCloseModal={toggleTeamsModal}
+      onCloseModal={onCloseModal}
     >
       <div className="teams-wrapper">
         {teamColors.map(color => <TeamSetup color={color} key={color}/>)}
@@ -23,16 +27,6 @@ const TeamsModal = ({toggleTeamsModal}) => {
       </div>}
     </Modal>
   );
-};
-
-TeamsModal.propTypes = {
-  addPlayer: PropTypes.func,
-  toggleTeamsModal: PropTypes.func,
-  updatePlayer: PropTypes.func,
-  removePlayer: PropTypes.func,
-  shuffleTeams: PropTypes.func,
-  pickSpyMasters: PropTypes.func,
-  teams: PropTypes.object,
 };
 
 export default TeamsModal;

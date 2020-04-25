@@ -4,7 +4,11 @@ import useOutsideClickListener from '../../hooks/useOutsideClickListener';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
-const Menu = ({children}) => {
+interface IProps {
+  children?:any;
+}
+
+const Menu:React.FC<IProps> = ({children}) => {
   const [expanded, setExpanded] = React.useState(false);
   const container = React.useRef(null);
   const onOutsideClick = () => setExpanded(false);
@@ -18,7 +22,7 @@ const Menu = ({children}) => {
       ref={container}
     >
       {expanded && <div className="menu-content">
-        {children.map((option, index) =>
+        {children.map((option:any, index:number) =>
           <div
             className="menu-item"
             key={index}

@@ -3,7 +3,14 @@ import PropTypes from 'prop-types';
 import './Modal.scss';
 import classNames from 'classnames';
 
-const Modal = ({onCloseModal, title, classname, children}) => {
+interface IProps {
+  title?:string;
+  classname?:string;
+  onCloseModal?: () => void;
+  children?:any;
+}
+
+const Modal:React.FC<IProps> = ({onCloseModal, title, classname, children}) => {
   return (
     <div className="ModalWrapper">
       <div className={classNames('Modal', classname)}>

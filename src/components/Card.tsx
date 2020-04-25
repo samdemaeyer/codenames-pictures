@@ -1,27 +1,32 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import './Card.scss';
 import CardContextMenu from './CardContextMenu';
 import useOutsideClickListener from '../hooks/useOutsideClickListener';
 import classNames from 'classnames';
 import GameContext from '../contexts/gameContext';
 import Badge from './library/Badge';
+import {CardColor, ICard, IGameContext} from '../interfaces/Game';
 
-const Card = ({index, card}) => {
-  const {setColor, isDuetGame} = React.useContext(GameContext);
+interface IProps {
+  index: number;
+  card: ICard;
+}
+
+const Card:React.FC<IProps> = ({index, card}) => {
+  const {setColor, isDuetGame} = React.useContext<IGameContext>(GameContext);
   const {cardId, color} = card;
-  const [enlarged, setEnlargement] = React.useState(false);
-  const [menuVisible, setMenuVisible] = React.useState(false);
+  const [enlarged, setEnlargement] = React.useState<boolean>(false);
+  const [menuVisible, setMenuVisible] = React.useState<boolean>(false);
   const container = React.useRef(null);
   useOutsideClickListener(container, () => setEnlargement(false));
 
-  const showMenu = e => {
+  const showMenu = (e:any) => {
     e.preventDefault();
     setEnlargement(false);
     setMenuVisible(true);
   };
 
-  const setCardColor = color => setColor(card, color);
+  const setCardColor = (color:CardColor) => setColor(card, color);
   const resetColor = () => setCardColor('');
 
   return (
@@ -50,11 +55,6 @@ const Card = ({index, card}) => {
       />}
     </div>
   );
-};
-
-Card.propTypes = {
-  card: PropTypes.object,
-  index: PropTypes.number,
 };
 
 export default Card;

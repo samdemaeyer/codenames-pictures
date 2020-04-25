@@ -1,10 +1,14 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import './TeamSetup.scss';
 import classNames from 'classnames';
 import GameContext from '../contexts/gameContext';
+import {IGameContext, TeamColor} from "../interfaces/Game";
 
-const TeamSetup = ({ color }) => {
+interface IProps {
+  color: TeamColor
+}
+
+const TeamSetup:React.FC<IProps> = ({ color }) => {
   const {
     teams,
     startingTeam,
@@ -12,10 +16,10 @@ const TeamSetup = ({ color }) => {
     addPlayer,
     updatePlayer,
     removePlayer,
-  } = React.useContext(GameContext);
-  const [newPlayer, setNewPlayer] = React.useState('');
+  } = React.useContext<IGameContext>(GameContext);
+  const [newPlayer, setNewPlayer] = React.useState<string>('');
   
-  const addNewPlayer = e => {
+  const addNewPlayer = (e:any) => {
     e.preventDefault();
     if (!newPlayer)
       return;
@@ -23,7 +27,7 @@ const TeamSetup = ({ color }) => {
     setNewPlayer('');
   };
   
-  const updateExistingPlayer = (player, idx) => updatePlayer(color , player, idx);
+  const updateExistingPlayer = (player:string, idx:number) => updatePlayer(color , player, idx);
   const currentStaringTeam = startingTeam === color ;
 
   return (
@@ -58,10 +62,6 @@ const TeamSetup = ({ color }) => {
       </form>
     </div>
   );
-};
-
-TeamSetup.propTypes = {
-  color : PropTypes.string,
 };
 
 export default TeamSetup;

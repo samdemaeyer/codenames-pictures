@@ -1,10 +1,14 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import './TeamScore.scss';
 import classNames from 'classnames';
 import GameContext from '../contexts/gameContext';
+import {TeamColor} from '../interfaces/Game';
 
-const TeamScore = ({color}) => {
+interface IProps {
+  color: TeamColor;
+}
+
+const TeamScore:React.FC<IProps> = ({color}) => {
   const {score, scorePlayer} = React.useContext(GameContext);
 
   return (
@@ -13,10 +17,6 @@ const TeamScore = ({color}) => {
       <button className="btn" onClick={() => scorePlayer(color)}>Score</button>
     </div>
   );
-};
-
-TeamScore.propTypes = {
-  color: PropTypes.string,
 };
 
 export default TeamScore;

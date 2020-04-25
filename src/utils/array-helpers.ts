@@ -1,6 +1,6 @@
-const randomise = arr => arr.sort(() => 0.5 - Math.random());
+const randomise = (arr:any[]) => arr.sort(() => 0.5 - Math.random());
 
-const chunkify = (array, chunkAmount) => {
+const chunkify = (array:any[], chunkAmount:number):Array<Array<any>> => {
   if (chunkAmount < 2)
     return [array];
 

@@ -1,4 +1,4 @@
-const getRandomInt = function(max) {
+const getRandomInt = function(max:number) {
   return Math.floor(Math.random() * Math.floor(max));
 };
 

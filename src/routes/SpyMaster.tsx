@@ -1,12 +1,17 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React, {FormEvent} from 'react';
 import './SpyMaster.scss';
 import SpyCard from '../components/SpyCard';
+import { RouteChildrenProps } from 'react-router-dom';
+import {ISpyCard} from '../interfaces/SpyMaster';
 
-const SpyMaster = ({match, history}) => {
-  const [searchCardId, setSearchCardId] = React.useState('');
-  const [card, setCard] = React.useState(null);
-  const cardIdToDisplay = match.params.spyCardId;
+interface IParams {
+  spyCardId: string
+}
+
+const SpyMaster:React.FC<RouteChildrenProps<IParams>> = ({match, history}) => {
+  const [searchCardId, setSearchCardId] = React.useState<string>('');
+  const [card, setCard] = React.useState<ISpyCard>();
+  const cardIdToDisplay = match?.params.spyCardId;
   let cards = React.useRef([]);
 
   React.useEffect(() => {
@@ -23,12 +28,12 @@ const SpyMaster = ({match, history}) => {
     setCardToDisplay();
   };
 
-  const setCardToDisplay = (spyCardId = match.params.spyCardId) => {
+  const setCardToDisplay = (spyCardId = match?.params.spyCardId) => {
     const card = cards.current.find(({ id }) => id === spyCardId);
     setCard(card);
   };
 
-  const changeCard = e => {
+  const changeCard = (e:FormEvent) => {
     e.preventDefault();
     setSearchCardId('');
     history.push(searchCardId);
@@ -51,21 +56,17 @@ const SpyMaster = ({match, history}) => {
         </form>
       </div>
 
-      {card && <div className="container spy-master">
-        <h1 className="title">Spy master card: {cardIdToDisplay}</h1>
-        <SpyCard card={card}/>
-      </div>}
+      <div className="container spy-master">
+        {card && <><h1 className="title">Spy master card: {cardIdToDisplay}</h1>
+          <SpyCard card={card}/>
+        </>}
 
-      {cards.current.length && !card && <div className="container spy-master">
-        <h1 className="title">Spy master card &quot;{cardIdToDisplay}&quot;<br/>does not exist you twat.</h1>
-      </div>}
+        {cards.current.length && !card &&
+          <h1 className="title">Spy master card &quot;{cardIdToDisplay}&quot;<br/>does not exist you twat.</h1>
+        }
+      </div>
     </div>
   );
-};
-
-SpyMaster.propTypes = {
-  match: PropTypes.object,
-  history: PropTypes.object,
 };
 
 export default SpyMaster;
