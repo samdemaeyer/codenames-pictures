@@ -27,39 +27,37 @@ const Team = ({teamColor}) => {
   const currentStaringTeam = startingTeam === teamColor;
 
   return (
-    <div className="teams-wrapper">
-      <div className={classNames('team', teamColor)}>
-        <h3 className={classNames('team-title', `text-${teamColor}`)}>
+    <div className={classNames('team', teamColor)}>
+      <h3 className={classNames('team-title', `text-${teamColor}`)}>
           Team {teamColor}
-          <button
-            className={classNames('starting-team', {'active': currentStaringTeam})}
-            onClick={() => setStartingTeam(teamColor)}
-          />
-        </h3>
-        <form onSubmit={addNewPlayer}>
-          <div className="players">
-            {teams[teamColor].map((player, index) => (
-              <div className="player-wrap" key={index}>
-                <input
-                  className="input"
-                  value={player}
-                  onChange={({ target: { value } }) => updateExistingPlayer(value, index)}
-                />
-                <button 
-                  type="button" 
-                  onClick={() => removePlayer(teamColor, index)} 
-                  className="remove-player">x</button>
-              </div>
-            ))}
-          </div>
-          <input
-            className="input"
-            value={newPlayer}
-            onChange={({ target: { value } }) => setNewPlayer(value)}
-          />
-          <button type="submit" className="btn">Add player</button>
-        </form>
-      </div>
+        <button
+          className={classNames('starting-team', {'active': currentStaringTeam})}
+          onClick={() => setStartingTeam(teamColor)}
+        />
+      </h3>
+      <form onSubmit={addNewPlayer}>
+        <div className="players">
+          {teams[teamColor].map((player, index) => (
+            <div className="player-wrap" key={index}>
+              <input
+                className="input"
+                value={player}
+                onChange={({ target: { value } }) => updateExistingPlayer(value, index)}
+              />
+              <button 
+                type="button" 
+                onClick={() => removePlayer(teamColor, index)} 
+                className="remove-player">x</button>
+            </div>
+          ))}
+        </div>
+        <input
+          className="input"
+          value={newPlayer}
+          onChange={({ target: { value } }) => setNewPlayer(value)}
+        />
+        <button type="submit" className="btn">Add player</button>
+      </form>
     </div>
   );
 };
