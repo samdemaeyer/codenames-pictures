@@ -9,7 +9,7 @@ const TeamSummary = ({color, teams, getGuessedCards, startingTeam }) => {
 
   return (
     <div className={'team-summary'}>
-      {teams[color].length &&
+      {!!teams[color].length &&
         <>
           <h3 className={classNames('team-title', `text-${color}`)}>
             Team {color}
