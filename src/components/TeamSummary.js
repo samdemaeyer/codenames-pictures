@@ -8,7 +8,7 @@ import Badge from './library/Badge';
 const TeamSummary = ({color}) => {
   const {teams, getGuessedCardsAmount, startingTeam, isDuetGame} = React.useContext(GameContext);
   const currentStaringTeam = startingTeam === color;
-  const totalCards = currentStaringTeam ? 8 : 7;
+  const totalCards = isDuetGame ? 15 : currentStaringTeam ? 8 : 7;
 
   return (
     <div className={'TeamSummary'}>
@@ -18,7 +18,7 @@ const TeamSummary = ({color}) => {
             Team {color}
             <Badge>
               {getGuessedCardsAmount(color)}
-              {startingTeam && <>/{totalCards}</>}
+              {(startingTeam || isDuetGame) && <>/{totalCards}</>}
             </Badge>
           </h3>
           <ul className="names">

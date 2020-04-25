@@ -9,7 +9,12 @@ function App() {
   return (
     <HashRouter>
       <Route exact path="/" component={Rules} />
-      <Route exact path="/play" component={Game} />
+      <Route exact path="/play">
+        <Game teamColors={['red', 'blue']} cardsAmount={20}/>
+      </Route>
+      <Route exact path="/playDuet">
+        <Game teamColors={['green']} cardsAmount={25}/>
+      </Route>
       <Route exact path="/spy-master/:spyCardId" component={SpyMaster} />
     </HashRouter>
   );

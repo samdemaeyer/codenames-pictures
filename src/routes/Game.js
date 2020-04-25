@@ -3,13 +3,13 @@ import GameContext from '../contexts/gameContext';
 import Board from '../components/Board';
 import {capitalizeFirstLetter} from '../utils/string-helpers';
 import {randomise, chunkify} from '../utils/array-helpers';
+import PropTypes from 'prop-types';
 
-const randomiseCards = () => randomise(
+const randomiseCards = amount => randomise(
   [...Array(280)].map((_, i) => ({ cardId: i, color: '' }))
-).slice(0, 20);
+).slice(0, amount);
 
-const Game = () => {
-  const teamColors = ['red', 'blue'];
+const Game = ({ teamColors, cardsAmount }) => {
   const isDuetGame = teamColors.length < 2;
   let cardColors = [
     {id: 'neutral', display: 'Neutral'},
@@ -23,14 +23,14 @@ const Game = () => {
     return obj;
   };
 
-  const [cards, setCards] = React.useState(randomiseCards());
+  const [cards, setCards] = React.useState(randomiseCards(cardsAmount));
   const [startingTeam, setStartingTeam] = React.useState('');
   const [teams, setTeams] = React.useState(getTeamObject([]));
   const [score, setScore] = React.useState(getTeamObject(0));
 
   const newGame = e => {
     e.preventDefault();
-    setCards(randomiseCards());
+    setCards(randomiseCards(cardsAmount));
     setStartingTeam('');
   };
 
@@ -111,6 +111,11 @@ const Game = () => {
       <Board/>
     </GameContext.Provider>
   );
+};
+
+Game.propTypes = {
+  teamColors: PropTypes.arrayOf(PropTypes.string),
+  cardsAmount: PropTypes.number,
 };
 
 export default Game;
