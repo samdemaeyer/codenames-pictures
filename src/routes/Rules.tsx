@@ -185,7 +185,7 @@ const Rules = () =>
         <strong>Zoom in:</strong> click on the tile
       </li>
       <li>
-        <strong>Makring a state:</strong> right click on the tile
+        <strong>Marking a state:</strong> right click on the tile
       </li>
       <li>
         <strong>Remove a marking:</strong> double click on the tile
