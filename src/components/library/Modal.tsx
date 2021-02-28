@@ -4,10 +4,10 @@ import classNames from 'classnames'
 import 'components/library/Modal.scss'
 
 interface IProps {
-  title?: string;
-  classname?: string;
-  onCloseModal?: () => void;
-  children?: any;
+  title?: string
+  classname?: string
+  onCloseModal?: () => void
+  children?: any
 }
 
 const Modal: React.FC<IProps> = ({ onCloseModal, title, classname, children }) => {

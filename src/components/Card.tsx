@@ -8,8 +8,8 @@ import Badge from 'components/library/Badge'
 import { CardColor, ICard, IGameContext } from 'interfaces/Game'
 
 interface IProps {
-  index: number;
-  card: ICard;
+  index: number
+  card: ICard
 }
 
 const Card: React.FC<IProps> = ({ index, card }) => {

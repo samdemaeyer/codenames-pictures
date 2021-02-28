@@ -4,8 +4,8 @@ import classNames from 'classnames'
 import 'components/library/Badge.scss'
 
 interface IProps {
-  classname?: string,
-  children?: any;
+  classname?: string
+  children?: any
 }
 
 const Badge: React.FC<IProps> = ({ classname, children }) =>

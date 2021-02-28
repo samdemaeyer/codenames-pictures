@@ -10,8 +10,8 @@ const randomiseCards = (amount: number) => randomise(
 ).slice(0, amount)
 
 interface IProps {
-  teamColors: Array<TeamColor>;
-  cardsAmount: number;
+  teamColors: Array<TeamColor>
+  cardsAmount: number
 }
 
 const Game: React.FC<IProps> = ({ teamColors, cardsAmount }) => {

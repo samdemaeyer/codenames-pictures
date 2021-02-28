@@ -6,8 +6,8 @@ import GameContext from 'contexts/gameContext'
 import { CardColor, ICardColor, IGameContext } from 'interfaces/Game'
 
 interface IProps {
-  hideMenu: () => void;
-  setColor: (color: CardColor) => void;
+  hideMenu: () => void
+  setColor: (color: CardColor) => void
 }
 
 const CardContextMenu: React.FC<IProps> = ({ hideMenu, setColor }) => {

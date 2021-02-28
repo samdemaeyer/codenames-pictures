@@ -6,7 +6,7 @@ import Modal from 'components/library/Modal'
 import { IGameContext } from 'interfaces/Game'
 
 interface IProps {
-  onCloseModal: () => void;
+  onCloseModal: () => void
 }
 
 const TeamsModal: React.FC<IProps> = ({ onCloseModal }) => {

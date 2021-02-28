@@ -6,7 +6,7 @@ import Badge from 'components/library/Badge'
 import { TeamColor } from 'interfaces/Game'
 
 interface IProps {
-  color: TeamColor;
+  color: TeamColor
 }
 
 const TeamSummary: React.FC<IProps> = ({ color }) => {

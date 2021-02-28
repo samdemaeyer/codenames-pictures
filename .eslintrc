@@ -34,7 +34,18 @@
   "rules": {
     "@typescript-eslint/ban-ts-comment": [0],  // TODO: Look into if we can/need to re-enable this
     "@typescript-eslint/explicit-function-return-type": 0,
+    "@typescript-eslint/member-delimiter-style": [2, {
+      "multiline": {
+          "delimiter": "none",
+          "requireLast": false
+      },
+      "singleline": {
+          "delimiter": "comma",
+          "requireLast": false
+      }
+    }],
     "@typescript-eslint/no-use-before-define": 0,
+    "@typescript-eslint/semi": [2, "never"],
     "@typescript-eslint/type-annotation-spacing": 2,
     "arrow-parens": [2, "as-needed"],
     "arrow-spacing": 2,

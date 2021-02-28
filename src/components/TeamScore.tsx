@@ -5,7 +5,7 @@ import GameContext from 'contexts/gameContext'
 import { TeamColor } from 'interfaces/Game'
 
 interface IProps {
-  color: TeamColor;
+  color: TeamColor
 }
 
 const TeamScore: React.FC<IProps> = ({ color }) => {

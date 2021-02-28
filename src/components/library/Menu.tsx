@@ -5,7 +5,7 @@ import classNames from 'classnames'
 import 'components/library/Menu.scss'
 
 interface IProps {
-  children?: any;
+  children?: any
 }
 
 const Menu: React.FC<IProps> = ({ children }) => {
