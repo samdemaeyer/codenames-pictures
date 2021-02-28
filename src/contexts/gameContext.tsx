@@ -1,7 +1,6 @@
 import { createContext } from 'react'
 import { IGameContext } from 'interfaces/Game'
 
-// @ts-ignore
-const GameContext = createContext<IGameContext>({})
+const GameContext = createContext<IGameContext>({} as IGameContext)
 
 export default GameContext
