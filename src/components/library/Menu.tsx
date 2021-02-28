@@ -10,7 +10,7 @@ interface IProps {
 
 const Menu: React.FC<IProps> = ({ children }) => {
   const [expanded, setExpanded] = React.useState(false)
-  const container = React.useRef(null)
+  const container = React.useRef<HTMLButtonElement>(null)
   const onOutsideClick = () => setExpanded(false)
   const toggleExpand = () => setExpanded(!expanded)
   useOutsideClickListener(container, onOutsideClick)

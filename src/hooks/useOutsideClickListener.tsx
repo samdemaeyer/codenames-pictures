@@ -1,8 +1,8 @@
 import * as React from 'react'
 
-const useOutsideClickListener: (ref: any, action: () => void) => void = (ref, action) => {
-  const onClick = (e: Event) => {
-    if (!!ref && ref.current && !ref.current.contains(e.target)) {
+const useOutsideClickListener: (ref: React.RefObject<HTMLElement>, action: () => void) => void = (ref, action) => {
+  const onClick = (e: MouseEvent) => {
+    if (!!ref && ref.current && !ref.current.contains(e.target as HTMLDivElement)) {
       action()
     }
   }

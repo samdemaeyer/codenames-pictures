@@ -11,7 +11,7 @@ interface IProps {
 }
 
 const CardContextMenu: React.FC<IProps> = ({ hideMenu, setColor }) => {
-  const container = React.useRef(null)
+  const container = React.useRef<HTMLDivElement>(null)
   const { cardColors } = React.useContext<IGameContext>(GameContext)
   useOutsideClickListener(container, hideMenu)
 

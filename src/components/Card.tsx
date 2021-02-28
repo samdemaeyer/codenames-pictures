@@ -17,7 +17,7 @@ const Card: React.FC<IProps> = ({ index, card }) => {
   const { cardId, color } = card
   const [enlarged, setEnlargement] = React.useState<boolean>(false)
   const [menuVisible, setMenuVisible] = React.useState<boolean>(false)
-  const container = React.useRef(null)
+  const container = React.useRef<HTMLDivElement>(null)
   useOutsideClickListener(container, () => setEnlargement(false))
 
   const showMenu = (e: any) => {
