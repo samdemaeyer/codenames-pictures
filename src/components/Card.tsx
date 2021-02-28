@@ -1,11 +1,11 @@
 import React, { useContext, useState, useRef, FC, MouseEvent } from 'react'
-import 'components/Card.scss'
+import classNames from 'classnames'
 import CardContextMenu from 'components/CardContextMenu'
 import useOutsideClickListener from 'hooks/useOutsideClickListener'
-import classNames from 'classnames'
 import GameContext from 'contexts/gameContext'
 import Badge from 'components/library/Badge'
 import { CardColor, ICard, IGameContext } from 'interfaces/Game'
+import 'components/Card.scss'
 
 interface IProps {
   index: number

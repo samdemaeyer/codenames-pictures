@@ -1,24 +1,24 @@
-import React, { FormEvent } from 'react'
-import 'routes/SpyMaster.scss'
-import SpyCard from 'components/SpyCard'
+import React, { useState, useRef, useEffect, FC, FormEvent } from 'react'
 import { RouteChildrenProps } from 'react-router-dom'
+import SpyCard from 'components/SpyCard'
 import { ISpyCard } from 'interfaces/SpyMaster'
+import 'routes/SpyMaster.scss'
 
 interface IParams {
   spyCardId: string
 }
 
-const SpyMaster: React.FC<RouteChildrenProps<IParams>> = ({ match, history }) => {
-  const [searchCardId, setSearchCardId] = React.useState<string>('')
-  const [card, setCard] = React.useState<ISpyCard>()
+const SpyMaster: FC<RouteChildrenProps<IParams>> = ({ match, history }) => {
+  const [searchCardId, setSearchCardId] = useState<string>('')
+  const [card, setCard] = useState<ISpyCard>()
   const cardIdToDisplay = match?.params.spyCardId
-  const cards = React.useRef([])
+  const cards = useRef([])
 
-  React.useEffect(() => {
+  useEffect(() => {
     fetchCards()
   }, [])
 
-  React.useEffect(() => {
+  useEffect(() => {
     setCardToDisplay()
   })
 

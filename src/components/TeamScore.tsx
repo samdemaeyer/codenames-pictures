@@ -1,15 +1,15 @@
-import React from 'react'
-import 'components/TeamScore.scss'
+import React, { useContext, FC } from 'react'
 import classNames from 'classnames'
 import GameContext from 'contexts/gameContext'
 import { TeamColor } from 'interfaces/Game'
+import 'components/TeamScore.scss'
 
 interface IProps {
   color: TeamColor
 }
 
-const TeamScore: React.FC<IProps> = ({ color }) => {
-  const { score, scorePlayer } = React.useContext(GameContext)
+const TeamScore: FC<IProps> = ({ color }) => {
+  const { score, scorePlayer } = useContext(GameContext)
 
   return (
     <div className={'TeamScore'}>

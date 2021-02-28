@@ -1,11 +1,11 @@
-import React, { FC } from 'react'
+import React, { useContext, FC } from 'react'
 import Card from 'components/Card'
-import 'components/CardGrid.scss'
 import GameContext from 'contexts/gameContext'
 import { ICard, IGameContext } from 'interfaces/Game'
+import 'components/CardGrid.scss'
 
 const CardGrid: FC = () => {
-  const { cards } = React.useContext<IGameContext>(GameContext)
+  const { cards } = useContext<IGameContext>(GameContext)
 
   return (
     <div className="CardGrid">

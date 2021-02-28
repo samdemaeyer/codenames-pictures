@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, FC } from 'react'
 import GameContext from 'contexts/gameContext'
 import Board from 'components/Board'
 import { capitalizeFirstLetter } from 'utils/string-helpers'
@@ -14,7 +14,7 @@ interface IProps {
   cardsAmount: number
 }
 
-const Game: React.FC<IProps> = ({ teamColors, cardsAmount }) => {
+const Game: FC<IProps> = ({ teamColors, cardsAmount }) => {
   const isDuetGame = teamColors.length < 2
   const cardColors: ICardColor[] = [
     { id: 'neutral', display: 'Neutral' },
@@ -28,10 +28,10 @@ const Game: React.FC<IProps> = ({ teamColors, cardsAmount }) => {
     return obj
   }
 
-  const [cards, setCards] = React.useState<ICard[]>(randomiseCards(cardsAmount))
-  const [startingTeam, setStartingTeam] = React.useState<TeamColor | undefined>()
-  const [teams, setTeams] = React.useState<ITeams>(getTeamObject([]))
-  const [score, setScore] = React.useState<IScore>(getTeamObject(0))
+  const [cards, setCards] = useState<ICard[]>(randomiseCards(cardsAmount))
+  const [startingTeam, setStartingTeam] = useState<TeamColor | undefined>()
+  const [teams, setTeams] = useState<ITeams>(getTeamObject([]))
+  const [score, setScore] = useState<IScore>(getTeamObject(0))
 
   const newGame = (e: { preventDefault: () => void }) => {
     e.preventDefault()

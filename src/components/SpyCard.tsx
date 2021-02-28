@@ -1,13 +1,13 @@
-import * as React from 'react'
-import 'components/SpyCard.scss'
+import React, { FC } from 'react'
 import classNames from 'classnames'
 import { ISpyCard, ISpyCardCell } from 'interfaces/SpyMaster'
+import 'components/SpyCard.scss'
 
 interface IProps {
   card: ISpyCard
 }
 
-const SpyCard: React.FC<IProps> = ({ card }) => {
+const SpyCard: FC<IProps> = ({ card }) => {
   const StartingColor = () => <div className={classNames('starting-color', card.startingColor)}/>
 
   return <div className="SpyCard">

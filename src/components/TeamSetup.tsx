@@ -1,8 +1,8 @@
 import React, { useContext, useState, FC, FormEvent } from 'react'
-import 'components/TeamSetup.scss'
 import classNames from 'classnames'
 import GameContext from 'contexts/gameContext'
 import { IGameContext, TeamColor } from 'interfaces/Game'
+import 'components/TeamSetup.scss'
 
 interface IProps {
   color: TeamColor

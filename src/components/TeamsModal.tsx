@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useContext, FC } from 'react'
 import 'components/TeamsModal.scss'
 import TeamSetup from 'components/TeamSetup'
 import GameContext from 'contexts/gameContext'
@@ -9,8 +9,8 @@ interface IProps {
   onCloseModal: () => void
 }
 
-const TeamsModal: React.FC<IProps> = ({ onCloseModal }) => {
-  const { shuffleTeams, pickSpyMasters, teamColors, isDuetGame } = React.useContext<IGameContext>(GameContext)
+const TeamsModal: FC<IProps> = ({ onCloseModal }) => {
+  const { shuffleTeams, pickSpyMasters, teamColors, isDuetGame } = useContext<IGameContext>(GameContext)
 
   return (
     <Modal

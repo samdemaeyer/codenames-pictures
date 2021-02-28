@@ -1,18 +1,18 @@
-import React from 'react'
-import 'components/CardContextMenu.scss'
-import useOutsideClickListener from 'hooks/useOutsideClickListener'
+import React, { useRef, useContext, FC } from 'react'
 import classNames from 'classnames'
+import useOutsideClickListener from 'hooks/useOutsideClickListener'
 import GameContext from 'contexts/gameContext'
 import { CardColor, ICardColor, IGameContext } from 'interfaces/Game'
+import 'components/CardContextMenu.scss'
 
 interface IProps {
   hideMenu: () => void
   setColor: (color: CardColor) => void
 }
 
-const CardContextMenu: React.FC<IProps> = ({ hideMenu, setColor }) => {
-  const container = React.useRef<HTMLDivElement>(null)
-  const { cardColors } = React.useContext<IGameContext>(GameContext)
+const CardContextMenu: FC<IProps> = ({ hideMenu, setColor }) => {
+  const container = useRef<HTMLDivElement>(null)
+  const { cardColors } = useContext<IGameContext>(GameContext)
   useOutsideClickListener(container, hideMenu)
 
   const setCardColor = (color: CardColor) => {

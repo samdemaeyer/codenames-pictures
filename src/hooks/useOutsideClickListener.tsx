@@ -1,13 +1,13 @@
-import * as React from 'react'
+import { RefObject, useEffect } from 'react'
 
-const useOutsideClickListener: (ref: React.RefObject<HTMLElement>, action: () => void) => void = (ref, action) => {
+const useOutsideClickListener: (ref: RefObject<HTMLElement>, action: () => void) => void = (ref, action) => {
   const onClick = (e: MouseEvent) => {
     if (!!ref && ref.current && !ref.current.contains(e.target as HTMLDivElement)) {
       action()
     }
   }
 
-  React.useEffect(() => {
+  useEffect(() => {
     window.addEventListener('mousedown', onClick)
     return () => {
       window.removeEventListener('mousedown', onClick)

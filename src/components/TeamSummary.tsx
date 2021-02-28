@@ -1,16 +1,16 @@
-import React from 'react'
-import 'components/TeamSummary.scss'
+import React, { useContext, FC } from 'react'
 import classNames from 'classnames'
 import GameContext from 'contexts/gameContext'
 import Badge from 'components/library/Badge'
 import { TeamColor } from 'interfaces/Game'
+import 'components/TeamSummary.scss'
 
 interface IProps {
   color: TeamColor
 }
 
-const TeamSummary: React.FC<IProps> = ({ color }) => {
-  const { teams, getGuessedCardsAmount, startingTeam, isDuetGame } = React.useContext(GameContext)
+const TeamSummary: FC<IProps> = ({ color }) => {
+  const { teams, getGuessedCardsAmount, startingTeam, isDuetGame } = useContext(GameContext)
   const currentStaringTeam = startingTeam === color
   const totalCards = isDuetGame ? 15 : currentStaringTeam ? 8 : 7
 
