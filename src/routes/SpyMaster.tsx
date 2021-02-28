@@ -1,8 +1,8 @@
 import React, { FormEvent } from 'react'
-import './SpyMaster.scss'
-import SpyCard from '../components/SpyCard'
+import 'routes/SpyMaster.scss'
+import SpyCard from 'components/SpyCard'
 import { RouteChildrenProps } from 'react-router-dom'
-import { ISpyCard } from '../interfaces/SpyMaster'
+import { ISpyCard } from 'interfaces/SpyMaster'
 
 interface IParams {
   spyCardId: string

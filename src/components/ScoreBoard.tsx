@@ -1,9 +1,9 @@
 import * as React from 'react'
-import './ScoreBoard.scss'
-import TeamScore from './TeamScore'
+import 'components/ScoreBoard.scss'
+import TeamScore from 'components/TeamScore'
 import classNames from 'classnames'
-import GameContext from '../contexts/gameContext'
-import { TeamColor } from '../interfaces/Game'
+import GameContext from 'contexts/gameContext'
+import { TeamColor } from 'interfaces/Game'
 
 const ScoreBoard = () => {
   const [expanded, setExpanded] = React.useState(false)

@@ -1,7 +1,7 @@
 import * as React from 'react'
-import './SpyCard.scss'
+import 'components/SpyCard.scss'
 import classNames from 'classnames'
-import { ISpyCard, ISpyCardCell } from '../interfaces/SpyMaster'
+import { ISpyCard, ISpyCardCell } from 'interfaces/SpyMaster'
 
 interface IProps {
   card: ISpyCard

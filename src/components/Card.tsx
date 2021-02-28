@@ -1,12 +1,11 @@
 import React from 'react'
-import PropTypes from 'prop-types'
-import './Card.scss'
-import CardContextMenu from './CardContextMenu'
-import useOutsideClickListener from '../hooks/useOutsideClickListener'
+import 'components/Card.scss'
+import CardContextMenu from 'components/CardContextMenu'
+import useOutsideClickListener from 'hooks/useOutsideClickListener'
 import classNames from 'classnames'
-import GameContext from '../contexts/gameContext'
-import Badge from './library/Badge'
-import { CardColor, ICard, IGameContext } from '../interfaces/Game'
+import GameContext from 'contexts/gameContext'
+import Badge from 'components/library/Badge'
+import { CardColor, ICard, IGameContext } from 'interfaces/Game'
 
 interface IProps {
   index: number;

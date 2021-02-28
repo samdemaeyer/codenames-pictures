@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import './Modal.scss'
 import classNames from 'classnames'
+import 'components/library/Modal.scss'
 
 interface IProps {
   title?: string;

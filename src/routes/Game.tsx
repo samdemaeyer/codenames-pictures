@@ -1,9 +1,9 @@
 import React from 'react'
-import GameContext from '../contexts/gameContext'
-import Board from '../components/Board'
-import { capitalizeFirstLetter } from '../utils/string-helpers'
-import { randomise, chunkify } from '../utils/array-helpers'
-import { CardColor, ICard, ICardColor, IScore, ITeam, ITeams, TeamColor } from '../interfaces/Game'
+import GameContext from 'contexts/gameContext'
+import Board from 'components/Board'
+import { capitalizeFirstLetter } from 'utils/string-helpers'
+import { randomise, chunkify } from 'utils/array-helpers'
+import { CardColor, ICard, ICardColor, IScore, ITeam, ITeams, TeamColor } from 'interfaces/Game'
 
 const randomiseCards = (amount: number) => randomise(
   [...Array(280)].map((_, i) => ({ cardId: i, color: '' }))

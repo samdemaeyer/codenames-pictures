@@ -1,9 +1,9 @@
 import React from 'react'
-import Rules from './routes/Rules'
-import Game from './routes/Game'
-import SpyMaster from './routes/SpyMaster'
+import Rules from 'routes/Rules'
+import Game from 'routes/Game'
+import SpyMaster from 'routes/SpyMaster'
 import { HashRouter, Route } from 'react-router-dom'
-import './App.scss'
+import 'App.scss'
 
 function App() {
   return (

@@ -1,8 +1,8 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import './Rules.scss'
+import 'routes/Rules.scss'
 
-const Rules = () => 
+const Rules = () =>
   <div className="Rules">
     <Link className="btn right" to="/play">Start!</Link>
     <h1>Codenames Pictures Online </h1>

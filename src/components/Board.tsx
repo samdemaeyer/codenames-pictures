@@ -1,14 +1,14 @@
 import React from 'react'
-import TeamsModal from './TeamsModal'
-import ScoreBoard from './ScoreBoard'
-import TeamSummary from './TeamSummary'
-import Menu from './library/Menu'
-import './Board.scss'
 import { Link } from 'react-router-dom'
-import GameContext from '../contexts/gameContext'
-import CardGrid from './CardGrid'
-import { IGameContext, TeamColor } from '../interfaces/Game'
-import { getRandomInt } from '../utils/number-helpers'
+import TeamsModal from 'components/TeamsModal'
+import ScoreBoard from 'components/ScoreBoard'
+import TeamSummary from 'components/TeamSummary'
+import Menu from 'components/library/Menu'
+import GameContext from 'contexts/gameContext'
+import CardGrid from 'components/CardGrid'
+import { IGameContext, TeamColor } from 'interfaces/Game'
+import { getRandomInt } from 'utils/number-helpers'
+import 'components/Board.scss'
 
 const Board = () => {
   const { newGame, teamColors } = React.useContext<IGameContext>(GameContext)

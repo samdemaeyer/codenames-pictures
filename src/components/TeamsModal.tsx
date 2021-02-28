@@ -1,9 +1,9 @@
 import React from 'react'
-import './TeamsModal.scss'
-import TeamSetup from './TeamSetup'
-import GameContext from '../contexts/gameContext'
-import Modal from './library/Modal'
-import { IGameContext } from '../interfaces/Game'
+import 'components/TeamsModal.scss'
+import TeamSetup from 'components/TeamSetup'
+import GameContext from 'contexts/gameContext'
+import Modal from 'components/library/Modal'
+import { IGameContext } from 'interfaces/Game'
 
 interface IProps {
   onCloseModal: () => void;

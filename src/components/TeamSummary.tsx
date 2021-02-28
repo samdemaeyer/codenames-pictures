@@ -1,9 +1,9 @@
 import React from 'react'
-import './TeamSummary.scss'
+import 'components/TeamSummary.scss'
 import classNames from 'classnames'
-import GameContext from '../contexts/gameContext'
-import Badge from './library/Badge'
-import { TeamColor } from '../interfaces/Game'
+import GameContext from 'contexts/gameContext'
+import Badge from 'components/library/Badge'
+import { TeamColor } from 'interfaces/Game'
 
 interface IProps {
   color: TeamColor;

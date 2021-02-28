@@ -1,8 +1,8 @@
 import React from 'react'
-import './Menu.scss'
-import useOutsideClickListener from '../../hooks/useOutsideClickListener'
+import useOutsideClickListener from 'hooks/useOutsideClickListener'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
+import 'components/library/Menu.scss'
 
 interface IProps {
   children?: any;
