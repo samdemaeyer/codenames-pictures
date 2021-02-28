@@ -29,14 +29,14 @@ const Game: React.FC<IProps> = ({ teamColors, cardsAmount }) => {
   }
 
   const [cards, setCards] = React.useState<ICard[]>(randomiseCards(cardsAmount))
-  const [startingTeam, setStartingTeam] = React.useState<TeamColor | null>()
+  const [startingTeam, setStartingTeam] = React.useState<TeamColor | undefined>()
   const [teams, setTeams] = React.useState<ITeams>(getTeamObject([]))
   const [score, setScore] = React.useState<IScore>(getTeamObject(0))
 
   const newGame = (e: { preventDefault: () => void }) => {
     e.preventDefault()
     setCards(randomiseCards(cardsAmount))
-    setStartingTeam(null)
+    setStartingTeam(undefined)
   }
 
   const setColor = (card: ICard, color: CardColor) => {

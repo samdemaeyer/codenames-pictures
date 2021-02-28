@@ -25,7 +25,7 @@ export interface IScore {
 export interface IGameContext {
   cards: Array<ICard>
   teams: ITeams
-  startingTeam: TeamColor
+  startingTeam: TeamColor | undefined
   setStartingTeam: (color: TeamColor) => void
   score: IScore
   newGame: (e: { preventDefault: () => void }) => void
