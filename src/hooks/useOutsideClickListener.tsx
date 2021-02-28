@@ -1,6 +1,6 @@
 import * as React from 'react'
 
-const useOutsideClickListener = (ref: any, action: () => void) => {
+const useOutsideClickListener: (ref: any, action: () => void) => void = (ref, action) => {
   const onClick = (e: Event) => {
     if (!!ref && ref.current && !ref.current.contains(e.target)) {
       action()

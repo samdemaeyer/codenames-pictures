@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { FC } from 'react'
 import { Link } from 'react-router-dom'
 import TeamsModal from 'components/TeamsModal'
 import ScoreBoard from 'components/ScoreBoard'
@@ -10,7 +10,7 @@ import { IGameContext, TeamColor } from 'interfaces/Game'
 import { getRandomInt } from 'utils/number-helpers'
 import 'components/Board.scss'
 
-const Board = () => {
+const Board: FC = () => {
   const { newGame, teamColors } = React.useContext<IGameContext>(GameContext)
   const [showTeamsModal, setShowTeamsModal] = React.useState<boolean>(false)
   const toggleTeamsModal = () => setShowTeamsModal(!showTeamsModal)

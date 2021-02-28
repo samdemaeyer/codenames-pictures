@@ -1,11 +1,11 @@
-import * as React from 'react'
+import React, { FC } from 'react'
 import 'components/ScoreBoard.scss'
 import TeamScore from 'components/TeamScore'
 import classNames from 'classnames'
 import GameContext from 'contexts/gameContext'
 import { TeamColor } from 'interfaces/Game'
 
-const ScoreBoard = () => {
+const ScoreBoard: FC = () => {
   const [expanded, setExpanded] = React.useState(false)
   const { teams, isDuetGame, teamColors } = React.useContext(GameContext)
   const teamsSetup = teamColors.every((color: TeamColor) => teams[color].length > 0)

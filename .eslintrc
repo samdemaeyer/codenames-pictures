@@ -34,6 +34,7 @@
   "rules": {
     "@typescript-eslint/ban-ts-comment": [0],  // TODO: Look into if we can/need to re-enable this
     "@typescript-eslint/explicit-function-return-type": 0,
+    "@typescript-eslint/explicit-module-boundary-types": 2,
     "@typescript-eslint/member-delimiter-style": [2, {
       "multiline": {
           "delimiter": "none",
@@ -68,5 +69,13 @@
     "semi": [2, "never"],
     "space-before-blocks": [2, "always"],
     "space-before-function-paren": [2, "never"]
-  }
+  },
+  "overrides": [
+    {
+      "files": ["*.js"],
+      "rules": {
+        "@typescript-eslint/explicit-module-boundary-types": 0
+      }
+    }
+  ]
 }
