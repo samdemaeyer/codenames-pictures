@@ -1,5 +1,4 @@
 import React, { FC } from 'react'
-import PropTypes from 'prop-types'
 import classNames from 'classnames'
 import 'components/library/Modal.scss'
 
@@ -19,12 +18,6 @@ const Modal: FC<IProps> = ({ onCloseModal, title, classname, children }) => {
       </div>
     </div>
   )
-}
-
-Modal.propTypes = {
-  onCloseModal: PropTypes.func,
-  title: PropTypes.string,
-  classname: PropTypes.string,
 }
 
 export default Modal
