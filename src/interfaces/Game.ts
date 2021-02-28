@@ -1,6 +1,6 @@
 export type TeamColor = 'red' | 'blue' | 'green'
-
 export type CardColor = TeamColor | 'neutral' | 'black' | ''
+export type Players = string[]
 
 export interface ICardColor {
   id: CardColor
@@ -12,13 +12,11 @@ export interface ICard {
   color: CardColor
 }
 
-export type ITeam = string[]
-
 export interface ITeams {
-  [color: string]: ITeam
+  [color: string]: Players
 }
 
-export interface IScore {
+export interface IScores {
   [color: string]: number
 }
 
@@ -27,7 +25,7 @@ export interface IGameContext {
   teams: ITeams
   startingTeam: TeamColor | undefined
   setStartingTeam: (color: TeamColor) => void
-  score: IScore
+  score: IScores
   newGame: (e: { preventDefault: () => void }) => void
   setColor: (card: ICard, color: CardColor) => void
   addPlayer: (color: TeamColor, player: string) => void

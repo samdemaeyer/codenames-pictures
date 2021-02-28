@@ -3,7 +3,7 @@ import GameContext from 'contexts/gameContext'
 import Board from 'components/Board'
 import { capitalizeFirstLetter } from 'utils/string-helpers'
 import { randomise, chunkify } from 'utils/array-helpers'
-import { CardColor, ICard, ICardColor, IScore, ITeam, ITeams, TeamColor } from 'interfaces/Game'
+import { CardColor, Players, TeamColor, ICard, ICardColor, IScores, ITeams } from 'interfaces/Game'
 
 const randomiseCards = (amount: number) => randomise(
   [...Array(280)].map((_, i) => ({ cardId: i, color: '' }))
@@ -22,8 +22,14 @@ const Game: FC<IProps> = ({ teamColors, cardsAmount }) => {
   ]
   teamColors.forEach(color => cardColors.unshift({ id: color, display: capitalizeFirstLetter(color) }))
 
-  const getTeamObject = (value: any) => {
-    const obj: any = {}
+  const getTeamObject = (value: string[]) => {
+    const obj: ITeams = {}
+    teamColors.forEach(color => obj[color] = value)
+    return obj
+  }
+
+  const getScoresObject = (value: | number) => {
+    const obj: IScores = {}
     teamColors.forEach(color => obj[color] = value)
     return obj
   }
@@ -31,7 +37,7 @@ const Game: FC<IProps> = ({ teamColors, cardsAmount }) => {
   const [cards, setCards] = useState<ICard[]>(randomiseCards(cardsAmount))
   const [startingTeam, setStartingTeam] = useState<TeamColor | undefined>()
   const [teams, setTeams] = useState<ITeams>(getTeamObject([]))
-  const [score, setScore] = useState<IScore>(getTeamObject(0))
+  const [score, setScore] = useState<IScores>(getScoresObject(0))
 
   const newGame = (e: { preventDefault: () => void }) => {
     e.preventDefault()
@@ -69,7 +75,7 @@ const Game: FC<IProps> = ({ teamColors, cardsAmount }) => {
   }
 
   const shuffleTeams = () => {
-    const allPlayers = teamColors.reduce((players: ITeam, color: TeamColor) => [...players, ...teams[color]], [])
+    const allPlayers = teamColors.reduce((players: Players, color: TeamColor) => [...players, ...teams[color]], [])
     const chunkedPlayers = chunkify(randomise(allPlayers), teamColors.length)
     const newTeams: ITeams = {}
     teamColors.forEach((color: TeamColor, index: number) => newTeams[color] = chunkedPlayers[index] || [])
@@ -90,7 +96,7 @@ const Game: FC<IProps> = ({ teamColors, cardsAmount }) => {
     [color]: (score[color] + 1),
   })
 
-  const resetScores = () => setScore(getTeamObject(0))
+  const resetScores = () => setScore(getScoresObject(0))
   const getGuessedCardsAmount = (color: TeamColor) => cards.filter(card => card.color === color).length
 
   return (
