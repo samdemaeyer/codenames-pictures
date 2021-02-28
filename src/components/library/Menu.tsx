@@ -1,11 +1,10 @@
 import React from 'react'
 import useOutsideClickListener from 'hooks/useOutsideClickListener'
-import PropTypes from 'prop-types'
 import classNames from 'classnames'
 import 'components/library/Menu.scss'
 
 interface IProps {
-  children?: any
+  children: JSX.Element[]
 }
 
 const Menu: React.FC<IProps> = ({ children }) => {
@@ -22,7 +21,7 @@ const Menu: React.FC<IProps> = ({ children }) => {
       ref={container}
     >
       {expanded && <div className="menu-content">
-        {children.map((option: any, index: number) =>
+        {children.map((option: JSX.Element, index: number) =>
           <div
             className="menu-item"
             key={index}
@@ -37,10 +36,6 @@ const Menu: React.FC<IProps> = ({ children }) => {
       <div className="menu-trigger">Menu</div>
     </button>
   )
-}
-
-Menu.propTypes = {
-  children: PropTypes.array,
 }
 
 export default Menu

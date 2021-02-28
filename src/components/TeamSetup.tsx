@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useContext, useState, FC, FormEvent } from 'react'
 import 'components/TeamSetup.scss'
 import classNames from 'classnames'
 import GameContext from 'contexts/gameContext'
@@ -8,7 +8,7 @@ interface IProps {
   color: TeamColor
 }
 
-const TeamSetup: React.FC<IProps> = ({ color }) => {
+const TeamSetup: FC<IProps> = ({ color }) => {
   const {
     teams,
     startingTeam,
@@ -16,10 +16,10 @@ const TeamSetup: React.FC<IProps> = ({ color }) => {
     addPlayer,
     updatePlayer,
     removePlayer,
-  } = React.useContext<IGameContext>(GameContext)
-  const [newPlayer, setNewPlayer] = React.useState<string>('')
+  } = useContext<IGameContext>(GameContext)
+  const [newPlayer, setNewPlayer] = useState<string>('')
 
-  const addNewPlayer = (e: any) => {
+  const addNewPlayer = (e: FormEvent<HTMLFormElement>): void => {
     e.preventDefault()
     if (!newPlayer) return
     addPlayer(color, newPlayer)

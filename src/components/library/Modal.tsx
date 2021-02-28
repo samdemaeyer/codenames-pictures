@@ -7,7 +7,6 @@ interface IProps {
   title?: string
   classname?: string
   onCloseModal?: () => void
-  children?: any
 }
 
 const Modal: React.FC<IProps> = ({ onCloseModal, title, classname, children }) => {
@@ -26,7 +25,6 @@ Modal.propTypes = {
   onCloseModal: PropTypes.func,
   title: PropTypes.string,
   classname: PropTypes.string,
-  children: PropTypes.any,
 }
 
 export default Modal

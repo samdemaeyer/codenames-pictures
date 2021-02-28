@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useContext, useState, useRef, FC, MouseEvent } from 'react'
 import 'components/Card.scss'
 import CardContextMenu from 'components/CardContextMenu'
 import useOutsideClickListener from 'hooks/useOutsideClickListener'
@@ -12,15 +12,15 @@ interface IProps {
   card: ICard
 }
 
-const Card: React.FC<IProps> = ({ index, card }) => {
-  const { setColor, isDuetGame } = React.useContext<IGameContext>(GameContext)
+const Card: FC<IProps> = ({ index, card }) => {
+  const { setColor, isDuetGame } = useContext<IGameContext>(GameContext)
   const { cardId, color } = card
-  const [enlarged, setEnlargement] = React.useState<boolean>(false)
-  const [menuVisible, setMenuVisible] = React.useState<boolean>(false)
-  const container = React.useRef<HTMLDivElement>(null)
+  const [enlarged, setEnlargement] = useState<boolean>(false)
+  const [menuVisible, setMenuVisible] = useState<boolean>(false)
+  const container = useRef<HTMLDivElement>(null)
   useOutsideClickListener(container, () => setEnlargement(false))
 
-  const showMenu = (e: any) => {
+  const showMenu = (e: MouseEvent): void => {
     e.preventDefault()
     setEnlargement(false)
     setMenuVisible(true)

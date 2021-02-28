@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 const randomise = (arr: any[]): any[] => arr.sort(() => 0.5 - Math.random())
 
 const chunkify = (array: any[], chunkAmount: number): Array<Array<any>> => {
