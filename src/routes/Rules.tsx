@@ -1,6 +1,6 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import './Rules.scss';
+import React from 'react'
+import { Link } from 'react-router-dom'
+import './Rules.scss'
 
 const Rules = () => 
   <div className="Rules">
@@ -83,13 +83,13 @@ const Rules = () =>
         src="/codenames-pictures/images/cards/card-29.jpg"
         width="150px"
         alt="card-example doughnut"
-        style={{display: 'inline-block'}}
+        style={{ display: 'inline-block' }}
       />
       <img
         src="/codenames-pictures/images/cards/card-4.jpg"
         width="150px"
         alt="card-example witch"
-        style={{display: 'inline-block', marginLeft: '1rem'}}
+        style={{ display: 'inline-block', marginLeft: '1rem' }}
       />
     </p>
     <p>
@@ -199,6 +199,6 @@ const Rules = () =>
       </li>
     </ul>
     <Link className="btn" to="/play">Start!</Link>
-  </div>;
+  </div>
 
-export default Rules;
+export default Rules

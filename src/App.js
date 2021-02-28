@@ -1,9 +1,9 @@
-import React from 'react';
-import Rules from './routes/Rules';
-import Game from './routes/Game';
-import SpyMaster from './routes/SpyMaster';
-import { HashRouter, Route } from 'react-router-dom';
-import './App.scss';
+import React from 'react'
+import Rules from './routes/Rules'
+import Game from './routes/Game'
+import SpyMaster from './routes/SpyMaster'
+import { HashRouter, Route } from 'react-router-dom'
+import './App.scss'
 
 function App() {
   return (
@@ -17,7 +17,7 @@ function App() {
       </Route>
       <Route exact path="/spy-master/:spyCardId" component={SpyMaster} />
     </HashRouter>
-  );
+  )
 }
 
-export default App;
+export default App

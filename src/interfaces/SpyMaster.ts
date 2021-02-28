@@ -1,4 +1,4 @@
-import {CardColor, TeamColor} from "./Game";
+import { CardColor, TeamColor } from './Game'
 
 export interface ISpyCard {
   id: string;

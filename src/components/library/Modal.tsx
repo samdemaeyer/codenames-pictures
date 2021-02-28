@@ -1,16 +1,16 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import './Modal.scss';
-import classNames from 'classnames';
+import React from 'react'
+import PropTypes from 'prop-types'
+import './Modal.scss'
+import classNames from 'classnames'
 
 interface IProps {
-  title?:string;
-  classname?:string;
+  title?: string;
+  classname?: string;
   onCloseModal?: () => void;
-  children?:any;
+  children?: any;
 }
 
-const Modal:React.FC<IProps> = ({onCloseModal, title, classname, children}) => {
+const Modal: React.FC<IProps> = ({ onCloseModal, title, classname, children }) => {
   return (
     <div className="ModalWrapper">
       <div className={classNames('Modal', classname)}>
@@ -19,14 +19,14 @@ const Modal:React.FC<IProps> = ({onCloseModal, title, classname, children}) => {
         {children}
       </div>
     </div>
-  );
-};
+  )
+}
 
 Modal.propTypes = {
   onCloseModal: PropTypes.func,
   title: PropTypes.string,
   classname: PropTypes.string,
   children: PropTypes.any,
-};
+}
 
-export default Modal;
+export default Modal

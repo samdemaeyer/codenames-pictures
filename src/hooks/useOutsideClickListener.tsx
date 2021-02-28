@@ -1,18 +1,18 @@
-import * as React from 'react';
+import * as React from 'react'
 
-const useOutsideClickListener = (ref:any, action:Function) => {
-  const onClick = (e:Event) => {
+const useOutsideClickListener = (ref: any, action: () => void) => {
+  const onClick = (e: Event) => {
     if (!!ref && ref.current && !ref.current.contains(e.target)) {
-      action();
+      action()
     }
-  };
+  }
 
   React.useEffect(() => {
-    window.addEventListener('mousedown', onClick);
+    window.addEventListener('mousedown', onClick)
     return () => {
-      window.removeEventListener('mousedown', onClick);
-    };
-  }, []);
-};
+      window.removeEventListener('mousedown', onClick)
+    }
+  }, [])
+}
 
-export default useOutsideClickListener;
+export default useOutsideClickListener
