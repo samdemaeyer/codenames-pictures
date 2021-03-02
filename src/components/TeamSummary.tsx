@@ -1,18 +1,18 @@
-import React from 'react';
-import './TeamSummary.scss';
-import classNames from 'classnames';
-import GameContext from '../contexts/gameContext';
-import Badge from './library/Badge';
-import {TeamColor} from "../interfaces/Game";
+import React, { useContext, FC } from 'react'
+import classNames from 'classnames'
+import GameContext from 'contexts/gameContext'
+import Badge from 'components/library/Badge'
+import { TeamColor } from 'interfaces/Game'
+import 'components/TeamSummary.scss'
 
 interface IProps {
-  color: TeamColor;
+  color: TeamColor
 }
 
-const TeamSummary:React.FC<IProps> = ({color}) => {
-  const {teams, getGuessedCardsAmount, startingTeam, isDuetGame} = React.useContext(GameContext);
-  const currentStaringTeam = startingTeam === color;
-  const totalCards = isDuetGame ? 15 : currentStaringTeam ? 8 : 7;
+const TeamSummary: FC<IProps> = ({ color }) => {
+  const { teams, getGuessedCardsAmount, startingTeam, isDuetGame } = useContext(GameContext)
+  const currentStaringTeam = startingTeam === color
+  const totalCards = isDuetGame ? 15 : currentStaringTeam ? 8 : 7
 
   return (
     <div className={'TeamSummary'}>
@@ -26,19 +26,19 @@ const TeamSummary:React.FC<IProps> = ({color}) => {
             </Badge>
           </h3>
           <ul className="names">
-            {teams[color].map((player:string, index:number) => {
-              const isSpyMaster = index === 0 && !isDuetGame;
+            {teams[color].map((player: string, index: number) => {
+              const isSpyMaster = index === 0 && !isDuetGame
               return <li key={index} className={classNames({
                 'spymaster': isSpyMaster,
                 [`text-${color}`]: isSpyMaster,
               })}>
                 {isSpyMaster && '>'} {player}
-              </li>;
+              </li>
             })}
           </ul>
         </>}
     </div>
-  );
-};
+  )
+}
 
-export default TeamSummary;
+export default TeamSummary

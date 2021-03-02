@@ -1,21 +1,14 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import './Badge.scss';
-import classNames from 'classnames';
+import React, { FC } from 'react'
+import classNames from 'classnames'
+import 'components/library/Badge.scss'
 
 interface IProps {
-  classname?:string,
-  children?:any;
+  classname?: string
 }
 
-const Badge:React.FC<IProps> = ({classname, children}) => 
+const Badge: FC<IProps> = ({ classname, children }) =>
   <span className={classNames('Badge', classname)}>
     {children}
-  </span>;
+  </span>
 
-Badge.propTypes = {
-  classname: PropTypes.string,
-  children: PropTypes.any,
-};
-
-export default Badge;
+export default Badge

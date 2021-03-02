@@ -1,7 +1,7 @@
-const getRandomInt = function(max:number) {
-  return Math.floor(Math.random() * Math.floor(max));
-};
+const getRandomInt = function(max: number): number {
+  return Math.floor(Math.random() * Math.floor(max))
+}
 
 export {
   getRandomInt,
-};
+}

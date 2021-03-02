@@ -1,16 +1,16 @@
-import React from 'react';
-import './TeamsModal.scss';
-import TeamSetup from './TeamSetup';
-import GameContext from '../contexts/gameContext';
-import Modal from './library/Modal';
-import {IGameContext} from '../interfaces/Game';
+import React, { useContext, FC } from 'react'
+import 'components/TeamsModal.scss'
+import TeamSetup from 'components/TeamSetup'
+import GameContext from 'contexts/gameContext'
+import Modal from 'components/library/Modal'
+import { IGameContext } from 'interfaces/Game'
 
 interface IProps {
-  onCloseModal: () => void;
+  onCloseModal: () => void
 }
 
-const TeamsModal:React.FC<IProps> = ({onCloseModal}) => {
-  const { shuffleTeams, pickSpyMasters, teamColors, isDuetGame } = React.useContext<IGameContext>(GameContext);
+const TeamsModal: FC<IProps> = ({ onCloseModal }) => {
+  const { shuffleTeams, pickSpyMasters, teamColors, isDuetGame } = useContext<IGameContext>(GameContext)
 
   return (
     <Modal
@@ -26,7 +26,7 @@ const TeamsModal:React.FC<IProps> = ({onCloseModal}) => {
         <button className="btn" onClick={pickSpyMasters}>Pick spy masters</button>
       </div>}
     </Modal>
-  );
-};
+  )
+}
 
-export default TeamsModal;
+export default TeamsModal

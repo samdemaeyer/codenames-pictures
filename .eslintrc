@@ -4,9 +4,9 @@
     "plugin:react/recommended",
     "plugin:jsx-a11y/recommended",
     "plugin:@typescript-eslint/eslint-recommended",
-    "plugin:@typescript-eslint/recommended",
+    "plugin:@typescript-eslint/recommended"
   ],
-  "parser": "babel-eslint",
+  "parser": "@typescript-eslint/parser",
   "parserOptions": {
     "ecmaVersion": 8,
     "sourceType": "module"
@@ -15,6 +15,11 @@
     "react",
     "@typescript-eslint"
   ],
+  "settings": {
+    "react": {
+      "version": "detect"
+    }
+  },
   "globals": {
     "console": true,
     "document": true,
@@ -27,7 +32,22 @@
     "window": true
   },
   "rules": {
-  "arrow-parens": [2, "as-needed"],
+    "@typescript-eslint/explicit-module-boundary-types": 2,
+    "@typescript-eslint/member-delimiter-style": [2, {
+      "multiline": {
+        "delimiter": "none",
+        "requireLast": false
+      },
+      "singleline": {
+        "delimiter": "comma",
+        "requireLast": false
+      }
+    }],
+    "@typescript-eslint/no-explicit-any": 2,
+    "@typescript-eslint/no-use-before-define": 0,
+    "@typescript-eslint/semi": [2, "never"],
+    "@typescript-eslint/type-annotation-spacing": 2,
+    "arrow-parens": [2, "as-needed"],
     "arrow-spacing": 2,
     "comma-dangle": [2, {
       "arrays": "always-multiline",
@@ -36,16 +56,25 @@
       "exports": "always-multiline",
       "functions": "never"
     }],
+    "comma-spacing": 2,
     "indent": [2, 2],
     "jsx-quotes": [2, "prefer-double"],
     "max-len": [2, { "code": 120 }],
     "no-multi-spaces": 2,
+    "object-curly-spacing": [2, "always"],
     "prefer-arrow-callback": 2,
     "quotes": [2, "single"],
-    "semi": [2, "always"],
+    "react/prop-types": [0],
+    "semi": [2, "never"],
     "space-before-blocks": [2, "always"],
-    "space-before-function-paren": [2, "never"],
-    "@typescript-eslint/explicit-function-return-type": 0,
-    "@typescript-eslint/no-use-before-define": 0
-  }
+    "space-before-function-paren": [2, "never"]
+  },
+  "overrides": [
+    {
+      "files": ["*.js"],
+      "rules": {
+        "@typescript-eslint/explicit-module-boundary-types": 0
+      }
+    }
+  ]
 }

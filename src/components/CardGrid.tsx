@@ -1,15 +1,15 @@
-import React from 'react';
-import Card from './Card';
-import './CardGrid.scss';
-import GameContext from '../contexts/gameContext';
-import {ICard, IGameContext} from '../interfaces/Game';
+import React, { useContext, FC } from 'react'
+import Card from 'components/Card'
+import GameContext from 'contexts/gameContext'
+import { ICard, IGameContext } from 'interfaces/Game'
+import 'components/CardGrid.scss'
 
-const CardGrid = () => {
-  const {cards} = React.useContext<IGameContext>(GameContext);
+const CardGrid: FC = () => {
+  const { cards } = useContext<IGameContext>(GameContext)
 
   return (
     <div className="CardGrid">
-      {cards.map((card:ICard, index:number) => (
+      {cards.map((card: ICard, index: number) => (
         <Card
           key={card.cardId}
           card={card}
@@ -17,7 +17,7 @@ const CardGrid = () => {
         />
       ))}
     </div>
-  );
-};
+  )
+}
 
-export default CardGrid;
+export default CardGrid
