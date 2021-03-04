@@ -4,7 +4,7 @@ import 'routes/Rules.scss'
 
 const Rules: FC = () =>
   <div className="Rules">
-    <Link className="btn right" to="/play">Start!</Link>
+    <Link className="btn right" to="/play" data-test="start-btn-top">Start!</Link>
     <h1>Codenames Pictures Online </h1>
     <p>
           The online version of Codenames Pictures by
@@ -198,7 +198,7 @@ const Rules: FC = () =>
         <strong><em>Click here</em></strong> link on the spymaster page, enter the card ID and submit.
       </li>
     </ul>
-    <Link className="btn" to="/play">Start!</Link>
+    <Link className="btn" to="/play" data-test="start-btn-bottom">Start!</Link>
   </div>
 
 export default Rules

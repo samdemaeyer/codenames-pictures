@@ -19,6 +19,7 @@ const Menu: FC<IProps> = ({ children }) => {
       className={classNames('Menu', { 'expanded': expanded })}
       onClick={toggleExpand}
       ref={container}
+      data-testing="menu-button"
     >
       {expanded && <div className="menu-content">
         {children.map((option: JSX.Element, index: number) =>

@@ -1,0 +1,9 @@
+{
+  "globals": {
+    "context": true,
+    "it": true,
+    "cy": true,
+    "describe": true,
+    "before": true
+  }
+}
